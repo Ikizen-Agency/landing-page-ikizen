@@ -9,6 +9,32 @@ import {
 import { BrandValues } from "@/components/services/BrandValues";
 import Navbar from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Identidad de Marca | Ikizen Agency",
+    description:
+      "Diseñamos identidades de marca memorables: logotipos, paletas, tipografía y guías de estilo que conectan con tu audiencia y transmiten profesionalismo.",
+    keywords: [
+      "identidad de marca",
+      "diseño de marca",
+      "logotipo profesional",
+      "branding agencia",
+      "diseño de identidad visual",
+      "manual de marca",
+      "Ikizen Agency",
+    ],
+    openGraph: {
+      title: "Identidad de Marca | Ikizen Agency",
+      description:
+        "Creamos marcas que inspiran y conectan. Diseño estratégico para empresas que quieren destacar.",
+      url: "https://ikizen.vercel.app/services/branding",
+      siteName: "Ikizen Agency",
+      type: "website",
+    }
+}
+}
 
 export default function BrandingPage() {
   return (

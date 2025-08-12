@@ -30,7 +30,7 @@ export function ServiceProcess({
             <div className="flex-shrink-0 w-10 h-10 bg-primary text-gray-900 rounded-full flex items-center justify-center font-bold text-sm">
               {index + 1}
             </div>
-            <div className="bg-dark-bg/40 border border-secondary/20 rounded-xl p-5 max-w-lg">
+            <div className="bg-gray-900 border border-secondary/20 rounded-xl p-5 max-w-lg">
               <h3 className="text-lg font-semibold text-primary mb-1">{step.title}</h3>
               <p className="text-secondary/90">{step.desc}</p>
             </div>
