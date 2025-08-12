@@ -6,6 +6,14 @@ import { Footer } from "@/components/landing/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { Testimonials } from "@/components/landing/Testimonial";
 import InitialPopup from "@/components/landing/InitialPopup";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Inicio | Ikizen Agency",
+    description: "Bienvenido a Ikizen Agency. Tu aliado en desarrollo web e identidad de marca.",
+  };
+}
 
 export default function Home() {
   return (

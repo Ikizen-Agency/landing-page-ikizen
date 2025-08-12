@@ -4,8 +4,40 @@ import "./globals.css";
 
 
 export const metadata: Metadata = {
-  title: "Ikizen Agency",
-  description: "Agencia de Desarrollo Web e Identidad de Marca",
+  title: {
+    default: "Ikizen Agency | Desarrollo Web & Identidad de Marca",
+    template: "%s | Ikizen Agency",
+  },
+  description: "Agencia de desarrollo web e identidad de marca. Creamos experiencias digitales que convierten y marcas que conectan.",
+  keywords: ["desarrollo web", "identidad de marca", "agencia digital", "diseño web", "branding", "Next.js", "React"],
+  authors: [{ name: "Ikizen Agency" }],
+  creator: "Ikizen Agency",
+  publisher: "Ikizen Agency",
+  openGraph: {
+    title: "Ikizen Agency | Experiencias digitales que convierten",
+    description: "Creamos sitios web y marcas memorables para empresas que quieren destacar.",
+    url: "https://ikizen.vercel.app",
+    siteName: "Ikizen Agency",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ikizen Agency - Desarrollo Web & Branding",
+      },
+    ],
+    type: "website",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

@@ -2,6 +2,17 @@
 import { ServiceHero, ServiceOfferings, ServiceTechnologies, ServiceProcess, ServiceCTAWithForm } from "@/components/services";
 import Navbar from "@/components/landing/Navbar";
 import {Footer} from "@/components/landing/Footer";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Desarrollo Web | Ikizen Agency",
+    description: "Creamos sitios web modernos, responsivos y optimizados para conversión y rendimiento.",
+    openGraph: {
+      images: ["/og-web.jpg"],
+    },
+  };
+}
 
 export default function WebDevelopmentPage() {
   return (
