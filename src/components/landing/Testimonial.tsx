@@ -52,7 +52,8 @@ export function Testimonials() {
             Lo que dicen nuestros clientes
           </h2>
           <p className="text-secondary/80 text-lg">
-            Confianza, resultados y experiencias reales de marcas que crecieron con Ikizen.
+            Confianza, resultados y experiencias reales de marcas que crecieron
+            con Ikizen.
           </p>
         </AnimatedSection>
 
@@ -63,10 +64,7 @@ export function Testimonials() {
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="w-full flex-shrink-0 px-4"
-              >
+              <div key={index} className="w-full flex-shrink-0 px-4">
                 <TestimonialCard testimonial={testimonial} />
               </div>
             ))}
@@ -104,13 +102,15 @@ function TestimonialCard({
       {/* Estrellas */}
       <div className="flex justify-center mb-5 text-secondary">
         {[...Array(testimonial.rating)].map((_, i) => (
-          <span key={i} className="text-lg mx-1">★</span>
+          <span key={i} className="text-lg mx-1">
+            ★
+          </span>
         ))}
       </div>
 
       {/* Cita */}
       <blockquote className="text-secondary/90 text-lg leading-relaxed mb-6">
-        "{testimonial.quote}"
+        &ldquo;{testimonial.quote}&rdquo;
       </blockquote>
 
       {/* Autor */}

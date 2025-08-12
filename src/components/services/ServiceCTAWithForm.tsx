@@ -6,7 +6,6 @@ import Link from "next/link";
 export function ServiceCTAWithForm({
   title = "¿Listo para construir tu sitio ideal?",
   description = "Agenda una consulta gratuita y descubre cómo podemos ayudarte a crecer.",
-  formTitle = "Envíanos un mensaje",
   sideText = "Al hacer clic en enviar, se abrirá tu cliente de correo para completar el envío.",
   buttonText = "O habla con nosotros directamente",
 }: {
