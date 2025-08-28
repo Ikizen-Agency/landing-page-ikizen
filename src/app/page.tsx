@@ -7,11 +7,13 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { Testimonials } from "@/components/landing/Testimonial";
 import InitialPopup from "@/components/landing/InitialPopup";
 import { Metadata } from "next";
+import NewsLetter from "@/components/landing/NewsLetter";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Inicio | Ikizen Agency",
-    description: "Bienvenido a Ikizen Agency. Tu aliado en desarrollo web e identidad de marca.",
+    title: "Inicio | Ikizen",
+    description:
+      "Bienvenido a Ikizen. Tu aliado en desarrollo web e identidad de marca.",
   };
 }
 
@@ -36,6 +38,10 @@ export default function Home() {
         </AnimatedSection>
         <AnimatedSection delay={300}>
           <Testimonials />
+        </AnimatedSection>
+
+        <AnimatedSection delay={300}>
+          <NewsLetter></NewsLetter>
         </AnimatedSection>
       </main>
       <Footer />

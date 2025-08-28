@@ -11,6 +11,7 @@ const testimonials = [
     author: "Valentina R.",
     role: "CEO, NovaLabs",
     rating: 5,
+    avatar: "https://i.pravatar.cc/150?img=1", // Imagen de placeholder
   },
   {
     quote:
@@ -18,6 +19,7 @@ const testimonials = [
     author: "Mateo D.",
     role: "Fundador, Creativo Estudio",
     rating: 5,
+    avatar: "https://i.pravatar.cc/150?img=4",
   },
   {
     quote:
@@ -25,6 +27,7 @@ const testimonials = [
     author: "Lucía M.",
     role: "Directora de Marketing, Eleva",
     rating: 5,
+    avatar: "https://i.pravatar.cc/150?img=6",
   },
 ];
 
@@ -52,8 +55,7 @@ export function Testimonials() {
             Lo que dicen nuestros clientes
           </h2>
           <p className="text-secondary/80 text-lg">
-            Confianza, resultados y experiencias reales de marcas que crecieron
-            con Ikizen.
+            Confianza, resultados y experiencias reales de marcas que crecieron con Ikizen.
           </p>
         </AnimatedSection>
 
@@ -71,7 +73,7 @@ export function Testimonials() {
           </div>
         </div>
 
-        {/* Indicadores (puntos elegantes) */}
+        {/* Indicadores */}
         <div className="flex justify-center mt-10 space-x-3">
           {testimonials.map((_, index) => (
             <button
@@ -91,33 +93,43 @@ export function Testimonials() {
   );
 }
 
-// Tarjeta de testimonio – diseño limpio y moderno
+// Tarjeta de testimonio – nueva estructura
 function TestimonialCard({
   testimonial,
 }: {
   testimonial: (typeof testimonials)[0];
 }) {
   return (
-    <div className="p-8 rounded-2xl bg-dark-bg/20 backdrop-blur-md border border-white/20 text-center max-w-3xl mx-auto hover:border-primary/40 transition-all duration-300 shadow-lg shadow-black/10">
+    <div className="p-8 rounded-2xl bg-dark-bg/20 backdrop-blur-md border border-white/20 max-w-3xl mx-auto hover:border-primary/40 transition-all duration-300 shadow-lg shadow-black/10 flex flex-col">
+      {/* Avatar + Nombre + Cargo */}
+      <div className="flex items-center gap-4 mb-5">
+        <img
+          src={testimonial.avatar}
+          alt={`Foto de ${testimonial.author}`}
+          className="w-12 h-12 rounded-full object-cover border border-secondary/30"
+        />
+        <div className="text-left">
+          <div className="font-semibold text-primary">{testimonial.author}</div>
+          <div className="text-secondary/70 text-sm">{testimonial.role}</div>
+        </div>
+      </div>
+
       {/* Estrellas */}
-      <div className="flex justify-center mb-5 text-secondary">
-        {[...Array(testimonial.rating)].map((_, i) => (
-          <span key={i} className="text-lg mx-1">
+      <div className="flex justify-center mb-5">
+        {[...Array(5)].map((_, i) => (
+          <span
+            key={i}
+            className={`text-lg mx-0.5 ${i < testimonial.rating ? 'text-secondary' : 'text-secondary/40'}`}
+          >
             ★
           </span>
         ))}
       </div>
 
       {/* Cita */}
-      <blockquote className="text-secondary/90 text-lg leading-relaxed mb-6">
+      <blockquote className="text-secondary/90 text-lg leading-relaxed mb-6 flex-grow italic">
         &ldquo;{testimonial.quote}&rdquo;
       </blockquote>
-
-      {/* Autor */}
-      <div>
-        <div className="font-semibold text-primary">{testimonial.author}</div>
-        <div className="text-secondary/70 text-sm">{testimonial.role}</div>
-      </div>
     </div>
   );
 }

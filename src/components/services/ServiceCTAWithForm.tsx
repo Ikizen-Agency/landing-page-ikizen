@@ -25,60 +25,62 @@ export function ServiceCTAWithForm({
         }}
       >
         <div className="absolute top-10 right-10 w-32 h-32 bg-secondary/10 rounded-full blur-3xl"></div>
-        <div className="relative z-10">
+        <div className="relative z-10 text-center">
           <AnimatedSection>
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">{title}</h2>
-            <p className="text-secondary/90 mb-8 max-w-2xl">{description}</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
+              {title}
+            </h2>
+            <p className="text-secondary/90 mb-8 max-w-2xl mx-auto">
+              {description}
+            </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <form
-                action="mailto:ikizen.agencia@gmail.com"
-                method="post"
-                encType="text/plain"
-                className="space-y-4"
+          {/* Formulario centrado */}
+          <div className="flex justify-center">
+            <form
+              action="mailto:ikizen.agency@gmail.com"
+              method="post"
+              encType="text/plain"
+              className="space-y-4 w-full max-w-md"
+            >
+              <input
+                name="name"
+                type="text"
+                placeholder="Nombre"
+                required
+                className="w-full bg-dark-bg/60 border border-secondary/30 rounded-lg px-4 py-2 text-white placeholder-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              />
+              <input
+                name="email"
+                type="email"
+                placeholder="Correo"
+                required
+                className="w-full bg-dark-bg/60 border border-secondary/30 rounded-lg px-4 py-2 text-white placeholder-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              />
+              <textarea
+                name="body"
+                placeholder="Tu proyecto..."
+                required
+                rows={3}
+                className="w-full bg-dark-bg/60 border border-secondary/30 rounded-lg px-4 py-2 text-white placeholder-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/50"
+              />
+              <button
+                type="submit"
+                className="w-full py-2 bg-primary text-gray-900 rounded-lg font-medium hover:bg-primary/90 transition-colors"
               >
-                <input
-                  name="name"
-                  type="text"
-                  placeholder="Nombre"
-                  required
-                  className="w-full bg-dark-bg/60 border border-secondary/30 rounded-lg px-4 py-2 text-white placeholder-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                />
-                <input
-                  name="email"
-                  type="email"
-                  placeholder="Correo"
-                  required
-                  className="w-full bg-dark-bg/60 border border-secondary/30 rounded-lg px-4 py-2 text-white placeholder-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                />
-                <textarea
-                  name="body"
-                  placeholder="Tu proyecto..."
-                  required
-                  rows={3}
-                  className="w-full bg-dark-bg/60 border border-secondary/30 rounded-lg px-4 py-2 text-white placeholder-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                />
-                <button
-                  type="submit"
-                  className="w-full py-2 bg-primary text-gray-900 rounded-lg font-medium hover:bg-primary/90 transition-colors"
-                >
-                  Enviar mensaje
-                </button>
-              </form>
-            </div>
+                Enviar mensaje
+              </button>
+            </form>
+          </div>
 
-            <div className="flex flex-col justify-center">
-              <p className="text-secondary/80 text-sm leading-relaxed">{sideText}</p>
-              <div className="mt-6">
-                <Link href="/contact">
-                  <Button variant="outline" className="bg-gray-900 border-secondary text-primary hover:bg-secondary hover:text-primary font-bold">
-                    {buttonText}
-                  </Button>
-                </Link>
-              </div>
-            </div>
+          <p className="text-secondary/70 text-sm mt-6">{sideText}</p>
+
+          <div className="mt-4">
+            <a href="mailto:ikizen.agency@gmail.com?subject=Agendar%20una%20cita&body=Hola,%20quisiera%20agendar%20una%20cita">
+              <Button variant="outline" className="text-gray-900">
+                {buttonText}
+              </Button>
+            </a>
           </div>
         </div>
       </div>

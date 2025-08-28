@@ -1,8 +1,9 @@
 // app/services/web/page.tsx
-import { ServiceHero, ServiceOfferings, ServiceTechnologies, ServiceProcess, ServiceCTAWithForm } from "@/components/services";
+import { ServiceHero, ServiceOfferings, ServiceProcess, ServiceCTAWithForm } from "@/components/services";
 import Navbar from "@/components/landing/Navbar";
 import {Footer} from "@/components/landing/Footer";
 import { Metadata } from "next";
+import NewsLetter from "@/components/landing/NewsLetter";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -36,10 +37,6 @@ export default function WebDevelopmentPage() {
           ]}
         />
 
-        <ServiceTechnologies
-          technologies={["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "Vercel", "Figma", "GSAP", "PostgreSQL", "Prisma", "Zod", "ShadCN"]}
-        />
-
         <ServiceProcess
           steps={[
             { title: "Consulta Inicial", desc: "Entendemos tus objetivos, audiencia y desafíos." },
@@ -51,6 +48,7 @@ export default function WebDevelopmentPage() {
         />
 
         <ServiceCTAWithForm />
+        <NewsLetter></NewsLetter>
       </div>
       <Footer />
     </>

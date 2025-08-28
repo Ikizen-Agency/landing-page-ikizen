@@ -8,9 +8,9 @@ import Link from "next/link";
 
 const navLinks = [
   { name: "Inicio", href: "/" },
-  { name: "Servicios", href: "#services" },
-  { name: "Proyectos", href: "#projects" },
-  { name: "Testimonios", href: "#testimonials" },
+  { name: "Servicios", href: "/#services" },
+  { name: "Proyectos", href: "/#projects" },
+  { name: "Testimonios", href: "/#testimonials" },
   { name: "Blog", href: "/blog" }
 ];
 
@@ -18,7 +18,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-navbar-gradient border-b border-secondary/20 sticky top-0 z-50 backdrop-blur-sm">
+    <nav className="bg-navbar-gradient border-b border-secondary/20 fixed w-full top-0 z-50 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -38,16 +38,6 @@ export default function Navbar() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
-          </div>
-
-          {/* Botón CTA (Desktop) */}
-          <div className="hidden md:block">
-            <Button
-              asChild
-              className="bg-transparent border border-primary text-primary hover:bg-primary hover:text-gray-900 transition-colors duration-300"
-            >
-              <Link href="#contact">Contáctanos</Link>
-            </Button>
           </div>
 
           {/* Botón Móvil */}
@@ -82,12 +72,6 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <Button
-                asChild
-                className="w-full bg-transparent border border-primary text-primary hover:bg-primary hover:text-gray-900 transition-colors duration-300"
-              >
-                <Link href="#contact">Contáctanos</Link>
-              </Button>
             </div>
           </div>
         )}

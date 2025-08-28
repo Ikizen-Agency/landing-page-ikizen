@@ -16,7 +16,7 @@
 
   @layer utilities {
   .bg-navbar-gradient {
-    background: linear-gradient(to bottom, transparent 0%, #200f41 90%);
+    background: linear-gradient(to bottom, transparent 0%, #2f2733 90%);
     /* Puedes ajustar el porcentaje para controlar la intensidad */
   }
 }

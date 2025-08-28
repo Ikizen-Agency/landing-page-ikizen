@@ -14,7 +14,7 @@ export default function TermsOfService() {
 
       <h2 className="text-xl font-semibold text-primary mt-8 mb-4">1. Uso del sitio</h2>
       <p className="mb-4">
-        Este sitio es propiedad de <strong>Ikizen Agency</strong>. Puedes usarlo para obtener información sobre nuestros servicios, contactarnos o solicitar una consulta. No está permitido copiar, modificar o distribuir contenido sin autorización.
+        Este sitio es propiedad de <strong>Ikizen</strong>. Puedes usarlo para obtener información sobre nuestros servicios, contactarnos o solicitar una consulta. No está permitido copiar, modificar o distribuir contenido sin autorización.
       </p>
 
       <h2 className="text-xl font-semibold text-primary mt-8 mb-4">2. Consultas y servicios</h2>

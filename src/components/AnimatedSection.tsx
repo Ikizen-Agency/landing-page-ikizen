@@ -1,7 +1,7 @@
 // src/components/AnimatedSection.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function AnimatedSection({
   children,
@@ -34,3 +34,5 @@ export function AnimatedSection({
     </div>
   );
 }
+
+export { useEffect, useState, useRef };

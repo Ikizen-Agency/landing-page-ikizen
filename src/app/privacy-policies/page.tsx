@@ -9,7 +9,7 @@ export default function PrivacyPolicy() {
     <div className="py-20 px-6 max-w-4xl mx-auto text-secondary/90 leading-relaxed">
       <h1 className="text-3xl font-bold text-primary mb-6">Política de Privacidad</h1>
       <p className="mb-4">
-        En <strong>Ikizen Agency</strong>, respetamos tu privacidad y nos comprometemos a proteger tus datos personales.
+        En <strong>Ikizen</strong>, respetamos tu privacidad y nos comprometemos a proteger tus datos personales.
       </p>
 
       <h2 className="text-xl font-semibold text-primary mt-8 mb-4">1. Información que recopilamos</h2>
@@ -40,7 +40,7 @@ export default function PrivacyPolicy() {
 
       <h2 className="text-xl font-semibold text-primary mt-8 mb-4">4. Derechos del usuario</h2>
       <p className="mb-4">
-        Tienes derecho a acceder, corregir, eliminar o solicitar la portabilidad de tus datos. Para ejercer estos derechos, escríbenos a: <a href="mailto:ikizen.agencia@gmail.com" className="text-primary hover:underline">ikizen.agencia@gmail.com</a>.
+        Tienes derecho a acceder, corregir, eliminar o solicitar la portabilidad de tus datos. Para ejercer estos derechos, escríbenos a: <a href="mailto:ikizen.agency@gmail.com" className="text-primary hover:underline">ikizen.agencia@gmail.com</a>.
       </p>
 
       <h2 className="text-xl font-semibold text-primary mt-8 mb-4">5. Cambios en esta política</h2>
