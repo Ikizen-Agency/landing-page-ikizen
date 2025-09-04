@@ -1,5 +1,15 @@
 import { Footer } from "@/components/landing/Footer";
 import Navbar from "@/components/landing/Navbar";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Términos de Uso | Ikizen Agency",
+  description: "Términos y condiciones de uso de los servicios de Ikizen Agency. Conoce nuestras políticas y condiciones de trabajo.",
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 // Ejemplo: /terminos-de-uso/page.tsx
 export default function TermsOfService() {

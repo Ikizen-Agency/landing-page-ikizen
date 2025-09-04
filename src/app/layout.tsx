@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { StructuredData, organizationStructuredData, websiteStructuredData } from "@/components/StructuredData";
 
 
 export const metadata: Metadata = {
@@ -29,9 +30,9 @@ export const metadata: Metadata = {
     type: "website",
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
   manifest: "/site.webmanifest",
   robots: {
@@ -46,7 +47,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
+      <head>
+        <StructuredData data={organizationStructuredData} />
+        <StructuredData data={websiteStructuredData} />
+      </head>
       <body
         className="bg-gray-900 text-white"
       >

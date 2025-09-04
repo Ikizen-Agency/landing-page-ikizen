@@ -4,20 +4,69 @@ import Navbar from "@/components/landing/Navbar";
 import {Footer} from "@/components/landing/Footer";
 import { Metadata } from "next";
 import NewsLetter from "@/components/landing/NewsLetter";
+import { StructuredData } from "@/components/StructuredData";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Desarrollo Web | Ikizen Agency",
-    description: "Creamos sitios web modernos, responsivos y optimizados para conversión y rendimiento.",
+    description: "Creamos sitios web modernos, responsivos y optimizados para conversión y rendimiento. Aplicaciones web, e-commerce y sitios corporativos.",
+    keywords: [
+      "desarrollo web",
+      "sitios web corporativos",
+      "aplicaciones web",
+      "e-commerce",
+      "tiendas online",
+      "diseño web responsivo",
+      "Next.js",
+      "React",
+      "Ikizen Agency"
+    ],
     openGraph: {
-      images: ["/og-web.jpg"],
+      title: "Desarrollo Web | Ikizen Agency",
+      description: "Sitios que convierten y aplicaciones que impresionan. Diseño elegante, código limpio y resultados reales.",
+      url: "https://ikizen.vercel.app/services/web",
+      siteName: "Ikizen Agency",
+      type: "website",
+      images: [
+        {
+          url: "/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Ikizen Agency - Desarrollo Web",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Desarrollo Web | Ikizen Agency",
+      description: "Sitios que convierten y aplicaciones que impresionan.",
+      images: ["/og-image.jpg"],
     },
   };
 }
 
+const webServiceStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Desarrollo Web",
+  "description": "Creamos sitios web modernos, responsivos y optimizados para conversión y rendimiento. Aplicaciones web, e-commerce y sitios corporativos.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Ikizen Agency",
+    "url": "https://ikizen.vercel.app"
+  },
+  "serviceType": "Web Development",
+  "areaServed": "Spain",
+  "offers": {
+    "@type": "Offer",
+    "description": "Servicios de desarrollo web personalizados"
+  }
+};
+
 export default function WebDevelopmentPage() {
   return (
     <>
+      <StructuredData data={webServiceStructuredData} />
       <Navbar />
       <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
         <ServiceHero

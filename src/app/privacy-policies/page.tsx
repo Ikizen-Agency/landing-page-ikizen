@@ -1,5 +1,15 @@
 import { Footer } from "@/components/landing/Footer";
 import Navbar from "@/components/landing/Navbar";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Política de Privacidad | Ikizen Agency",
+  description: "Política de privacidad de Ikizen Agency. Conoce cómo protegemos y manejamos tus datos personales.",
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 // Ejemplo: /politica-de-privacidad/page.tsx
 export default function PrivacyPolicy() {
