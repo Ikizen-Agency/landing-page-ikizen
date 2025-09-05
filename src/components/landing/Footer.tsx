@@ -6,7 +6,6 @@ export function Footer() {
     <footer className="py-8 border-t border-secondary/20">
       <div className="container px-4 mx-auto text-center text-sm text-secondary">
         &copy; {new Date().getFullYear()} Ikizen. Todos los derechos reservados.
-        
         <div className="mt-2">
           <Link href="/privacy-policies" className="hover:text-primary">
             Política de privacidad
@@ -16,7 +15,6 @@ export function Footer() {
             Términos de uso
           </Link>
         </div>
-
         {/* Redes sociales */}
         <div className="flex justify-center gap-6 mt-4">
           <Link
@@ -28,7 +26,7 @@ export function Footer() {
             <Facebook size={16} />
           </Link>
           <Link
-            href="https://www.linkedin.com/company/tu-pagina"
+            href="https://www.linkedin.com/in/ikizen-agency-615244377/?originalSubdomain=cu"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-primary flex items-center gap-2"
