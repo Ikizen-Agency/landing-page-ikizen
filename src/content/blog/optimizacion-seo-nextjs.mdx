@@ -1,0 +1,257 @@
+---
+title: "Optimización SEO con Next.js: Guía Completa 2024"
+description: "Aprende las mejores técnicas de SEO para sitios web construidos con Next.js y mejora tu posicionamiento en buscadores."
+date: "2024-01-05"
+author: "Ikizen Agency"
+tags: ["SEO", "next.js", "optimización", "buscadores", "rendimiento"]
+readingTime: "10 min"
+featured: false
+---
+
+# Optimización SEO con Next.js: Guía Completa 2024
+
+El SEO (Search Engine Optimization) es fundamental para el éxito de cualquier sitio web. Next.js ofrece herramientas poderosas para optimizar tu sitio y mejorar su posicionamiento en buscadores.
+
+## ¿Por qué Next.js es Excelente para SEO?
+
+Next.js está diseñado pensando en el SEO desde el principio:
+
+- **Server-Side Rendering (SSR)** - Los motores de búsqueda pueden leer tu contenido
+- **Static Site Generation (SSG)** - Sitios súper rápidos
+- **Meta tags dinámicos** - Control total sobre la metadata
+- **Sitemap automático** - Fácil indexación
+- **Optimización de imágenes** - Mejor rendimiento
+
+## Configuración Básica de SEO
+
+### 1. Metadata en Layout
+```jsx
+// app/layout.tsx
+export const metadata = {
+  title: {
+    default: "Mi Sitio Web",
+    template: "%s | Mi Sitio Web"
+  },
+  description: "Descripción de mi sitio web",
+  keywords: ["palabra1", "palabra2"],
+  openGraph: {
+    title: "Mi Sitio Web",
+    description: "Descripción de mi sitio web",
+    url: "https://misitio.com",
+    siteName: "Mi Sitio Web",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Mi Sitio Web",
+      },
+    ],
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mi Sitio Web",
+    description: "Descripción de mi sitio web",
+    images: ["/og-image.jpg"],
+  },
+}
+```
+
+### 2. Metadata por Página
+```jsx
+// app/about/page.tsx
+export const metadata = {
+  title: "Acerca de Nosotros",
+  description: "Conoce más sobre nuestra empresa y equipo",
+  openGraph: {
+    title: "Acerca de Nosotros | Mi Sitio Web",
+    description: "Conoce más sobre nuestra empresa y equipo",
+    url: "https://misitio.com/about",
+  },
+}
+```
+
+## Estructura de URLs SEO-Friendly
+
+### Rutas Dinámicas
+```jsx
+// app/blog/[slug]/page.tsx
+export async function generateStaticParams() {
+  const posts = getAllPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+```
+
+### Redirecciones
+```jsx
+// next.config.js
+async redirects() {
+  return [
+    {
+      source: '/old-page',
+      destination: '/new-page',
+      permanent: true,
+    },
+  ];
+}
+```
+
+## Optimización de Contenido
+
+### 1. Estructura de Encabezados
+```jsx
+<h1>Título Principal</h1>
+<h2>Subtítulo Importante</h2>
+<h3>Sección Específica</h3>
+```
+
+### 2. Alt Text en Imágenes
+```jsx
+<Image
+  src="/imagen.jpg"
+  alt="Descripción detallada de la imagen"
+  width={800}
+  height={600}
+/>
+```
+
+### 3. Enlaces Internos
+```jsx
+<Link href="/servicios">
+  <a>Nuestros Servicios</a>
+</Link>
+```
+
+## Sitemap y Robots.txt
+
+### Sitemap Automático
+```jsx
+// app/sitemap.ts
+export default function sitemap() {
+  return [
+    {
+      url: 'https://misitio.com',
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 1,
+    },
+    {
+      url: 'https://misitio.com/blog',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+  ];
+}
+```
+
+### Robots.txt
+```txt
+User-agent: *
+Allow: /
+
+Sitemap: https://misitio.com/sitemap.xml
+```
+
+## Schema Markup (Datos Estructurados)
+
+```jsx
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Mi Empresa",
+  "url": "https://misitio.com",
+  "logo": "https://misitio.com/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1234567890",
+    "contactType": "customer service"
+  }
+};
+
+// En tu componente
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+/>
+```
+
+## Optimización de Rendimiento
+
+### 1. Lazy Loading
+```jsx
+const ComponentePesado = dynamic(() => import('./ComponentePesado'), {
+  loading: () => <p>Cargando...</p>
+});
+```
+
+### 2. Optimización de Imágenes
+```jsx
+<Image
+  src="/imagen.jpg"
+  alt="Descripción"
+  width={800}
+  height={600}
+  priority // Para imágenes above the fold
+  placeholder="blur"
+  blurDataURL="data:image/jpeg;base64,..."
+/>
+```
+
+### 3. Bundle Optimization
+```jsx
+// next.config.js
+experimental: {
+  optimizeCss: true,
+  optimizePackageImports: ['lucide-react'],
+}
+```
+
+## Herramientas de Monitoreo
+
+### 1. Google Search Console
+- Monitorea el rendimiento de búsqueda
+- Identifica errores de indexación
+- Analiza palabras clave
+
+### 2. Google PageSpeed Insights
+- Mide la velocidad de carga
+- Identifica problemas de rendimiento
+- Sugiere mejoras
+
+### 3. Lighthouse
+- Auditoría completa de SEO
+- Mejores prácticas
+- Accesibilidad
+
+## Mejores Prácticas
+
+### 1. Contenido de Calidad
+- Escribe contenido original y valioso
+- Usa palabras clave naturalmente
+- Actualiza regularmente
+
+### 2. Velocidad de Carga
+- Optimiza imágenes
+- Minimiza JavaScript
+- Usa CDN
+
+### 3. Mobile-First
+- Diseño responsivo
+- Velocidad en móviles
+- Experiencia táctil
+
+### 4. Enlaces Internos
+- Estructura clara de navegación
+- Enlaces contextuales
+- Anchor text descriptivo
+
+## Conclusión
+
+Next.js proporciona todas las herramientas necesarias para crear sitios web optimizados para SEO. Con la configuración correcta y las mejores prácticas, puedes mejorar significativamente tu posicionamiento en buscadores.
+
+¿Necesitas ayuda optimizando el SEO de tu sitio web? [Contáctanos](mailto:ikizen.agency@gmail.com) y te ayudaremos a mejorar tu visibilidad en buscadores.
