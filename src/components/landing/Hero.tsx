@@ -23,7 +23,7 @@ export function Hero() {
               <Button
                 asChild
                 variant="outline"
-                className="border border-secondary text-secondary text-gray-900 hover:bg-secondary hover:text-dark-bg px-6 py-3 rounded-lg transition-all duration-300"
+                className="border border-secondary text-gray-900 hover:bg-secondary hover:text-dark-bg px-6 py-3 rounded-lg transition-all duration-300"
               >
                 <a href="mailto:ikizen.agency@gmail.com?subject=Agendar%20una%20cita&body=Hola,%20quisiera%20agendar%20una%20cita">
                   Contáctanos
