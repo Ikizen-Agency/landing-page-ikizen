@@ -1,7 +1,12 @@
 import Script from 'next/script';
 
+type StructuredDataType =
+  | typeof organizationStructuredData
+  | typeof serviceStructuredData
+  | typeof websiteStructuredData;
+
 interface StructuredDataProps {
-  data: any;
+  data: StructuredDataType;
 }
 
 export function StructuredData({ data }: StructuredDataProps) {
@@ -30,7 +35,6 @@ export const organizationStructuredData = {
     "email": "ikizen.agency@gmail.com"
   },
   "sameAs": [
-    // Agregar redes sociales cuando las tengas
   ],
   "address": {
     "@type": "PostalAddress",

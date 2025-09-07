@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -103,7 +104,7 @@ function TestimonialCard({
     <div className="p-8 rounded-2xl bg-dark-bg/20 backdrop-blur-md border border-white/20 max-w-3xl mx-auto hover:border-primary/40 transition-all duration-300 shadow-lg shadow-black/10 flex flex-col">
       {/* Avatar + Nombre + Cargo */}
       <div className="flex items-center gap-4 mb-5">
-        <img
+        <Image
           src={testimonial.avatar}
           alt={`Foto de ${testimonial.author}`}
           className="w-12 h-12 rounded-full object-cover border border-secondary/30"

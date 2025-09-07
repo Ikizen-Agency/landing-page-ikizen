@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "../styles/prose.css";
 import { StructuredData, organizationStructuredData, websiteStructuredData } from "@/components/StructuredData";
