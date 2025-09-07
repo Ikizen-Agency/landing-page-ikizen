@@ -12,6 +12,12 @@ interface BlogPostPageProps {
   };
 }
 
+interface MetadataProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
+
 export async function generateStaticParams() {
   const posts = getAllPosts();
   return posts.map((post) => ({
@@ -19,9 +25,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const post = getPostBySlug(params.slug);
-  
+export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const post = getPostBySlug(resolvedParams.slug);
+
   if (!post) {
     return {
       title: 'Post no encontrado | Ikizen Agency',
@@ -35,27 +42,29 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     openGraph: {
       title: post.data.title,
       description: post.data.description,
-      url: `https://ikizen.vercel.app/blog/${params.slug}`,
+      url: `https://ikizen.vercel.app/blog/${resolvedParams.slug}`,
       siteName: 'Ikizen Agency',
       type: 'article',
       publishedTime: post.data.date,
       authors: [post.data.author],
       tags: post.data.tags,
-      images: post.data.coverImage ? [
-        {
-          url: post.data.coverImage,
-          width: 1200,
-          height: 630,
-          alt: post.data.title,
-        },
-      ] : [
-        {
-          url: '/og-image.jpg',
-          width: 1200,
-          height: 630,
-          alt: 'Ikizen Agency Blog',
-        },
-      ],
+      images: post.data.coverImage
+        ? [
+            {
+              url: post.data.coverImage,
+              width: 1200,
+              height: 630,
+              alt: post.data.title,
+            },
+          ]
+        : [
+            {
+              url: '/og-image.jpg',
+              width: 1200,
+              height: 630,
+              alt: 'Ikizen Agency Blog',
+            },
+          ],
     },
     twitter: {
       card: 'summary_large_image',
