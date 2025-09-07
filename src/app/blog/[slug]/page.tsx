@@ -7,9 +7,7 @@ import { Footer } from '@/components/landing/Footer';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
 interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
+  params:  Promise<{ slug: string;}>;
 }
 
 interface MetadataProps {
@@ -75,8 +73,9 @@ export async function generateMetadata({ params }: MetadataProps): Promise<Metad
   };
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const resolvedParams = await params;
+  const post = getPostBySlug(resolvedParams.slug);
 
   if (!post) {
     notFound();
@@ -89,7 +88,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="max-w-4xl mx-auto">
           <BlogHeader
             title={post.data.title}
-            description={post.data.description}
+            description={post.data.description}     
             date={post.data.date}
             author={post.data.author}
             readingTime={post.data.readingTime}
