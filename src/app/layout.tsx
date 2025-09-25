@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "../styles/prose.css";
 import { StructuredData, organizationStructuredData, websiteStructuredData } from "@/components/StructuredData";
-
+import Script from "next/script"; // Importa el componente Script
 
 export const metadata: Metadata = {
   title: {
@@ -52,10 +52,26 @@ export default function RootLayout({
         <StructuredData data={organizationStructuredData} />
         <StructuredData data={websiteStructuredData} />
       </head>
-      <body
-        className="bg-gray-900 text-white"
-      >
+      <body className="bg-gray-900 text-white">
         {children}
+        
+        {/* Google Analytics Scripts */}
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+            `,
+          }}
+        />
       </body>
     </html>
   );
