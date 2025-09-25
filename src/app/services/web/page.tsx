@@ -57,9 +57,44 @@ const webServiceStructuredData = {
   },
   "serviceType": "Web Development",
   "areaServed": "Spain",
-  "offers": {
-    "@type": "Offer",
-    "description": "Servicios de desarrollo web personalizados"
+  // Se agregó la propiedad "hasOfferCatalog" para resolver el error de tipado.
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Catálogo de Servicios de Desarrollo Web",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Sitios Web Corporativos",
+          "description": "Modernos, responsivos y diseñados para generar confianza y leads."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Aplicaciones Web",
+          "description": "Funcionalidades avanzadas con rendimiento optimizado y UX impecable."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Tiendas Online",
+          "description": "E-commerce listos para vender, con pasarelas de pago y diseño centrado en conversión."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Rediseño de Sitios",
+          "description": "Actualizamos tu web antigua con tecnología moderna, sin perder tu identidad."
+        }
+      }
+    ]
   }
 };
 
