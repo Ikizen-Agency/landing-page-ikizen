@@ -9,6 +9,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
     steps:
       - name: Checkout repo
@@ -28,8 +30,6 @@ jobs:
       - name: Deploy to Vercel (Production)
         if: github.ref == 'refs/heads/main'
         run: npx vercel --prod --token=$VERCEL_TOKEN
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vercel (Staging)
         if: github.ref == 'refs/heads/staging'
