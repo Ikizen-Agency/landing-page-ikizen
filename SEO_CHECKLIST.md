@@ -23,7 +23,7 @@
 - [x] Redirecciones configuradas
 
 ## 🔄 Próximos pasos recomendados
-
+sdsds
 ### 1. Google Search Console
 - [ ] Registrar el sitio en Google Search Console
 - [ ] Verificar la propiedad del sitio
