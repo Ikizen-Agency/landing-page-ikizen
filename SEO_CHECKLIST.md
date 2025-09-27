@@ -24,6 +24,7 @@
 
 ## 🔄 Próximos pasos recomendados
 sdsds
+hol
 ### 1. Google Search Console
 - [ ] Registrar el sitio en Google Search Console
 - [ ] Verificar la propiedad del sitio
