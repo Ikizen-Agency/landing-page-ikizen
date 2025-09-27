@@ -33,6 +33,6 @@ jobs:
 
       - name: Deploy to Vercel (Staging)
         if: github.ref == 'refs/heads/staging'
-        run: npx vercel --token=$VERCEL_TOKEN --scope tu-org --env STAGING=true
+        run: npx vercel --token=$VERCEL_TOKEN --env STAGING=true
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
