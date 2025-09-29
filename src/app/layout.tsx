@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     default: "Ikizen Agency | Desarrollo Web & Identidad de Marca",
     template: "%s | Ikizen Agency",
   },
+  metadataBase: new URL("https://ikizen.vercel.app"),
   description: "Agencia de desarrollo web e identidad de marca. Creamos experiencias digitales que convierten y marcas que conectan.",
   keywords: ["desarrollo web", "identidad de marca", "agencia digital", "diseño web", "branding", "Next.js", "React", "impulso digital"],
   authors: [{ name: "Ikizen Agency" }],
