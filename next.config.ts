@@ -5,7 +5,14 @@ const nextConfig: NextConfig = {
   // Optimizaciones para SEO
   compress: true,
   poweredByHeader: false,
-
+  async rewrites() {
+    return [
+      {
+        source: "/sitemap.xml",
+        destination: "/sitemap",
+      },
+    ];
+  },
   // Configuración de imágenes para mejor rendimiento
   images: {
     formats: ["image/webp", "image/avif"],
