@@ -107,6 +107,8 @@ function TestimonialCard({
         <Image
           src={testimonial.avatar}
           alt={`Foto de ${testimonial.author}`}
+          width={48}
+          height={48}
           className="w-12 h-12 rounded-full object-cover border border-secondary/30"
         />
         <div className="text-left">

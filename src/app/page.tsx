@@ -40,9 +40,9 @@ export default function Home() {
           <Testimonials />
         </AnimatedSection>
 
-        <AnimatedSection delay={300}>
+        {/* <AnimatedSection delay={300}>
           <NewsLetter></NewsLetter>
-        </AnimatedSection>
+        </AnimatedSection> */}
       </main>
       <Footer />
     </>

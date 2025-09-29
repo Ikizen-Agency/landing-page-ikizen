@@ -60,7 +60,7 @@ export default function InitialPopup() {
         {/* Acción */}
         <div className="px-6 pb-6">
           <a
-            href="https://forms.gle/tu-enlace-aqui"
+            href="https://wa.me/+5355002026?text=Me+interesa+la+consulta+gratuita.+Cuando+podemos+agendarla?"
             target="_blank"
             rel="noopener noreferrer"
             className="block w-full text-center bg-primary text-gray-900 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 px-6 py-2 text-sm font-medium rounded-lg transition-all duration-300 transform hover:scale-105"
