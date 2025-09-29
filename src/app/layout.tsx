@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Ikizen Agency",
   },
   description: "Agencia de desarrollo web e identidad de marca. Creamos experiencias digitales que convierten y marcas que conectan.",
-  keywords: ["desarrollo web", "identidad de marca", "agencia digital", "diseño web", "branding", "Next.js", "React"],
+  keywords: ["desarrollo web", "identidad de marca", "agencia digital", "diseño web", "branding", "Next.js", "React", "impulso digital"],
   authors: [{ name: "Ikizen Agency" }],
   creator: "Ikizen Agency",
   publisher: "Ikizen Agency",
