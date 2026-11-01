@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ikizen Studio
 
-## Getting Started
+The marketing site of Ikizen Studio, a web development and brand identity studio. It is bilingual, Spanish at `/` and English at `/en`, and it exists to turn visitors into booked meetings.
 
-First, run the development server:
+## Quick start
+
+Requires Node 24 (see `.nvmrc`) and pnpm 11 (see `packageManager` in `package.json`).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+cp .env.example .env.local
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The site runs at <http://localhost:3000>. Both variables are optional, so it works with an empty `.env.local`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Area | Choice |
+|------|--------|
+| Framework | Next.js 15 with the App Router, React 19 |
+| Styling | Tailwind CSS 4, tokens in `src/app/globals.css` |
+| Booking | Cal.com embed, loaded on demand |
+| Analytics | Google Analytics 4, optional |
 
-## Learn More
+## Environment variables
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Example | While unset |
+|----------|---------|-------------|
+| `NEXT_PUBLIC_CAL_LINK` | `ikizen/20min` | The booking section shows a WhatsApp button |
+| `NEXT_PUBLIC_GA_ID` | `G-XXXXXXXXXX` | No analytics script loads and events do nothing |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Both are read at build time, so changing one requires a new build.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Structure
 
-## Deploy on Vercel
+| Path | Holds |
+|------|-------|
+| `src/app/(es)`, `src/app/en` | Pages and root layout of each language |
+| `src/app/_root` | The HTML shell and metadata both languages share |
+| `src/app/og` | Social sharing images |
+| `src/components` | Sections, service and legal pages, booking, brand |
+| `src/i18n` | All copy, contact details and the map of page pairs |
+| `src/lib/analytics.ts` | Conversion events |
+| `odd/tasks` | Feature documents |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Common changes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Replace the temporary project links
+
+Two projects still link to their GitHub repositories. To replace them:
+
+1. Open `src/i18n/projects.ts`.
+2. Change `href` on each project to the live URL.
+
+The link label follows the URL: anything outside `github.com` reads "View project". Remove the `TODO` above the list when both are done.
+
+### Track a new link
+
+Spread `trackAttrs` on the link, in server components too:
+
+```tsx
+<a href="#agenda" {...trackAttrs("book_cta_click", { location: "hero" })}>
+```
+
+New events and locations are declared in `src/lib/analytics.ts`.
+
+### Change the domain
+
+Update `SITE_URL` in `src/i18n/routes.ts`. Metadata, the sitemap, `robots.txt` and structured data all read it.
+
+## Checks
+
+```bash
+pnpm exec tsc --noEmit
+pnpm lint
+pnpm build
+```
+
+There is no test runner yet.
+
+## Deploy
+
+`.github/workflows/deploy-vercel.yml` runs on every push:
+
+| Branch | Result |
+|--------|--------|
+| `main` | Checks, then a production deployment |
+| `staging` | Checks, then a preview deployment |
+
+It needs this repository configuration on GitHub:
+
+| Kind | Name | Required |
+|------|------|----------|
+| Secret | `VERCEL_TOKEN` | Yes |
+| Variable | `NEXT_PUBLIC_CAL_LINK` | No |
+| Variable | `NEXT_PUBLIC_GA_ID` | No |

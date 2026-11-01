@@ -1,10 +1,13 @@
 import type { NextConfig } from "next";
-import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
   // Optimizaciones para SEO
   compress: true,
   poweredByHeader: false,
+  experimental: {
+    // Each locale has its own root layout, so unmatched URLs need a page outside both.
+    globalNotFound: true,
+  },
   async rewrites() {
     return [
       {
@@ -21,28 +24,13 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "images.unsplash.com",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
         hostname: "ikizen.vercel.app",
         port: "",
         pathname: "/**",
       },
-      {
-        protocol: "https",
-        hostname: "i.pravatar.cc",
-        port: "",
-        pathname: "/**", // permite cualquier path
-      },
     ],
     minimumCacheTTL: 60,
   },
-
-  // Configuración para MDX
-  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 
   // Headers para SEO y seguridad
   async headers() {
@@ -76,16 +64,19 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: true,
       },
+      // The blog was removed; keep old links working
+      {
+        source: "/blog",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug*",
+        destination: "/",
+        permanent: true,
+      },
     ];
   },
 };
 
-const withMDX = createMDX({
-  // Opciones de MDX
-  options: {
-    remarkPlugins: [],
-    rehypePlugins: [],
-  },
-});
-
-export default withMDX(nextConfig);
+export default nextConfig;

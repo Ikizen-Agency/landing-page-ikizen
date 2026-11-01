@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 10 478 478">
+  <defs>
+    <linearGradient id="ikizen-icon-gold" gradientUnits="userSpaceOnUse" x1="170" y1="12" x2="330" y2="486">
+      <stop offset="0" stop-color="#FDE095"/>
+      <stop offset=".45" stop-color="#E9B25A"/>
+      <stop offset="1" stop-color="#B9812F"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="478" height="478" fill="#16120E"/>
+  <g fill="none" stroke="url(#ikizen-icon-gold)" stroke-width="30">
+    <ellipse cx="249" cy="164" rx="105" ry="132"/>
+    <ellipse cx="249" cy="334" rx="105" ry="132"/>
+    <ellipse cx="189" cy="249" rx="107" ry="107"/>
+    <ellipse cx="309" cy="249" rx="107" ry="107"/>
+  </g>
+</svg>

@@ -1,79 +1,66 @@
-// src/components/landing/Navbar.tsx
-"use client";
-
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { Wordmark } from "@/components/brand/Wordmark";
+import { MobileMenu } from "@/components/landing/MobileMenu";
+import { Button } from "@/components/ui/button";
+import { getDictionary, routes, type Locale, type RouteKey } from "@/i18n";
+import { trackAttrs } from "@/lib/analytics";
 
-const navLinks = [
-  { name: "Inicio", href: "/" },
-  { name: "Servicios", href: "/#services" },
-  { name: "Proyectos", href: "/#projects" },
-  { name: "Testimonios", href: "/#testimonials" }
-];
-
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+/**
+ * `route` is the current page, so the switcher can link to its counterpart.
+ * `ctaHref` keeps the booking CTA on pages that carry their own closing block.
+ */
+export default function Navbar({
+  locale = "es",
+  route = "home",
+  ctaHref,
+}: {
+  locale?: Locale;
+  route?: RouteKey;
+  ctaHref?: string;
+}) {
+  const { nav } = getDictionary(locale);
+  const switcherHref = routes[route][nav.switcher.lang];
+  const currentHref = routes[route][locale];
 
   return (
-    <nav className="bg-navbar-gradient border-b border-secondary/20 fixed w-full top-0 z-50 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="text-xl font-bold text-primary">
-            Ikizen
-          </Link>
+    <nav aria-label={nav.primaryLabel} className="fixed top-0 z-50 w-full border-b bg-ink px-gutter">
+      <div className="mx-auto flex h-16 max-w-site items-center justify-between">
+        <Link href={nav.homeHref} className="text-paper transition-colors duration-200 hover:text-amber">
+          <Wordmark />
+        </Link>
 
-          {/* Menú Desktop */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
+        <div className="flex items-center gap-3 md:gap-8">
+          <div className="hidden items-center gap-8 md:flex">
+            {nav.links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-primary hover:text-secondary text-sm font-medium transition-colors duration-200 relative group"
+                aria-current={link.href === currentHref ? "page" : undefined}
+                className="text-sm font-medium text-paper transition-colors duration-200 hover:text-amber"
               >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+                {link.label}
               </Link>
             ))}
-          </div>
-
-          {/* Botón Móvil */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-expanded={isOpen}
-              className="text-primary hover:text-secondary"
+            <Link
+              href={switcherHref}
+              hrefLang={nav.switcher.lang}
+              lang={nav.switcher.lang}
+              aria-label={nav.switcher.ariaLabel}
+              {...trackAttrs("language_switch", { from: locale, to: nav.switcher.lang })}
+              className="font-mono text-label text-paper-dim transition-colors duration-200 hover:text-amber"
             >
-              {isOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </Button>
+              {nav.switcher.label}
+            </Link>
           </div>
-        </div>
 
-        {/* Menú Móvil */}
-        {isOpen && (
-          <div className="md:hidden bg-dark-bg pt-4 pb-6 border-t border-secondary/20">
-            <div className="px-4 flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-primary hover:text-secondary text-lg font-medium py-2 transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
+          <Button asChild size="sm">
+            <a href={ctaHref ?? nav.cta.href} {...trackAttrs("book_cta_click", { location: "nav" })}>
+              {nav.cta.label}
+            </a>
+          </Button>
+
+          <MobileMenu nav={nav} locale={locale} currentHref={currentHref} switcherHref={switcherHref} />
+        </div>
       </div>
     </nav>
   );

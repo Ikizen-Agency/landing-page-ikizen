@@ -6,31 +6,75 @@ on:
       - main
       - staging
 
+permissions:
+  contents: read
+
+# Repository variables, not secrets: both values end up in the public bundle.
+env:
+  NEXT_PUBLIC_CAL_LINK: ${{ vars.NEXT_PUBLIC_CAL_LINK }}
+  NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
+
 jobs:
-  deploy:
+  check:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+
+      # Reads the version from `packageManager` in package.json.
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: 18
+          node-version-file: .nvmrc
+          cache: pnpm
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install --frozen-lockfile
 
-      - name: Build project
-        run: npm run build
+      - name: Typecheck
+        run: pnpm exec tsc --noEmit
 
-      - name: Deploy to Vercel (Production)
-        if: github.ref == 'refs/heads/main'
-        run: npx vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Lint
+        run: pnpm lint
 
-      - name: Deploy to Vercel (Staging)
-        if: github.ref == 'refs/heads/staging'
-        run: npx vercel --token=$VERCEL_TOKEN --env STAGING=true --yes
+      - name: Build
+        run: pnpm build
+
+  deploy:
+    needs: check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      # Vercel builds on its side, so the public variables travel with the deployment.
+      # Unset ones are skipped, which leaves any value set in the Vercel project in place.
+      - name: Deploy to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          args=(--yes --token "$VERCEL_TOKEN")
+
+          if [ "$GITHUB_REF_NAME" = "main" ]; then
+            args+=(--prod)
+          else
+            args+=(--env STAGING=true)
+          fi
+
+          for name in NEXT_PUBLIC_CAL_LINK NEXT_PUBLIC_GA_ID; do
+            if [ -n "${!name}" ]; then
+              args+=(--build-env "$name=${!name}")
+            fi
+          done
+
+          npx --yes vercel "${args[@]}"

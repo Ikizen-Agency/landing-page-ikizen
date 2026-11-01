@@ -1,47 +1,59 @@
-// src/components/landing/Hero.tsx
+import { HeroScrub } from "@/components/landing/HeroScrub";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import type { Dictionary } from "@/i18n";
+import { trackAttrs } from "@/lib/analytics";
 
-export function Hero() {
+/**
+ * The site's one signature: IKI(gai) + (kai)ZEN = IKIZEN. The markup is laid out as
+ * the final word, so the server render is already correct; `.signature*` in
+ * globals.css offsets it back to the two source words from --progress.
+ */
+export function Hero({ hero, whatsappUrl }: { hero: Dictionary["hero"]; whatsappUrl: string }) {
   return (
-    <section className="min-h-screen flex items-center px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
-        
-        {/* Columna de Texto */}
-        <div className="space-y-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary leading-tight">
-            Tu marca, lista para <span className="text-secondary">dejar huella</span>
-          </h1>
+    <HeroScrub>
+      <section className="signature-stage">
+        <div className="flex flex-1 flex-col justify-center gap-6 py-6">
+          <div className="signature-frame">
+            <div aria-hidden="true" className="signature-words">
+              <span className="signature-iki">
+                IKI<span className="signature-gai">GAI</span>
+              </span>
+              <span className="signature-zen">
+                <span className="signature-kai">KAI</span>ZEN
+              </span>
+            </div>
+          </div>
+          <p className="flex flex-col gap-1 font-mono text-label text-paper-dim sm:flex-row sm:justify-between">
+            <span>{hero.captions.ikigai}</span>
+            <span>{hero.captions.kaizen}</span>
+          </p>
+        </div>
 
-          <div className="space-y-4">
-            <p className="text-xl text-secondary/90">
-              Construimos sitios que no solo funcionan, sino que cuentan tu historia.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                asChild
-                variant="outline"
-                className="border border-secondary text-gray-900 hover:bg-secondary hover:text-dark-bg px-6 py-3 rounded-lg transition-all duration-300"
-              >
-                <a href="https://wa.me/+5355002026?text=Me+interesan+sus+servicios" target="_blank" rel="noopener noreferrer">
-                  Contáctanos
+        <div className="grid gap-5 border-t pt-6 lg:grid-cols-2 lg:gap-12">
+          <h1 className="text-display-md font-bold">
+            <span className="block">{hero.titleLines[0]}</span> <span className="block">{hero.titleLines[1]}</span>
+          </h1>
+          <div className="space-y-5">
+            <p className="max-w-xl text-lg text-paper-dim">{hero.support}</p>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Button asChild size="lg">
+                <a href={hero.primaryCta.href} {...trackAttrs("book_cta_click", { location: "hero" })}>
+                  {hero.primaryCta.label}
                 </a>
               </Button>
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                {...trackAttrs("whatsapp_click", { location: "hero" })}
+                className="text-sm text-paper underline underline-offset-4 transition-colors duration-200 hover:text-amber"
+              >
+                {hero.whatsappCta}
+              </a>
             </div>
           </div>
         </div>
-
-        {/* Columna de Imagen */}
-        <div className="relative h-[70vh] w-[100%] lg:h-[80vh] rounded-xl overflow-hidden shadow-2xl">
-          <Image
-            src="/images/hero-dev.jpg"
-            alt="Desarrollo web moderno - Ikizen Agency"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-      </div>
-    </section>
+      </section>
+    </HeroScrub>
   );
 }
