@@ -10,6 +10,15 @@ export type ServiceBlock = {
   href: string;
 };
 
+export type ProjectStop = {
+  name: string;
+  type: string;
+  purpose: string;
+  href: string;
+  linkLabel: string;
+  image?: { src: string; alt: string };
+};
+
 export type ProcessStep = { title: string; description: string };
 
 export type ProcessCopy = {
@@ -89,6 +98,14 @@ export type Dictionary = {
     eyebrow: string;
     title: string;
     blocks: ServiceBlock[];
+  };
+  projects: {
+    eyebrow: string;
+    title: string;
+    ribbonLabel: string;
+    previousLabel: string;
+    nextLabel: string;
+    stops: ProjectStop[];
   };
   process: ProcessCopy;
   closing: {

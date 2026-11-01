@@ -16,7 +16,7 @@ export function HomePage({ locale }: { locale: Locale }) {
       <main>
         <Hero hero={dict.hero} whatsappUrl={dict.whatsappUrl} />
         <Services services={dict.services} />
-        <Projects />
+        <Projects projects={dict.projects} />
         <Process process={dict.process} />
         <Closing dict={dict} />
       </main>

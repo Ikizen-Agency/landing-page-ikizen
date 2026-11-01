@@ -17,6 +17,7 @@
   --color-paper-dim: #b8ac9a;
   --color-amber: #f4ad46;
   --color-amber-pale: #fde095;
+  --color-gold: #e9b25a;
   --color-line: rgb(243 234 219 / 0.18);
   --color-danger: #b5331e;
 
@@ -186,6 +187,85 @@
 
     .signature-words {
       height: 1.8em;
+    }
+  }
+
+  /*
+   * Projects ribbon: native horizontal scroll threaded by the logo gold.
+   * The track's end padding lets the last stop reach the snap line, and the thread
+   * runs the whole track so it leaves the viewport past the last stop.
+   */
+  .ribbon {
+    container-type: inline-size;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+  }
+
+  .ribbon:focus-visible {
+    outline-offset: -2px;
+  }
+
+  /* Snapping would fight the pointer, so it stays off until the release settles. */
+  .ribbon[data-dragging] {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    user-select: none;
+  }
+
+  .ribbon-track {
+    --inset: max(var(--spacing-gutter), calc((100cqw - var(--container-site)) / 2));
+    --peek: 2.5rem;
+    --stop-width: min(54rem, calc(100cqw - var(--spacing-gutter) * 2 - var(--peek)));
+    --gap: clamp(1.5rem, 1rem + 2.5vw, 3rem);
+    --node-height: 1.875rem;
+
+    position: relative;
+    display: flex;
+    gap: var(--gap);
+    width: max-content;
+    padding-block-end: 0.25rem;
+    padding-inline: var(--inset) calc(100cqw - var(--inset) - var(--stop-width));
+  }
+
+  .ribbon-track::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: calc(var(--node-height) / 2);
+    height: 1px;
+    background-color: var(--color-gold);
+  }
+
+  .ribbon-stop {
+    flex: none;
+    position: relative;
+    width: var(--stop-width);
+    scroll-margin-inline-start: var(--inset);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .ribbon-node {
+    display: block;
+    width: auto;
+    height: var(--node-height);
+    fill: none;
+    stroke: var(--color-gold);
+    stroke-width: 1.5;
+  }
+
+  /* The buttons and the drag replace the scrollbar only where scripts can run them. */
+  @media (scripting: enabled) {
+    .ribbon {
+      scrollbar-width: none;
+    }
+  }
+
+  @media (scripting: enabled) and (pointer: fine) {
+    .ribbon {
+      cursor: grab;
     }
   }
 }

@@ -1,4 +1,5 @@
 import { whatsappUrl } from "./contact";
+import { getProjectStops } from "./projects";
 import { routes } from "./routes";
 import type { Dictionary } from "./types";
 
@@ -21,6 +22,7 @@ export const en: Dictionary = {
     links: [
       { label: "Home", href: home },
       { label: "Services", href: "/en#services" },
+      { label: "Projects", href: "/en#projects" },
       { label: "Process", href: "/en#process" },
     ],
     cta: { label: "Book 20 min", href: "/en#agenda" },
@@ -57,6 +59,14 @@ export const en: Dictionary = {
         href: routes.branding.en,
       },
     ],
+  },
+  projects: {
+    eyebrow: "Projects",
+    title: "Every project, its reason for being.",
+    ribbonLabel: "Projects, horizontal flow",
+    previousLabel: "Previous project",
+    nextLabel: "Next project",
+    stops: getProjectStops("en"),
   },
   process: {
     eyebrow: "How we work",
