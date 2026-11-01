@@ -20,14 +20,14 @@ The site runs at <http://localhost:3000>. Both variables are optional, so it wor
 |------|--------|
 | Framework | Next.js 15 with the App Router, React 19 |
 | Styling | Tailwind CSS 4, tokens in `src/app/globals.css` |
-| Booking | Calendly inline widget, loaded on demand |
+| Booking | Cal.com embed, loaded on demand |
 | Analytics | Google Analytics 4, optional |
 
 ## Environment variables
 
 | Variable | Example | While unset |
 |----------|---------|-------------|
-| `NEXT_PUBLIC_CALENDLY_URL` | `https://calendly.com/ikizen-agency/30min` | The booking section shows a WhatsApp button, as it does for anything other than a `https://calendly.com/` page |
+| `NEXT_PUBLIC_CAL_LINK` | `ikizen-qxevvr/meet-30min` | The booking section shows a WhatsApp button, as it does for anything other than a `user/event` slug |
 | `NEXT_PUBLIC_GA_ID` | `G-XXXXXXXXXX` | No analytics script loads and events do nothing |
 
 Both are read at build time, so changing one requires a new build.
@@ -93,5 +93,5 @@ It needs this repository configuration on GitHub:
 | Kind | Name | Required |
 |------|------|----------|
 | Secret | `VERCEL_TOKEN` | Yes |
-| Variable | `NEXT_PUBLIC_CALENDLY_URL` | No |
+| Variable | `NEXT_PUBLIC_CAL_LINK` | No |
 | Variable | `NEXT_PUBLIC_GA_ID` | No |
