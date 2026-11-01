@@ -1,9 +1,11 @@
+import { AREA_SERVED, JsonLd, ORGANIZATION_REFERENCE } from "@/components/StructuredData";
 import { Closing } from "@/components/landing/Closing";
 import { Footer } from "@/components/landing/Footer";
 import Navbar from "@/components/landing/Navbar";
 import { Process } from "@/components/landing/Process";
 import { Button } from "@/components/ui/button";
 import { getDictionary, routes, SITE_URL, type Locale } from "@/i18n";
+import { trackAttrs } from "@/lib/analytics";
 import type { ServicePageCopy } from "@/i18n/types";
 
 function serviceStructuredData(copy: ServicePageCopy, url: string) {
@@ -14,7 +16,8 @@ function serviceStructuredData(copy: ServicePageCopy, url: string) {
     description: copy.meta.description,
     url,
     serviceType: copy.serviceType,
-    provider: { "@type": "Organization", name: "Ikizen Studio", url: SITE_URL },
+    provider: ORGANIZATION_REFERENCE,
+    areaServed: AREA_SERVED,
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: copy.meta.title,
@@ -32,14 +35,9 @@ export function ServicePage({ locale, service }: { locale: Locale; service: "web
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceStructuredData(copy, `${SITE_URL}${routes[service][locale]}`)),
-        }}
-      />
+      <JsonLd data={serviceStructuredData(copy, `${SITE_URL}${routes[service][locale]}`)} />
       <Navbar locale={locale} route={service} ctaHref={dict.hero.primaryCta.href} />
-      <main>
+      <main id="main" tabIndex={-1} className="focus:outline-none">
         <section className="px-gutter pb-section pt-32 lg:pt-44">
           <div className="mx-auto max-w-site">
             <p className="font-mono text-label uppercase text-amber">{copy.hero.eyebrow}</p>
@@ -49,12 +47,15 @@ export function ServicePage({ locale, service }: { locale: Locale; service: "web
                 <p className="text-lg text-paper-dim lg:text-xl">{copy.hero.support}</p>
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
                   <Button asChild size="lg">
-                    <a href={dict.hero.primaryCta.href}>{dict.hero.primaryCta.label}</a>
+                    <a href={dict.hero.primaryCta.href} {...trackAttrs("book_cta_click", { location: "service_hero" })}>
+                      {dict.hero.primaryCta.label}
+                    </a>
                   </Button>
                   <a
                     href={dict.whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    {...trackAttrs("whatsapp_click", { location: "service_hero" })}
                     className="text-sm text-paper underline underline-offset-4 transition-colors duration-200 hover:text-amber"
                   >
                     {dict.hero.whatsappCta}

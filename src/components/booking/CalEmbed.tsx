@@ -4,6 +4,7 @@ import { Component, useCallback, useEffect, useRef, useState, type ReactNode } f
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import type { Dictionary } from "@/i18n";
+import { trackAttrs, type TrackLocation } from "@/lib/analytics";
 
 const CalFrame = dynamic(() => import("./CalFrame"), { ssr: false });
 
@@ -36,13 +37,24 @@ class CalErrorBoundary extends Component<{ onError: () => void; children: ReactN
   }
 }
 
-function HostedCalendarLink({ href, label, onFocus }: { href: string; label: string; onFocus?: () => void }) {
+function HostedCalendarLink({
+  href,
+  label,
+  location,
+  onFocus,
+}: {
+  href: string;
+  label: string;
+  location: TrackLocation;
+  onFocus?: () => void;
+}) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       onFocus={onFocus}
+      {...trackAttrs("book_cta_click", { location })}
       className="text-sm underline underline-offset-4 transition-colors duration-200 hover:text-amber"
     >
       {label}
@@ -61,11 +73,16 @@ function FallbackPanel({
     <div className="flex flex-col items-start gap-6 bg-ink p-6 text-paper sm:p-10">
       <p className="max-w-2xl font-display text-display-md font-bold">{labels.fallbackTitle}</p>
       <Button asChild size="lg">
-        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          {...trackAttrs("whatsapp_click", { location: "booking_fallback" })}
+        >
           {labels.fallbackCta}
         </a>
       </Button>
-      {calendarUrl && <HostedCalendarLink href={calendarUrl} label={labels.openCalendar} />}
+      {calendarUrl && <HostedCalendarLink href={calendarUrl} label={labels.openCalendar} location="booking_fallback" />}
     </div>
   );
 }
@@ -119,7 +136,12 @@ export function CalEmbed({ labels, whatsappUrl }: CalEmbedProps) {
       {status !== "ready" && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
           <p className="font-mono text-label text-paper-dim">{labels.loading}</p>
-          <HostedCalendarLink href={calendarUrl} label={labels.openCalendar} onFocus={startLoading} />
+          <HostedCalendarLink
+            href={calendarUrl}
+            label={labels.openCalendar}
+            location="booking_panel"
+            onFocus={startLoading}
+          />
         </div>
       )}
       {status !== "idle" && (

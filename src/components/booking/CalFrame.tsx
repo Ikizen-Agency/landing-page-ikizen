@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
+import { track } from "@/lib/analytics";
 
 const NAMESPACE = "ikizen-booking";
 
@@ -17,6 +18,8 @@ const DARK_THEME_VARS = {
   "cal-text-muted": "#b8ac9a",
   "cal-border": "#4a4239",
 };
+
+const trackBooking = () => track("booking_completed", {});
 
 type CalFrameProps = {
   calLink: string;
@@ -41,9 +44,11 @@ export default function CalFrame({ calLink, isReady, onReady, onFail }: CalFrame
       });
       cal("on", { action: "linkReady", callback: onReady });
       cal("on", { action: "linkFailed", callback: onFail });
+      cal("on", { action: "bookingSuccessful", callback: trackBooking });
       detach = () => {
         cal("off", { action: "linkReady", callback: onReady });
         cal("off", { action: "linkFailed", callback: onFail });
+        cal("off", { action: "bookingSuccessful", callback: trackBooking });
       };
     });
 

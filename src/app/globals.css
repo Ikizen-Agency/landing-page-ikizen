@@ -77,9 +77,11 @@
     border-color: var(--color-line);
   }
 
+  /* The ink ring carries the indicator across the amber closing section. */
   :focus-visible {
     outline: 2px solid var(--color-amber);
     outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-ink);
   }
 
   ::selection {
@@ -205,6 +207,7 @@
 
   .ribbon:focus-visible {
     outline-offset: -2px;
+    box-shadow: none;
   }
 
   /* Snapping would fight the pointer, so it stays off until the release settles. */

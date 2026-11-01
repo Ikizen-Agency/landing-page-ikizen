@@ -4,6 +4,7 @@ import { Wordmark } from "@/components/brand/Wordmark";
 import { getDictionary, type Locale } from "@/i18n";
 import { CONTACT_EMAIL, FACEBOOK_URL, LINKEDIN_URL } from "@/i18n/contact";
 import type { NavLink } from "@/i18n/types";
+import { trackAttrs } from "@/lib/analytics";
 
 const linkClass = "transition-colors duration-200 hover:text-amber";
 
@@ -26,6 +27,7 @@ function FooterColumn({ title, links }: { title: string; links: NavLink[] }) {
 
 export function Footer({ locale = "es" }: { locale?: Locale }) {
   const { footer, nav, whatsappUrl } = getDictionary(locale);
+  const [emailUser, emailDomain] = CONTACT_EMAIL.split("@");
 
   return (
     <footer className="border-t px-gutter py-16 text-sm text-paper">
@@ -46,12 +48,19 @@ export function Footer({ locale = "es" }: { locale?: Locale }) {
             <h2 className="font-mono text-label uppercase text-paper-dim">{footer.contactTitle}</h2>
             <ul className="mt-4 space-y-2">
               <li>
-                <a href={`mailto:${CONTACT_EMAIL}`} className={`break-all ${linkClass}`}>
-                  {CONTACT_EMAIL}
+                <a href={`mailto:${CONTACT_EMAIL}`} className={linkClass}>
+                  {emailUser}
+                  <wbr />@{emailDomain}
                 </a>
               </li>
               <li>
-                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
+                  {...trackAttrs("whatsapp_click", { location: "footer" })}
+                >
                   {footer.whatsappLabel}
                 </a>
               </li>

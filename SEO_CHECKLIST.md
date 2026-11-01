@@ -1,91 +1,52 @@
-# Checklist de SEO para Ikizen Agency
+# SEO checklist for Ikizen Studio
 
-## ✅ Implementado
+The site lives at `https://ikizen.vercel.app` until a custom domain exists. `SITE_URL` in `src/i18n/routes.ts` is the one place to change it.
 
-### Archivos técnicos
-- [x] `robots.txt` - Controla el rastreo de bots
-- [x] `sitemap.xml` - Mapa del sitio dinámico
-- [x] `site.webmanifest` - PWA manifest
-- [x] Favicon SVG optimizado
+## In place
 
-### Metadata y SEO
-- [x] Metadata completa en layout principal
-- [x] Metadata específica en páginas de servicios
-- [x] Open Graph tags para redes sociales
-- [x] Twitter Cards
-- [x] Idioma configurado correctamente (es)
-- [x] Structured Data (JSON-LD) para organización y servicios
+### Crawling
 
-### Configuración Next.js
-- [x] Compresión habilitada
-- [x] Headers de seguridad
-- [x] Optimización de imágenes
-- [x] Redirecciones configuradas
+- [x] `src/app/robots.ts` allows everything, `/_next/` included, and points to the sitemap
+- [x] `src/app/sitemap.ts` lists the 10 pages, Spanish and English
+- [x] `src/i18n/routes.ts` is the single map of es/en page pairs
+- [x] Unknown URLs return a real 404 with text, marked `noindex`
+- [x] `/blog` and `/blog/*` redirect to the home page
 
-## 🔄 Próximos pasos recomendados
-sdsds
-hol
-### 1. Google Search Console
-- [ ] Registrar el sitio en Google Search Console
-- [ ] Verificar la propiedad del sitio
-- [ ] Enviar el sitemap: `https://ikizen.vercel.app/sitemap.xml`
-- [ ] Configurar alertas de indexación
+### Metadata
 
-### 2. Google Analytics
-- [ ] Instalar Google Analytics 4
-- [ ] Configurar eventos de conversión
-- [ ] Monitorear Core Web Vitals
+- [x] `metadataBase`, title template, description and canonical on every page
+- [x] `hreflang` alternates with `x-default` on every page
+- [x] Open Graph and Twitter tags with absolute URLs, one image per language at `/og/es` and `/og/en`
+- [x] `site.webmanifest`, SVG favicon and Apple icon
 
-### 3. Optimización de contenido
-- [ ] Agregar más contenido de blog/recursos
-- [ ] Optimizar imágenes existentes (WebP/AVIF)
-- [ ] Implementar lazy loading en imágenes
-- [ ] Agregar alt text descriptivo a todas las imágenes
+### Structured data
 
-### 4. Enlaces y autoridad
-- [ ] Crear perfil en directorios de empresas
-- [ ] Buscar oportunidades de backlinks
-- [ ] Crear contenido linkeable
-- [ ] Participar en comunidades relevantes
+- [x] Plain JSON-LD in the raw HTML: Organization and WebSite on every page, Service on the two service pages
+- [x] `areaServed` is Cuba and worldwide
+- [x] `sameAs` holds only the Facebook and LinkedIn links in the footer
+- [x] No address, founding date, staff count or search action, because none can be verified
 
-### 5. SEO local (si aplica)
-- [ ] Crear perfil de Google My Business
-- [ ] Agregar información de contacto estructurada
-- [ ] Incluir dirección física si tienes oficina
+### Analytics
 
-### 6. Monitoreo y análisis
-- [ ] Configurar Google Search Console
-- [ ] Monitorear posiciones de keywords
-- [ ] Analizar tráfico orgánico
-- [ ] Revisar Core Web Vitals regularmente
+- [x] Google Analytics loads only when `NEXT_PUBLIC_GA_ID` is set
+- [x] Conversion events: `book_cta_click`, `whatsapp_click`, `booking_completed`, `project_click`, `language_switch`
 
-## 🚀 Comandos para desplegar
+### Performance and accessibility
 
-```bash
-# Construir y desplegar
-npm run build
-npm run start
+- [x] Self-hosted fonts through `next/font`, security headers, compression
+- [x] Skip link, one visible focus style, named icon links, keyboard-ready mobile menu
 
-# O si usas Vercel CLI
-vercel --prod
-```
+## Owner to do
 
-## 📊 URLs importantes para verificar
+- [ ] Set `NEXT_PUBLIC_GA_ID` and `NEXT_PUBLIC_CAL_LINK`
+- [ ] Mark `booking_completed` as a key event in Google Analytics
+- [ ] Confirm Search Console ownership, `public/googlef8f3116cca00f1cc.html` is the verification file
+- [ ] Submit `https://ikizen.vercel.app/sitemap.xml` in Search Console
+- [ ] Add a logo in PNG format to JSON-LD if Google ignores the SVG one
+- [ ] Update `SITE_URL` when the custom domain exists
 
-- Sitemap: `https://ikizen.vercel.app/sitemap.xml`
-- Robots: `https://ikizen.vercel.app/robots.txt`
-- Manifest: `https://ikizen.vercel.app/site.webmanifest`
+## Tools
 
-## 🔍 Herramientas de verificación
-
-- [Google PageSpeed Insights](https://pagespeed.web.dev/)
-- [Google Rich Results Test](https://search.google.com/test/rich-results)
-- [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly)
+- [PageSpeed Insights](https://pagespeed.web.dev/)
+- [Rich Results Test](https://search.google.com/test/rich-results)
 - [Schema Markup Validator](https://validator.schema.org/)
-
-## 📝 Notas importantes
-
-1. **Tiempo de indexación**: Los motores de búsqueda pueden tardar días o semanas en indexar completamente el sitio
-2. **Contenido fresco**: Actualiza el contenido regularmente para mantener relevancia
-3. **Velocidad**: Monitorea la velocidad de carga, especialmente en móviles
-4. **Enlaces internos**: Asegúrate de tener una buena estructura de enlaces internos

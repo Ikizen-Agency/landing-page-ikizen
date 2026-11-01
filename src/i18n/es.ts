@@ -19,6 +19,7 @@ export const es: Dictionary = {
   nav: {
     homeHref: home,
     primaryLabel: "Navegación principal",
+    skipToContent: "Saltar al contenido",
     links: [
       { label: "Inicio", href: home },
       { label: "Servicios", href: "/#services" },
@@ -26,7 +27,7 @@ export const es: Dictionary = {
       { label: "Proceso", href: "/#process" },
     ],
     cta: { label: "Agenda 20 min", href: "/#agenda" },
-    switcher: { label: "EN", ariaLabel: "View this page in English", lang: "en" },
+    switcher: { label: "EN", ariaLabel: "EN: view this page in English", lang: "en" },
     menuOpen: "Abrir menú",
     menuClose: "Cerrar menú",
   },

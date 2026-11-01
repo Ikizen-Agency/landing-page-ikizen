@@ -81,6 +81,7 @@ export type Dictionary = {
   nav: {
     homeHref: string;
     primaryLabel: string;
+    skipToContent: string;
     links: NavLink[];
     cta: NavLink;
     switcher: { label: string; ariaLabel: string; lang: Locale };

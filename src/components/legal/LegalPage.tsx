@@ -14,7 +14,7 @@ export function LegalPage({ locale, page }: { locale: Locale; page: "terms" | "p
   return (
     <>
       <Navbar locale={locale} route={page} />
-      <main className="px-gutter pb-section pt-32 lg:pt-44">
+      <main id="main" tabIndex={-1} className="px-gutter pb-section pt-32 focus:outline-none lg:pt-44">
         <article className="mx-auto max-w-site">
           <p className="font-mono text-label uppercase text-amber">{legal.eyebrow}</p>
           <h1 className="mt-4 text-display-lg font-bold">{copy.title}</h1>

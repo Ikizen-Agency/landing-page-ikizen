@@ -2,7 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, IBM_Plex_Mono, Instrument_Sans } from "next/font/google";
 import Script from "next/script";
 import "@/app/globals.css";
-import { StructuredData, organizationStructuredData, websiteStructuredData } from "@/components/StructuredData";
+import { TrackClicks } from "@/components/analytics/TrackClicks";
+import { ogImageSize } from "@/components/brand/renderOgImage";
+import { JsonLd, organizationStructuredData, websiteStructuredData } from "@/components/StructuredData";
 import { getDictionary, routes, SITE_URL, type Dictionary, type Locale, type RouteKey } from "@/i18n";
 
 const display = Bricolage_Grotesque({
@@ -31,7 +33,7 @@ export const rootViewport: Viewport = {
 };
 
 function ogImage(locale: Locale) {
-  return locale === "en" ? "/en/opengraph-image" : "/opengraph-image";
+  return { url: `/og/${locale}`, ...ogImageSize, type: "image/png", alt: getDictionary(locale).meta.ogImageAlt };
 }
 
 export function pageAlternates(route: RouteKey, locale: Locale): Metadata["alternates"] {
@@ -89,7 +91,6 @@ export function buildRootMetadata(dict: Dictionary): Metadata {
       url: nav.homeHref,
       siteName: "Ikizen Studio",
       type: "website",
-      // Layouts sit below the app root, so an inherited file-based image would be dropped.
       images: [ogImage(locale)],
     },
     manifest: "/site.webmanifest",
@@ -102,31 +103,42 @@ export function buildRootMetadata(dict: Dictionary): Metadata {
 
 /** Shared <html> shell for the per-locale root layouts. */
 export function RootDocument({ locale, children }: { locale: Locale; children: React.ReactNode }) {
+  const { meta, nav } = getDictionary(locale);
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
   return (
     <html lang={locale} className={fontVariables}>
       <head>
-        <StructuredData data={organizationStructuredData} />
-        <StructuredData data={websiteStructuredData} />
+        <JsonLd data={organizationStructuredData(meta.description)} />
+        <JsonLd data={websiteStructuredData(meta.description, locale)} />
       </head>
       <body className="bg-ink text-paper font-sans antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-3 focus:z-60 focus:bg-amber focus:px-4 focus:py-2 focus:font-medium focus:text-ink"
+        >
+          {nav.skipToContent}
+        </a>
         {children}
+        <TrackClicks />
 
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-            `,
-          }}
-        />
+        {gaId && (
+          <>
+            <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+            <Script
+              id="google-analytics"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', ${JSON.stringify(gaId)});
+                `,
+              }}
+            />
+          </>
+        )}
       </body>
     </html>
   );

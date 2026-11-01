@@ -32,7 +32,7 @@ const PROJECTS: Project[] = [
     type: { es: "Portafolio personal", en: "Personal portfolio" },
     purpose: {
       es: "Un sitio propio para una periodista: sus artículos y sus servicios reunidos en un solo lugar.",
-      en: "A site of her own for a journalist: her articles and services gathered in one place.",
+      en: "A personal site for a journalist: articles and services gathered in one place.",
     },
     href: "https://github.com/Ikizen-Agency/gloria-diaz-portfolio",
   },

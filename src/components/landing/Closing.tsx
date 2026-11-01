@@ -1,5 +1,6 @@
 import { CalEmbed } from "@/components/booking/CalEmbed";
 import type { Dictionary } from "@/i18n";
+import { trackAttrs } from "@/lib/analytics";
 
 export function Closing({ dict }: { dict: Dictionary }) {
   const { closing, booking, whatsappUrl } = dict;
@@ -22,6 +23,7 @@ export function Closing({ dict }: { dict: Dictionary }) {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
+            {...trackAttrs("whatsapp_click", { location: "closing" })}
             className="mt-6 inline-block font-medium underline underline-offset-4"
           >
             {closing.whatsappAlternative}

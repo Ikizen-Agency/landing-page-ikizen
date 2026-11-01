@@ -3,10 +3,11 @@ import Link from "next/link";
 import { fontVariables, rootViewport } from "@/app/_root/RootDocument";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { Button } from "@/components/ui/button";
-import { getDictionary, type Locale } from "@/i18n";
+import { getDictionary, SITE_URL, type Locale } from "@/i18n";
 
 export const viewport = rootViewport;
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "404 | Ikizen Studio",
   robots: { index: false, follow: true },
 };

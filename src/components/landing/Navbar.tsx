@@ -3,6 +3,7 @@ import { Wordmark } from "@/components/brand/Wordmark";
 import { MobileMenu } from "@/components/landing/MobileMenu";
 import { Button } from "@/components/ui/button";
 import { getDictionary, routes, type Locale, type RouteKey } from "@/i18n";
+import { trackAttrs } from "@/lib/analytics";
 
 /**
  * `route` is the current page, so the switcher can link to its counterpart.
@@ -19,6 +20,7 @@ export default function Navbar({
 }) {
   const { nav } = getDictionary(locale);
   const switcherHref = routes[route][nav.switcher.lang];
+  const currentHref = routes[route][locale];
 
   return (
     <nav aria-label={nav.primaryLabel} className="fixed top-0 z-50 w-full border-b bg-ink px-gutter">
@@ -33,6 +35,7 @@ export default function Navbar({
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={link.href === currentHref ? "page" : undefined}
                 className="text-sm font-medium text-paper transition-colors duration-200 hover:text-amber"
               >
                 {link.label}
@@ -43,6 +46,7 @@ export default function Navbar({
               hrefLang={nav.switcher.lang}
               lang={nav.switcher.lang}
               aria-label={nav.switcher.ariaLabel}
+              {...trackAttrs("language_switch", { from: locale, to: nav.switcher.lang })}
               className="font-mono text-label text-paper-dim transition-colors duration-200 hover:text-amber"
             >
               {nav.switcher.label}
@@ -50,10 +54,12 @@ export default function Navbar({
           </div>
 
           <Button asChild size="sm">
-            <a href={ctaHref ?? nav.cta.href}>{nav.cta.label}</a>
+            <a href={ctaHref ?? nav.cta.href} {...trackAttrs("book_cta_click", { location: "nav" })}>
+              {nav.cta.label}
+            </a>
           </Button>
 
-          <MobileMenu nav={nav} switcherHref={switcherHref} />
+          <MobileMenu nav={nav} locale={locale} currentHref={currentHref} switcherHref={switcherHref} />
         </div>
       </div>
     </nav>

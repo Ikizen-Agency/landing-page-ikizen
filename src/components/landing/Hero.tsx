@@ -1,6 +1,7 @@
 import { HeroScrub } from "@/components/landing/HeroScrub";
 import { Button } from "@/components/ui/button";
 import type { Dictionary } from "@/i18n";
+import { trackAttrs } from "@/lib/analytics";
 
 /**
  * The site's one signature: IKI(gai) + (kai)ZEN = IKIZEN. The markup is laid out as
@@ -36,12 +37,15 @@ export function Hero({ hero, whatsappUrl }: { hero: Dictionary["hero"]; whatsapp
             <p className="max-w-xl text-lg text-paper-dim">{hero.support}</p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
               <Button asChild size="lg">
-                <a href={hero.primaryCta.href}>{hero.primaryCta.label}</a>
+                <a href={hero.primaryCta.href} {...trackAttrs("book_cta_click", { location: "hero" })}>
+                  {hero.primaryCta.label}
+                </a>
               </Button>
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                {...trackAttrs("whatsapp_click", { location: "hero" })}
                 className="text-sm text-paper underline underline-offset-4 transition-colors duration-200 hover:text-amber"
               >
                 {hero.whatsappCta}

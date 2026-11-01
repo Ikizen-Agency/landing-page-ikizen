@@ -72,8 +72,14 @@ export function ProjectsRibbon({
     const write = () => {
       frame = 0;
       const { scrollLeft, scrollWidth, clientWidth } = scroller;
-      setAtEnd(previous, next, scrollLeft <= 1);
-      setAtEnd(next, previous, scrollLeft >= scrollWidth - clientWidth - 1);
+      const atStart = scrollLeft <= 1;
+      const atEnd = scrollLeft >= scrollWidth - clientWidth - 1;
+
+      // An instant scroll can cross both ends at once, and a disabled button takes no focus.
+      if (!atStart) previous.disabled = false;
+      if (!atEnd) next.disabled = false;
+      setAtEnd(previous, next, atStart);
+      setAtEnd(next, previous, atEnd);
     };
 
     const schedule = () => {
@@ -167,6 +173,27 @@ export function ProjectsRibbon({
     settle(scroller, offsets[nearestIndex(offsets, projected)]);
   };
 
+  /**
+   * The click that ends a drag lands right after capture is released, in the same task.
+   * Waiting one task swallows that click and no later one, such as a keyboard activation.
+   */
+  const clearDraggedSoon = () => {
+    setTimeout(() => {
+      draggedRef.current = false;
+    });
+  };
+
+  const handlePointerCancel = (event: PointerEvent<HTMLDivElement>) => {
+    handlePointerEnd(event);
+    clearDraggedSoon();
+  };
+
+  const handleLostPointerCapture = (event: PointerEvent<HTMLDivElement>) => {
+    // Still tracking means capture went away without a pointerup, so no click will follow.
+    if (dragRef.current) handlePointerEnd(event);
+    clearDraggedSoon();
+  };
+
   const handleClickCapture = (event: MouseEvent<HTMLDivElement>) => {
     if (!draggedRef.current) return;
 
@@ -214,7 +241,8 @@ export function ProjectsRibbon({
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerEnd}
-        onPointerCancel={handlePointerEnd}
+        onPointerCancel={handlePointerCancel}
+        onLostPointerCapture={handleLostPointerCapture}
         onClickCapture={handleClickCapture}
         onDragStart={handleDragStart}
       >

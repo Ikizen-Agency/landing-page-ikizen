@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { ProjectsRibbon } from "@/components/landing/ProjectsRibbon";
 import type { Dictionary } from "@/i18n";
+import { trackAttrs } from "@/lib/analytics";
 
 /** One logo ring, at the same proportions, threaded onto the gold line. */
 function ThreadNode() {
@@ -55,6 +56,7 @@ export function Projects({ projects }: { projects: Dictionary["projects"] }) {
               href={stop.href}
               target="_blank"
               rel="noopener noreferrer"
+              {...trackAttrs("project_click", { project: stop.name })}
               className="mt-4 inline-flex items-center gap-2 py-2 text-sm font-medium text-amber transition-colors duration-200 hover:text-amber-pale"
             >
               {stop.linkLabel}
