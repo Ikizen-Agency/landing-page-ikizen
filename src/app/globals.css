@@ -101,6 +101,7 @@
  * Hero signature: IKI(gai) + (kai)ZEN = IKIZEN.
  * The layout is the final word and --progress 0 offsets it back to the two source
  * words, so no-JS and reduced-motion visitors simply get the finished composition.
+ * The gold letters are the ones that stay: they spell the final word from the start.
  */
 @layer components {
   .signature {
@@ -122,9 +123,10 @@
   .signature-words {
     --word-width: 3em;
     --spread: calc((100cqw - var(--word-width)) / 2);
-    --collapse: clamp(0, calc(var(--progress) * 2), 1);
-    --slide: clamp(0, calc((var(--progress) - 0.35) / 0.65), 1);
-    --settled: calc(var(--slide) * var(--slide) * (3 - 2 * var(--slide)));
+    /* Both start together and share one curve, so they read as a single gesture. */
+    --fold: clamp(0, calc(var(--progress) / 0.65), 1);
+    --collapse: calc(var(--fold) * var(--fold) * (3 - 2 * var(--fold)));
+    --settled: calc(var(--progress) * var(--progress) * (3 - 2 * var(--progress)));
     --apart: calc(1 - var(--settled));
 
     display: flex;
@@ -136,7 +138,7 @@
     line-height: 0.85;
     letter-spacing: -0.04em;
     white-space: nowrap;
-    color: var(--color-paper);
+    color: var(--color-amber);
     user-select: none;
   }
 
@@ -144,7 +146,6 @@
   .signature-zen {
     position: relative;
     display: block;
-    will-change: transform;
   }
 
   .signature-iki {
@@ -159,10 +160,9 @@
   .signature-kai {
     position: absolute;
     top: 0;
-    color: var(--color-amber);
+    color: var(--color-paper);
     opacity: calc(1 - var(--collapse));
     transform: scaleX(calc(1 - var(--collapse)));
-    will-change: transform, opacity;
   }
 
   .signature-gai {
@@ -189,6 +189,13 @@
 
     .signature-words {
       height: 1.8em;
+    }
+
+    .signature-iki,
+    .signature-zen,
+    .signature-gai,
+    .signature-kai {
+      will-change: transform;
     }
   }
 
