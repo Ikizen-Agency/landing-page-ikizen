@@ -4,10 +4,7 @@ import { Hero } from "@/components/landing/Hero";
 import { Services } from "@/components/landing/Services";
 import { Footer } from "@/components/landing/Footer";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { Testimonials } from "@/components/landing/Testimonial";
-import InitialPopup from "@/components/landing/InitialPopup";
 import { Metadata } from "next";
-import NewsLetter from "@/components/landing/NewsLetter";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -20,7 +17,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function Home() {
   return (
     <>
-      <InitialPopup></InitialPopup>
       <Navbar />
       <main
         className="min-h-screen"
@@ -36,13 +32,6 @@ export default function Home() {
         <AnimatedSection delay={300}>
           <Services />
         </AnimatedSection>
-        <AnimatedSection delay={300}>
-          <Testimonials />
-        </AnimatedSection>
-
-        {/* <AnimatedSection delay={300}>
-          <NewsLetter></NewsLetter>
-        </AnimatedSection> */}
       </main>
       <Footer />
     </>

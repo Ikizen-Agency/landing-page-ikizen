@@ -3,7 +3,6 @@ import { ServiceHero, ServiceOfferings, ServiceProcess, ServiceCTAWithForm } fro
 import Navbar from "@/components/landing/Navbar";
 import {Footer} from "@/components/landing/Footer";
 import { Metadata } from "next";
-import NewsLetter from "@/components/landing/NewsLetter";
 import { StructuredData } from "@/components/StructuredData";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -132,7 +131,6 @@ export default function WebDevelopmentPage() {
         />
 
         <ServiceCTAWithForm />
-        <NewsLetter></NewsLetter>
       </div>
       <Footer />
     </>

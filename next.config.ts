@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
   // Optimizaciones para SEO
@@ -41,9 +40,6 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60,
   },
 
-  // Configuración para MDX
-  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-
   // Headers para SEO y seguridad
   async headers() {
     return [
@@ -76,16 +72,19 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: true,
       },
+      // The blog was removed; keep old links working
+      {
+        source: "/blog",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/blog/:slug*",
+        destination: "/",
+        permanent: true,
+      },
     ];
   },
 };
 
-const withMDX = createMDX({
-  // Opciones de MDX
-  options: {
-    remarkPlugins: [],
-    rehypePlugins: [],
-  },
-});
-
-export default withMDX(nextConfig);
+export default nextConfig;

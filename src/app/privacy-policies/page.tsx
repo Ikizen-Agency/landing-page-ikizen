@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
 
       <h2 className="text-xl font-semibold text-primary mt-8 mb-4">1. Información que recopilamos</h2>
       <p className="mb-4">
-        Cuando llenas un formulario de contacto, solicitas una consulta gratuita o te suscribes a nuestro newsletter, podemos recopilar:
+        Cuando llenas un formulario de contacto o solicitas una consulta gratuita, podemos recopilar:
       </p>
       <ul className="list-disc list-inside mb-4 space-y-2">
         <li>Nombre y apellido</li>

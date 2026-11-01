@@ -8,7 +8,6 @@ import {
 import Navbar from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { Metadata } from "next";
-import NewsLetter from "@/components/landing/NewsLetter";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -105,7 +104,6 @@ export default function BrandingPage() {
           buttonText="Reserva tu sesión →"
         />
 
-        <NewsLetter></NewsLetter>
       </div>
       <Footer />
     </>

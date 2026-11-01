@@ -1,4 +1,4 @@
-// src/components/landing/Testimonials.tsx
+// Intentionally unused until real client cases exist.
 "use client";
 
 import { useEffect, useState } from "react";

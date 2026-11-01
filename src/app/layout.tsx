@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "../styles/prose.css";
 import { StructuredData, organizationStructuredData, websiteStructuredData } from "@/components/StructuredData";
 import Script from "next/script"; // Importa el componente Script
 
