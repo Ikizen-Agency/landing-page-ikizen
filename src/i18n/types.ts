@@ -83,7 +83,6 @@ export type Dictionary = {
     primaryLabel: string;
     skipToContent: string;
     links: NavLink[];
-    cta: NavLink;
     switcher: { label: string; ariaLabel: string; lang: Locale };
     menuOpen: string;
     menuClose: string;
@@ -91,7 +90,6 @@ export type Dictionary = {
   hero: {
     titleLines: [string, string];
     support: string;
-    primaryCta: NavLink;
     whatsappCta: string;
     captions: { ikigai: string; kaizen: string };
   };
@@ -116,10 +114,9 @@ export type Dictionary = {
     whatsappAlternative: string;
   };
   booking: {
-    loading: string;
-    openCalendar: string;
-    fallbackTitle: string;
+    cta: string;
     fallbackCta: string;
+    opensInNewTab: string;
   };
   footer: {
     tagline: string;

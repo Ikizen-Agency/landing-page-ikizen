@@ -29,7 +29,8 @@ The site lives at `https://ikizen.vercel.app` until a custom domain exists. `SIT
 ### Analytics
 
 - [x] Google Analytics loads only when `NEXT_PUBLIC_GA_ID` is set
-- [x] Conversion events: `book_cta_click`, `whatsapp_click`, `booking_completed`, `project_click`, `language_switch`
+- [x] Conversion events: `book_cta_click`, `whatsapp_click`, `project_click`, `language_switch`
+- [x] Bookings happen on the hosted Cal.com page, which cannot report to the site. Measuring them would need a redirect back from Cal.com or a webhook
 
 ### Performance and accessibility
 
@@ -39,7 +40,7 @@ The site lives at `https://ikizen.vercel.app` until a custom domain exists. `SIT
 ## Owner to do
 
 - [ ] Set `NEXT_PUBLIC_GA_ID` and `NEXT_PUBLIC_CAL_LINK`
-- [ ] Mark `booking_completed` as a key event in Google Analytics
+- [ ] Mark `book_cta_click` as a key event in Google Analytics
 - [ ] Confirm Search Console ownership, `public/googlef8f3116cca00f1cc.html` is the verification file
 - [ ] Submit `https://ikizen.vercel.app/sitemap.xml` in Search Console
 - [ ] Add a logo in PNG format to JSON-LD if Google ignores the SVG one

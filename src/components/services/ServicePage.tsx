@@ -1,11 +1,13 @@
+import { BookingLink } from "@/components/booking/BookingLink";
 import { AREA_SERVED, JsonLd, ORGANIZATION_REFERENCE } from "@/components/StructuredData";
 import { Closing } from "@/components/landing/Closing";
 import { Footer } from "@/components/landing/Footer";
 import Navbar from "@/components/landing/Navbar";
 import { Process } from "@/components/landing/Process";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { getDictionary, routes, SITE_URL, type Locale } from "@/i18n";
 import { trackAttrs } from "@/lib/analytics";
+import { BOOKING_URL } from "@/lib/booking";
 import type { ServicePageCopy } from "@/i18n/types";
 
 function serviceStructuredData(copy: ServicePageCopy, url: string) {
@@ -36,7 +38,7 @@ export function ServicePage({ locale, service }: { locale: Locale; service: "web
   return (
     <>
       <JsonLd data={serviceStructuredData(copy, `${SITE_URL}${routes[service][locale]}`)} />
-      <Navbar locale={locale} route={service} ctaHref={dict.hero.primaryCta.href} />
+      <Navbar locale={locale} route={service} />
       <main id="main" tabIndex={-1} className="focus:outline-none">
         <section className="px-gutter pb-section pt-32 lg:pt-44">
           <div className="mx-auto max-w-site">
@@ -46,20 +48,18 @@ export function ServicePage({ locale, service }: { locale: Locale; service: "web
               <div className="space-y-6 lg:col-span-6 lg:col-start-7">
                 <p className="text-lg text-paper-dim lg:text-xl">{copy.hero.support}</p>
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-                  <Button asChild size="lg">
-                    <a href={dict.hero.primaryCta.href} {...trackAttrs("book_cta_click", { location: "service_hero" })}>
-                      {dict.hero.primaryCta.label}
+                  <BookingLink dict={dict} location="service_hero" className={buttonVariants({ size: "lg" })} />
+                  {BOOKING_URL && (
+                    <a
+                      href={dict.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      {...trackAttrs("whatsapp_click", { location: "service_hero" })}
+                      className="text-sm text-paper underline underline-offset-4 transition-colors duration-200 hover:text-amber"
+                    >
+                      {dict.hero.whatsappCta}
                     </a>
-                  </Button>
-                  <a
-                    href={dict.whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    {...trackAttrs("whatsapp_click", { location: "service_hero" })}
-                    className="text-sm text-paper underline underline-offset-4 transition-colors duration-200 hover:text-amber"
-                  >
-                    {dict.hero.whatsappCta}
-                  </a>
+                  )}
                 </div>
               </div>
             </div>

@@ -1,19 +1,11 @@
 import type { Locale } from "@/i18n";
 
 /** Where a CTA sits on the page, so its clicks compare across sections. */
-export type TrackLocation =
-  | "nav"
-  | "hero"
-  | "service_hero"
-  | "closing"
-  | "booking_panel"
-  | "booking_fallback"
-  | "footer";
+export type TrackLocation = "nav" | "hero" | "service_hero" | "closing" | "footer";
 
 type EventParams = {
   book_cta_click: { location: TrackLocation };
   whatsapp_click: { location: TrackLocation };
-  booking_completed: Record<string, never>;
   project_click: { project: string };
   language_switch: { from: Locale; to: Locale };
 };
