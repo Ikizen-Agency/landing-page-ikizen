@@ -24,6 +24,8 @@ const mono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
 });
 
+export const fontVariables = `${display.variable} ${body.variable} ${mono.variable}`;
+
 const SITE_URL = "https://ikizen.vercel.app";
 
 export const rootViewport: Viewport = {
@@ -63,7 +65,7 @@ export function buildRootMetadata(dict: Dictionary): Metadata {
 /** Shared <html> shell for the per-locale root layouts. */
 export function RootDocument({ locale, children }: { locale: Locale; children: React.ReactNode }) {
   return (
-    <html lang={locale} className={`${display.variable} ${body.variable} ${mono.variable}`}>
+    <html lang={locale} className={fontVariables}>
       <head>
         <StructuredData data={organizationStructuredData} />
         <StructuredData data={websiteStructuredData} />

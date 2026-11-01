@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { Mark } from "@/components/brand/Wordmark";
+import { Mark } from "@/components/brand/Mark";
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
@@ -17,7 +17,7 @@ export default function AppleIcon() {
           backgroundColor: "#16120E",
         }}
       >
-        <Mark height={120} color="#F4AD46" />
+        <Mark height={144} />
       </div>
     ),
     size,

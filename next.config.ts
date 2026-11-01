@@ -4,6 +4,10 @@ const nextConfig: NextConfig = {
   // Optimizaciones para SEO
   compress: true,
   poweredByHeader: false,
+  experimental: {
+    // Each locale has its own root layout, so unmatched URLs need a page outside both.
+    globalNotFound: true,
+  },
   async rewrites() {
     return [
       {

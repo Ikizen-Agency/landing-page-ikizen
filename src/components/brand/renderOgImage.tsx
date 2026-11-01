@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { Mark } from "@/components/brand/Wordmark";
+import { Mark } from "@/components/brand/Mark";
 
 export const ogImageSize = { width: 1200, height: 630 };
 
@@ -30,7 +30,7 @@ export async function renderOgImage(tagline: string) {
         }}
       >
         <div style={{ display: "flex", alignItems: "flex-end" }}>
-          <Mark height={196} color="#F4AD46" />
+          <Mark height={196} />
           <div style={{ marginLeft: 36, fontSize: 220, lineHeight: 0.8, letterSpacing: -8 }}>ikizen</div>
           <div
             style={{

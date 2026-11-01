@@ -18,24 +18,47 @@ const DARK_THEME_VARS = {
   "cal-border": "#4a4239",
 };
 
-export default function CalFrame({ calLink }: { calLink: string }) {
+type CalFrameProps = {
+  calLink: string;
+  /** While false the frame stays hidden, so it cannot cover the panel beneath it. */
+  isReady: boolean;
+  onReady: () => void;
+  onFail: () => void;
+};
+
+export default function CalFrame({ calLink, isReady, onReady, onFail }: CalFrameProps) {
   useEffect(() => {
+    let isActive = true;
+    let detach = () => {};
+
     getCalApi({ namespace: NAMESPACE }).then((cal) => {
+      if (!isActive) return;
       cal("ui", {
         theme: "dark",
         cssVarsPerTheme: { light: {}, dark: DARK_THEME_VARS },
         hideEventTypeDetails: false,
         layout: "month_view",
       });
+      cal("on", { action: "linkReady", callback: onReady });
+      cal("on", { action: "linkFailed", callback: onFail });
+      detach = () => {
+        cal("off", { action: "linkReady", callback: onReady });
+        cal("off", { action: "linkFailed", callback: onFail });
+      };
     });
-  }, []);
+
+    return () => {
+      isActive = false;
+      detach();
+    };
+  }, [onReady, onFail]);
 
   return (
     <Cal
       namespace={NAMESPACE}
       calLink={calLink}
       config={{ layout: "month_view", theme: "dark" }}
-      className="absolute inset-0 overflow-auto"
+      className={`absolute inset-0 overflow-auto ${isReady ? "" : "invisible"}`}
     />
   );
 }
