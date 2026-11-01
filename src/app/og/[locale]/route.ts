@@ -14,7 +14,8 @@ export function generateStaticParams() {
  * A route, not the `opengraph-image` file convention: a file at the app root leaks into
  * the 404 page, where it resolves against the host instead of `metadataBase`.
  */
-export async function GET(_request: Request, { params }: { params: Promise<{ locale: Locale }> }) {
+export async function GET(_request: Request, { params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return renderOgImage(getDictionary(locale).meta.ogTagline);
+  // `dynamicParams = false` limits this route to the values in LOCALES.
+  return renderOgImage(getDictionary(locale as Locale).meta.ogTagline);
 }
