@@ -1,11 +1,10 @@
-import { CalEmbed } from "@/components/booking/CalEmbed";
+import { CalendlyEmbed } from "@/components/booking/CalendlyEmbed";
 import type { Dictionary } from "@/i18n";
 import { trackAttrs } from "@/lib/analytics";
+import { CALENDLY_URL } from "@/lib/calendly";
 
 export function Closing({ dict }: { dict: Dictionary }) {
   const { closing, booking, whatsappUrl } = dict;
-  // CalEmbed's own fallback is already the WhatsApp route when no calendar is set.
-  const hasCalendar = Boolean(process.env.NEXT_PUBLIC_CAL_LINK);
 
   return (
     <section id="agenda" className="scroll-mt-16 bg-amber px-gutter py-section text-ink">
@@ -15,10 +14,11 @@ export function Closing({ dict }: { dict: Dictionary }) {
         <p className="mt-6 max-w-xl text-lg">{closing.support}</p>
 
         <div className="mt-12">
-          <CalEmbed labels={booking} whatsappUrl={whatsappUrl} />
+          <CalendlyEmbed labels={booking} whatsappUrl={whatsappUrl} />
         </div>
 
-        {hasCalendar && (
+        {/* Without a calendar the embed's own fallback is already the WhatsApp route. */}
+        {CALENDLY_URL && (
           <a
             href={whatsappUrl}
             target="_blank"
