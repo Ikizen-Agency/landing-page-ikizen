@@ -38,7 +38,7 @@ The site lives at `https://ikizen.vercel.app` until a custom domain exists. `SIT
 
 ## Owner to do
 
-- [ ] Set `NEXT_PUBLIC_GA_ID` and `NEXT_PUBLIC_CAL_LINK`
+- [ ] Set `NEXT_PUBLIC_GA_ID` and `NEXT_PUBLIC_CALENDLY_URL`
 - [ ] Mark `booking_completed` as a key event in Google Analytics
 - [ ] Confirm Search Console ownership, `public/googlef8f3116cca00f1cc.html` is the verification file
 - [ ] Submit `https://ikizen.vercel.app/sitemap.xml` in Search Console

@@ -11,7 +11,7 @@ permissions:
 
 # Repository variables, not secrets: both values end up in the public bundle.
 env:
-  NEXT_PUBLIC_CAL_LINK: ${{ vars.NEXT_PUBLIC_CAL_LINK }}
+  NEXT_PUBLIC_CALENDLY_URL: ${{ vars.NEXT_PUBLIC_CALENDLY_URL }}
   NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
 
 jobs:
@@ -71,7 +71,7 @@ jobs:
             args+=(--env STAGING=true)
           fi
 
-          for name in NEXT_PUBLIC_CAL_LINK NEXT_PUBLIC_GA_ID; do
+          for name in NEXT_PUBLIC_CALENDLY_URL NEXT_PUBLIC_GA_ID; do
             if [ -n "${!name}" ]; then
               args+=(--build-env "$name=${!name}")
             fi
