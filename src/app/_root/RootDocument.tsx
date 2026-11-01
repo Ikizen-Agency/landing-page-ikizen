@@ -3,7 +3,7 @@ import { Bricolage_Grotesque, IBM_Plex_Mono, Instrument_Sans } from "next/font/g
 import Script from "next/script";
 import "@/app/globals.css";
 import { StructuredData, organizationStructuredData, websiteStructuredData } from "@/components/StructuredData";
-import type { Dictionary, Locale } from "@/i18n";
+import { getDictionary, routes, SITE_URL, type Dictionary, type Locale, type RouteKey } from "@/i18n";
 
 const display = Bricolage_Grotesque({
   subsets: ["latin", "latin-ext"],
@@ -26,11 +26,49 @@ const mono = IBM_Plex_Mono({
 
 export const fontVariables = `${display.variable} ${body.variable} ${mono.variable}`;
 
-const SITE_URL = "https://ikizen.vercel.app";
-
 export const rootViewport: Viewport = {
   themeColor: "#16120E",
 };
+
+function ogImage(locale: Locale) {
+  return locale === "en" ? "/en/opengraph-image" : "/opengraph-image";
+}
+
+export function pageAlternates(route: RouteKey, locale: Locale): Metadata["alternates"] {
+  const { es, en } = routes[route];
+  return {
+    canonical: routes[route][locale],
+    languages: { es, en, "x-default": es },
+  };
+}
+
+/** A page-level `openGraph` replaces the layout's, so it restates site name and image. */
+export function buildPageMetadata(route: Exclude<RouteKey, "home">, locale: Locale): Metadata {
+  const { title, description, keywords } = getDictionary(locale).pages[route].meta;
+  const socialTitle = `${title} | Ikizen Studio`;
+  const images = [ogImage(locale)];
+
+  return {
+    title,
+    description,
+    keywords,
+    alternates: pageAlternates(route, locale),
+    openGraph: {
+      title: socialTitle,
+      description,
+      url: routes[route][locale],
+      siteName: "Ikizen Studio",
+      type: "website",
+      images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: socialTitle,
+      description,
+      images,
+    },
+  };
+}
 
 export function buildRootMetadata(dict: Dictionary): Metadata {
   const { meta, locale, nav } = dict;
@@ -52,7 +90,7 @@ export function buildRootMetadata(dict: Dictionary): Metadata {
       siteName: "Ikizen Studio",
       type: "website",
       // Layouts sit below the app root, so an inherited file-based image would be dropped.
-      images: [locale === "en" ? "/en/opengraph-image" : "/opengraph-image"],
+      images: [ogImage(locale)],
     },
     manifest: "/site.webmanifest",
     robots: {

@@ -12,6 +12,52 @@ export type ServiceBlock = {
 
 export type ProcessStep = { title: string; description: string };
 
+export type ProcessCopy = {
+  eyebrow: string;
+  title: string;
+  steps: ProcessStep[];
+};
+
+export type PageMeta = {
+  title: string;
+  description: string;
+  keywords?: string[];
+};
+
+export type ServiceOffering = { title: string; description: string };
+
+export type ServicePageCopy = {
+  meta: PageMeta;
+  /** Stable English name for the Service structured data. */
+  serviceType: string;
+  hero: {
+    eyebrow: string;
+    title: string;
+    support: string;
+  };
+  offerings: {
+    eyebrow: string;
+    title: string;
+    items: ServiceOffering[];
+  };
+  process: ProcessCopy;
+};
+
+export type LegalSection = {
+  heading: string;
+  text: string;
+  items?: string[];
+  /** Ends the section with the contact address, which `text` leads into. */
+  contactEmail?: boolean;
+};
+
+export type LegalPageCopy = {
+  meta: PageMeta;
+  title: string;
+  intro: string;
+  sections: LegalSection[];
+};
+
 export type Dictionary = {
   locale: Locale;
   meta: {
@@ -28,7 +74,7 @@ export type Dictionary = {
     primaryLabel: string;
     links: NavLink[];
     cta: NavLink;
-    switcher: { label: string; ariaLabel: string; href: string; lang: Locale };
+    switcher: { label: string; ariaLabel: string; lang: Locale };
     menuOpen: string;
     menuClose: string;
   };
@@ -44,11 +90,7 @@ export type Dictionary = {
     title: string;
     blocks: ServiceBlock[];
   };
-  process: {
-    eyebrow: string;
-    title: string;
-    steps: ProcessStep[];
-  };
+  process: ProcessCopy;
   closing: {
     eyebrow: string;
     title: string;
@@ -79,6 +121,17 @@ export type Dictionary = {
     title: string;
     support: string;
     homeCta: string;
+  };
+  legal: {
+    eyebrow: string;
+    lastUpdatedLabel: string;
+    lastUpdatedDate: string;
+  };
+  pages: {
+    web: ServicePageCopy;
+    branding: ServicePageCopy;
+    terms: LegalPageCopy;
+    privacy: LegalPageCopy;
   };
   whatsappUrl: string;
 };

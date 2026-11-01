@@ -8,7 +8,7 @@ import type { Dictionary } from "@/i18n";
 
 const PANEL_ID = "mobile-menu";
 
-export function MobileMenu({ nav }: { nav: Dictionary["nav"] }) {
+export function MobileMenu({ nav, switcherHref }: { nav: Dictionary["nav"]; switcherHref: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const close = () => setIsOpen(false);
 
@@ -40,7 +40,7 @@ export function MobileMenu({ nav }: { nav: Dictionary["nav"] }) {
               </Link>
             ))}
             <Link
-              href={nav.switcher.href}
+              href={switcherHref}
               hrefLang={nav.switcher.lang}
               lang={nav.switcher.lang}
               aria-label={nav.switcher.ariaLabel}
