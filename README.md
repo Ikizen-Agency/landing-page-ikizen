@@ -20,14 +20,14 @@ The site runs at <http://localhost:3000>. Both variables are optional, so it wor
 |------|--------|
 | Framework | Next.js 15 with the App Router, React 19 |
 | Styling | Tailwind CSS 4, tokens in `src/app/globals.css` |
-| Booking | Cal.com embed, loaded on demand |
+| Booking | Hosted Cal.com page, opened in a new tab |
 | Analytics | Google Analytics 4, optional |
 
 ## Environment variables
 
 | Variable | Example | While unset |
 |----------|---------|-------------|
-| `NEXT_PUBLIC_CAL_LINK` | `ikizen-qxevvr/meet-30min` | The booking section shows a WhatsApp button, as it does for anything other than a `user/event` slug |
+| `NEXT_PUBLIC_CAL_LINK` | `ikizen-qxevvr/meet-30min` | Booking CTAs go to WhatsApp, as they do for anything other than a `user/event` slug |
 | `NEXT_PUBLIC_GA_ID` | `G-XXXXXXXXXX` | No analytics script loads and events do nothing |
 
 Both are read at build time, so changing one requires a new build.
@@ -42,6 +42,7 @@ Both are read at build time, so changing one requires a new build.
 | `src/components` | Sections, service and legal pages, booking, brand |
 | `src/i18n` | All copy, contact details and the map of page pairs |
 | `src/lib/analytics.ts` | Conversion events |
+| `src/lib/booking.ts` | The hosted booking URL |
 | `odd/tasks` | Feature documents |
 
 ## Common changes
@@ -60,10 +61,12 @@ The link label follows the URL: anything outside `github.com` reads "View projec
 Spread `trackAttrs` on the link, in server components too:
 
 ```tsx
-<a href="#agenda" {...trackAttrs("book_cta_click", { location: "hero" })}>
+<a href={whatsappUrl} {...trackAttrs("whatsapp_click", { location: "hero" })}>
 ```
 
-New events and locations are declared in `src/lib/analytics.ts`.
+New events and locations are declared in `src/lib/analytics.ts`. Booking CTAs use `BookingLink`, which tracks itself.
+
+The site records `book_cta_click`, not completed bookings: those happen on the hosted Cal.com page, which cannot report back. Measuring them would need Cal.com to redirect to the site after booking, or a webhook.
 
 ### Change the domain
 

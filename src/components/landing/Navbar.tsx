@@ -1,24 +1,15 @@
 import Link from "next/link";
+import { BookingLink } from "@/components/booking/BookingLink";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { MobileMenu } from "@/components/landing/MobileMenu";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { getDictionary, routes, type Locale, type RouteKey } from "@/i18n";
 import { trackAttrs } from "@/lib/analytics";
 
-/**
- * `route` is the current page, so the switcher can link to its counterpart.
- * `ctaHref` keeps the booking CTA on pages that carry their own closing block.
- */
-export default function Navbar({
-  locale = "es",
-  route = "home",
-  ctaHref,
-}: {
-  locale?: Locale;
-  route?: RouteKey;
-  ctaHref?: string;
-}) {
-  const { nav } = getDictionary(locale);
+/** `route` is the current page, so the switcher can link to its counterpart. */
+export default function Navbar({ locale = "es", route = "home" }: { locale?: Locale; route?: RouteKey }) {
+  const dict = getDictionary(locale);
+  const { nav, footer } = dict;
   const switcherHref = routes[route][nav.switcher.lang];
   const currentHref = routes[route][locale];
 
@@ -53,11 +44,12 @@ export default function Navbar({
             </Link>
           </div>
 
-          <Button asChild size="sm">
-            <a href={ctaHref ?? nav.cta.href} {...trackAttrs("book_cta_click", { location: "nav" })}>
-              {nav.cta.label}
-            </a>
-          </Button>
+          <BookingLink
+            dict={dict}
+            location="nav"
+            fallbackLabel={footer.whatsappLabel}
+            className={buttonVariants({ size: "sm", className: "max-sm:[&_svg]:hidden" })}
+          />
 
           <MobileMenu nav={nav} locale={locale} currentHref={currentHref} switcherHref={switcherHref} />
         </div>

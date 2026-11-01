@@ -26,7 +26,6 @@ export const en: Dictionary = {
       { label: "Projects", href: "/en#projects" },
       { label: "Process", href: "/en#process" },
     ],
-    cta: { label: "Book 30 min", href: "/en#agenda" },
     switcher: { label: "ES", ariaLabel: "ES: ver esta página en español", lang: "es" },
     menuOpen: "Open menu",
     menuClose: "Close menu",
@@ -34,7 +33,6 @@ export const en: Dictionary = {
   hero: {
     titleLines: ["Purpose first.", "Better every pass."],
     support: "Ikizen Studio designs and builds websites and brands with a clear purpose, then keeps refining them.",
-    primaryCta: { label: "Book 30 min", href: "#agenda" },
     whatsappCta: "or message us on WhatsApp",
     captions: {
       ikigai: "ikigai — reason for being",
@@ -102,10 +100,9 @@ export const en: Dictionary = {
     whatsappAlternative: "Rather write? Message us on WhatsApp",
   },
   booking: {
-    loading: "Loading calendar…",
-    openCalendar: "Open the calendar",
-    fallbackTitle: "Message us and we will set up the 30 minutes on WhatsApp.",
+    cta: "Book 30 min",
     fallbackCta: "Book on WhatsApp",
+    opensInNewTab: "opens in a new tab",
   },
   footer: {
     tagline: "Purpose first. Better every pass.",

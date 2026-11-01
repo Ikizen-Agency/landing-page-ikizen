@@ -26,7 +26,6 @@ export const es: Dictionary = {
       { label: "Proyectos", href: "/#projects" },
       { label: "Proceso", href: "/#process" },
     ],
-    cta: { label: "Agenda 30 min", href: "/#agenda" },
     switcher: { label: "EN", ariaLabel: "EN: view this page in English", lang: "en" },
     menuOpen: "Abrir menú",
     menuClose: "Cerrar menú",
@@ -34,7 +33,6 @@ export const es: Dictionary = {
   hero: {
     titleLines: ["Razón de ser.", "Mejora continua."],
     support: "Ikizen Studio diseña y desarrolla webs y marcas con propósito, y las pule paso a paso.",
-    primaryCta: { label: "Agenda 30 min", href: "#agenda" },
     whatsappCta: "o escríbenos por WhatsApp",
     captions: {
       ikigai: "ikigai — razón de ser",
@@ -102,10 +100,9 @@ export const es: Dictionary = {
     whatsappAlternative: "¿Prefieres escribir? Hablemos por WhatsApp",
   },
   booking: {
-    loading: "Cargando calendario…",
-    openCalendar: "Abrir el calendario",
-    fallbackTitle: "Escríbenos y agendamos los 30 minutos por WhatsApp.",
+    cta: "Agenda 30 min",
     fallbackCta: "Agendar por WhatsApp",
+    opensInNewTab: "se abre en una pestaña nueva",
   },
   footer: {
     tagline: "Razón de ser. Mejora continua.",

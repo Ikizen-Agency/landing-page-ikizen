@@ -14,7 +14,7 @@ export function HomePage({ locale }: { locale: Locale }) {
     <>
       <Navbar locale={locale} />
       <main id="main" tabIndex={-1} className="focus:outline-none">
-        <Hero hero={dict.hero} whatsappUrl={dict.whatsappUrl} />
+        <Hero dict={dict} />
         <Services services={dict.services} />
         <Projects projects={dict.projects} />
         <Process process={dict.process} />
