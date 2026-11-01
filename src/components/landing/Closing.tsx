@@ -1,7 +1,7 @@
-import { CalendlyEmbed } from "@/components/booking/CalendlyEmbed";
+import { CalEmbed } from "@/components/booking/CalEmbed";
 import type { Dictionary } from "@/i18n";
 import { trackAttrs } from "@/lib/analytics";
-import { CALENDLY_URL } from "@/lib/calendly";
+import { CAL_LINK } from "@/lib/cal";
 
 export function Closing({ dict }: { dict: Dictionary }) {
   const { closing, booking, whatsappUrl } = dict;
@@ -14,11 +14,11 @@ export function Closing({ dict }: { dict: Dictionary }) {
         <p className="mt-6 max-w-xl text-lg">{closing.support}</p>
 
         <div className="mt-12">
-          <CalendlyEmbed labels={booking} whatsappUrl={whatsappUrl} />
+          <CalEmbed labels={booking} whatsappUrl={whatsappUrl} />
         </div>
 
         {/* Without a calendar the embed's own fallback is already the WhatsApp route. */}
-        {CALENDLY_URL && (
+        {CAL_LINK && (
           <a
             href={whatsappUrl}
             target="_blank"
