@@ -8,7 +8,6 @@ import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Inicio | Ikizen",
     description:
       "Bienvenido a Ikizen. Tu aliado en desarrollo web e identidad de marca.",
   };
@@ -18,13 +17,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main
-        className="min-h-screen"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 30% 70%, #f4ad4620, transparent 40%), radial-gradient(circle at 80% 20%, #fde09520, transparent 40%)",
-        }}
-      >
+      <main className="min-h-screen">
         <AnimatedSection delay={150}>
           <Hero />
         </AnimatedSection>

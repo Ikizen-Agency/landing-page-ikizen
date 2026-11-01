@@ -16,20 +16,13 @@ export function ServiceCTAWithForm({
 }) {
   return (
     <section className="max-w-4xl mx-auto mb-20 relative">
-      <div
-        className="bg-gradient-to-r from-primary/5 to-transparent border border-primary/20 rounded-3xl p-10 relative overflow-hidden"
-        style={{
-          backgroundSize: "200% 200%",
-          animation: "gradient-shift 8s ease infinite",
-        }}
-      >
-        <div className="absolute top-10 right-10 w-32 h-32 bg-secondary/10 rounded-full blur-3xl"></div>
-        <div className="relative z-10 text-center">
+      <div className="bg-ink-soft border border-line p-10">
+        <div className="text-center">
           <AnimatedSection>
-            <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">
+            <h2 className="text-display-md font-bold mb-4">
               {title}
             </h2>
-            <p className="text-secondary/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-paper-dim mb-8 max-w-2xl mx-auto">
               {description}
             </p>
           </AnimatedSection>
@@ -47,36 +40,36 @@ export function ServiceCTAWithForm({
                 type="text"
                 placeholder="Nombre"
                 required
-                className="w-full bg-dark-bg/60 border border-secondary/30 rounded-lg px-4 py-2 text-white placeholder-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="w-full bg-ink border border-line px-4 py-2 text-paper placeholder-paper-dim focus:outline-none focus:ring-2 focus:ring-amber"
               />
               <input
                 name="email"
                 type="email"
                 placeholder="Correo"
                 required
-                className="w-full bg-dark-bg/60 border border-secondary/30 rounded-lg px-4 py-2 text-white placeholder-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="w-full bg-ink border border-line px-4 py-2 text-paper placeholder-paper-dim focus:outline-none focus:ring-2 focus:ring-amber"
               />
               <textarea
                 name="body"
                 placeholder="Tu proyecto..."
                 required
                 rows={3}
-                className="w-full bg-dark-bg/60 border border-secondary/30 rounded-lg px-4 py-2 text-white placeholder-secondary/50 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="w-full bg-ink border border-line px-4 py-2 text-paper placeholder-paper-dim focus:outline-none focus:ring-2 focus:ring-amber"
               />
               <button
                 type="submit"
-                className="w-full py-2 bg-primary text-gray-900 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                className="w-full py-2 bg-amber text-ink font-medium hover:bg-amber-pale transition-colors"
               >
                 Enviar mensaje
               </button>
             </form>
           </div>
 
-          <p className="text-secondary/70 text-sm mt-6">{sideText}</p>
+          <p className="text-paper-dim text-sm mt-6">{sideText}</p>
 
           <div className="mt-4">
             <a href="mailto:ikizen.agency@gmail.com?subject=Agendar%20una%20cita&body=Hola,%20quisiera%20agendar%20una%20cita">
-              <Button variant="outline" className="text-gray-900">
+              <Button variant="outline">
                 {buttonText}
               </Button>
             </a>

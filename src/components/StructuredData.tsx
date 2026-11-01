@@ -25,10 +25,10 @@ export function StructuredData({ data }: StructuredDataProps) {
 export const organizationStructuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Ikizen Agency",
-  "description": "Agencia de desarrollo web e identidad de marca. Creamos experiencias digitales que convierten y marcas que conectan.",
+  "name": "Ikizen Studio",
+  "description": "Estudio de desarrollo web e identidad de marca. Creamos experiencias digitales que convierten y marcas que conectan.",
   "url": "https://ikizen.vercel.app",
-  "logo": "https://ikizen.vercel.app/favicon.svg",
+  "logo": "https://ikizen.vercel.app/icon.svg",
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "customer service",
@@ -53,14 +53,14 @@ export const serviceStructuredData = {
   "description": "Servicios de desarrollo web, diseño de identidad de marca y creación de experiencias digitales.",
   "provider": {
     "@type": "Organization",
-    "name": "Ikizen Agency",
+    "name": "Ikizen Studio",
     "url": "https://ikizen.vercel.app"
   },
   "serviceType": "Web Development and Branding",
   "areaServed": "Spain",
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Servicios de Ikizen Agency",
+    "name": "Servicios de Ikizen Studio",
     "itemListElement": [
       {
         "@type": "Offer",
@@ -86,12 +86,12 @@ export const serviceStructuredData = {
 export const websiteStructuredData = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "Ikizen Agency",
-  "description": "Agencia de desarrollo web e identidad de marca",
+  "name": "Ikizen Studio",
+  "description": "Estudio de desarrollo web e identidad de marca",
   "url": "https://ikizen.vercel.app",
   "publisher": {
     "@type": "Organization",
-    "name": "Ikizen Agency"
+    "name": "Ikizen Studio"
   },
   "potentialAction": {
     "@type": "SearchAction",

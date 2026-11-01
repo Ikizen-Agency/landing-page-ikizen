@@ -11,25 +11,26 @@ import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Identidad de Marca | Ikizen Agency",
+    title: "Identidad de Marca",
     description:
       "Diseñamos identidades de marca memorables: logotipos, paletas, tipografía y guías de estilo que conectan con tu audiencia y transmiten profesionalismo.",
     keywords: [
       "identidad de marca",
       "diseño de marca",
       "logotipo profesional",
-      "branding agencia",
+      "estudio de branding",
       "diseño de identidad visual",
       "manual de marca",
-      "Ikizen Agency",
+      "Ikizen Studio",
     ],
     openGraph: {
-      title: "Identidad de Marca | Ikizen Agency",
+      title: "Identidad de Marca | Ikizen Studio",
       description:
         "Creamos marcas que inspiran y conectan. Diseño estratégico para empresas que quieren destacar.",
       url: "https://ikizen.vercel.app/services/branding",
-      siteName: "Ikizen Agency",
+      siteName: "Ikizen Studio",
       type: "website",
+      images: ["/opengraph-image"],
     },
   };
 }
@@ -38,7 +39,7 @@ export default function BrandingPage() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen pt-28 pb-20 px-gutter">
         <ServiceHero
           badge="Identidad de Marca"
           title="Marcas que inspiran y conectan"

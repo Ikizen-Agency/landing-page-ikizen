@@ -39,8 +39,8 @@ export function ServiceProcess({
   return (
     <section className="max-w-4xl mx-auto mb-32 relative px-4">
       <AnimatedSection className="text-center mb-16">
-        <h2 className="text-3xl font-bold text-primary mb-4">{title}</h2>
-        <p className="text-secondary/80">{description}</p>
+        <h2 className="text-display-md font-bold mb-4">{title}</h2>
+        <p className="text-paper-dim">{description}</p>
       </AnimatedSection>
 
       <div ref={containerRef} className="relative">
@@ -56,27 +56,27 @@ export function ServiceProcess({
             >
               {/* Línea vertical que pasa por el número */}
               <div
-                className={`absolute top-0 w-0.5 h-full bg-secondary/20 ${
+                className={`absolute top-0 w-0.5 h-full bg-line ${
                   isLeft ? "left-6" : "right-6"
                 }`}
               >
                 <div
-                  className="w-full bg-primary origin-top transition-all duration-300 ease-out"
+                  className="w-full bg-amber origin-top transition-all duration-300 ease-out"
                   style={{ height: `${progress * 100}%` }}
                 />
               </div>
 
               {/* Número */}
-              <div className="flex-shrink-0 w-12 h-12 bg-primary text-dark-bg rounded-full flex items-center justify-center font-bold text-sm z-10 shadow-lg shadow-primary/20">
+              <div className="flex-shrink-0 w-12 h-12 bg-amber text-ink flex items-center justify-center font-mono font-medium text-sm z-10">
                 {index + 1}
               </div>
 
               {/* Contenido */}
-              <div className="bg-dark-bg/40 border border-secondary/20 rounded-xl p-6 max-w-sm lg:max-w-md">
-                <h3 className="text-lg font-semibold text-primary mb-2">
+              <div className="bg-ink-soft border border-line p-6 max-w-sm lg:max-w-md">
+                <h3 className="text-lg font-semibold mb-2">
                   {step.title}
                 </h3>
-                <p className="text-secondary/90 leading-relaxed">{step.desc}</p>
+                <p className="text-paper-dim leading-relaxed">{step.desc}</p>
               </div>
             </AnimatedSection>
           );

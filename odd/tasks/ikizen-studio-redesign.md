@@ -48,7 +48,7 @@ Each task runs `pnpm exec tsc --noEmit`, `pnpm lint`, `pnpm build`, and an HTTP 
 ## Tasks
 
 - [x] T1 Clean up: remove blog, popup, newsletter and dead code, redirect `/blog`, hide testimonials. Route: delegated (2+ non-trivial files). Commit: `refactor(site): remove blog, popup, newsletter and dead code`. Checks: tsc, lint, build, HTTP smoke passed. Build and smoke ran in an isolated copy to leave the dev server's `.next` untouched.
-- [ ] T2 Visual system: fonts, tokens, wordmark, favicon, OG image, rename. Route: delegated.
+- [x] T2 Visual system: fonts, tokens, wordmark, favicon, OG image, rename. Route: delegated (2+ non-trivial files). Commit: `feat(brand): add Ikizen Studio visual system and identity`. Checks: tsc, lint, HTTP smoke against the dev server, and the rename search passed; build passed in an isolated copy. Contrast measured on ink: paper-dim 8.35:1, amber 9.68:1. Exceeds the 400-line heuristic because a rebrand touches every styled file; kept as one commit since old and new tokens cannot coexist.
 - [ ] T3 Home and i18n: new sections, signature interaction, Cal.com CTA, `/en`. Route: delegated.
 - [ ] T4 Service and legal pages on the new system, in both languages. Route: delegated.
 - [ ] T5 SEO, performance, accessibility and conversion events. Route: delegated.
@@ -57,8 +57,10 @@ Each task runs `pnpm exec tsc --noEmit`, `pnpm lint`, `pnpm build`, and an HTTP 
 ## Progress
 
 - Branch `feat/ikizen-studio-redesign` created from `main`.
+- T2 notes for later tasks: default Tailwind colors and radii are cleared, so only brand tokens generate. Service pages set the OG image explicitly because a page-level `openGraph` drops the inherited file-based one. Hero, Services and service sections are only re-skinned; emoji icons and the mailto form remain for T3 and T4.
+- For T5: `StructuredData` still claims `addressCountry: ES`, `areaServed: Spain`, `foundingDate`, `numberOfEmployees` and a `/search` action that does not exist. Unverified, left unchanged.
 - Engram mirror pending: writes fail with a host session registration error.
 
 ## Next step
 
-Run T2.
+Run T3.

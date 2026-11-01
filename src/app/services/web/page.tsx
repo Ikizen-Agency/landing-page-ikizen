@@ -7,7 +7,7 @@ import { StructuredData } from "@/components/StructuredData";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Desarrollo Web | Ikizen Agency",
+    title: "Desarrollo Web",
     description: "Creamos sitios web modernos, responsivos y optimizados para conversión y rendimiento. Aplicaciones web, e-commerce y sitios corporativos.",
     keywords: [
       "desarrollo web",
@@ -18,28 +18,21 @@ export async function generateMetadata(): Promise<Metadata> {
       "diseño web responsivo",
       "Next.js",
       "React",
-      "Ikizen Agency"
+      "Ikizen Studio"
     ],
     openGraph: {
-      title: "Desarrollo Web | Ikizen Agency",
+      title: "Desarrollo Web | Ikizen Studio",
       description: "Sitios que convierten y aplicaciones que impresionan. Diseño elegante, código limpio y resultados reales.",
       url: "https://ikizen.vercel.app/services/web",
-      siteName: "Ikizen Agency",
+      siteName: "Ikizen Studio",
       type: "website",
-      images: [
-        {
-          url: "/og-image.jpg",
-          width: 1200,
-          height: 630,
-          alt: "Ikizen Agency - Desarrollo Web",
-        },
-      ],
+      images: ["/opengraph-image"],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Desarrollo Web | Ikizen Agency",
+      title: "Desarrollo Web | Ikizen Studio",
       description: "Sitios que convierten y aplicaciones que impresionan.",
-      images: ["/og-image.jpg"],
+      images: ["/opengraph-image"],
     },
   };
 }
@@ -51,7 +44,7 @@ const webServiceStructuredData = {
   "description": "Creamos sitios web modernos, responsivos y optimizados para conversión y rendimiento. Aplicaciones web, e-commerce y sitios corporativos.",
   "provider": {
     "@type": "Organization",
-    "name": "Ikizen Agency",
+    "name": "Ikizen Studio",
     "url": "https://ikizen.vercel.app"
   },
   "serviceType": "Web Development",
@@ -102,7 +95,7 @@ export default function WebDevelopmentPage() {
     <>
       <StructuredData data={webServiceStructuredData} />
       <Navbar />
-      <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen pt-28 pb-20 px-gutter">
         <ServiceHero
           badge="Desarrollo Web"
           title="Sitios que convierten y aplicaciones que impresionan"

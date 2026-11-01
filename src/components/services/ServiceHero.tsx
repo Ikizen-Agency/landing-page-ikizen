@@ -13,17 +13,17 @@ export function ServiceHero({
   return (
     <div className="max-w-4xl mx-auto mb-28 text-center">
       <AnimatedSection>
-        <span className="inline-block px-4 py-1.5 text-sm font-medium bg-primary/15 text-primary rounded-full mb-6 border border-primary/20">
+        <span className="inline-block px-3 py-1.5 font-mono text-label uppercase text-amber mb-6 border border-line">
           {badge}
         </span>
       </AnimatedSection>
       <AnimatedSection delay={100}>
-        <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6 leading-tight">
+        <h1 className="text-display-lg font-bold mb-6">
           {title}
         </h1>
       </AnimatedSection>
       <AnimatedSection delay={200}>
-        <p className="text-xl text-secondary/90 leading-relaxed max-w-3xl mx-auto">
+        <p className="text-xl text-paper-dim leading-relaxed max-w-3xl mx-auto">
           {subtitle}
         </p>
       </AnimatedSection>

@@ -1,38 +1,49 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Bricolage_Grotesque, IBM_Plex_Mono, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { StructuredData, organizationStructuredData, websiteStructuredData } from "@/components/StructuredData";
 import Script from "next/script"; // Importa el componente Script
 
+const display = Bricolage_Grotesque({
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  variable: "--font-bricolage",
+});
+
+const body = Instrument_Sans({
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  variable: "--font-instrument",
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500"],
+  display: "swap",
+  variable: "--font-plex-mono",
+});
+
+export const viewport: Viewport = {
+  themeColor: "#16120E",
+};
+
 export const metadata: Metadata = {
   title: {
-    default: "Ikizen Agency | Desarrollo Web & Identidad de Marca",
-    template: "%s | Ikizen Agency",
+    default: "Ikizen Studio | Desarrollo Web & Identidad de Marca",
+    template: "%s | Ikizen Studio",
   },
   metadataBase: new URL("https://ikizen.vercel.app"),
-  description: "Agencia de desarrollo web e identidad de marca. Creamos experiencias digitales que convierten y marcas que conectan.",
-  keywords: ["desarrollo web", "identidad de marca", "agencia digital", "diseño web", "branding", "Next.js", "React", "impulso digital"],
-  authors: [{ name: "Ikizen Agency" }],
-  creator: "Ikizen Agency",
-  publisher: "Ikizen Agency",
+  description: "Estudio de desarrollo web e identidad de marca. Creamos experiencias digitales que convierten y marcas que conectan.",
+  keywords: ["desarrollo web", "identidad de marca", "estudio digital", "diseño web", "branding", "Next.js", "React", "impulso digital"],
+  authors: [{ name: "Ikizen Studio" }],
+  creator: "Ikizen Studio",
+  publisher: "Ikizen Studio",
   openGraph: {
-    title: "Ikizen Agency | Experiencias digitales que convierten",
+    title: "Ikizen Studio | Experiencias digitales que convierten",
     description: "Creamos sitios web y marcas memorables para empresas que quieren destacar.",
     url: "https://ikizen.vercel.app",
-    siteName: "Ikizen Agency",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Ikizen Agency - Desarrollo Web & Branding",
-      },
-    ],
+    siteName: "Ikizen Studio",
     type: "website",
-  },
-  icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
   },
   manifest: "/site.webmanifest",
   robots: {
@@ -47,12 +58,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <head>
         <StructuredData data={organizationStructuredData} />
         <StructuredData data={websiteStructuredData} />
       </head>
-      <body className="bg-gray-900 text-white">
+      <body className="bg-ink text-paper font-sans antialiased">
         {children}
         
         {/* Google Analytics Scripts */}

@@ -52,10 +52,10 @@ export function Testimonials() {
       <div className="max-w-4xl mx-auto">
         {/* Título */}
         <AnimatedSection className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+          <h2 className="text-display-md font-bold mb-4">
             Lo que dicen nuestros clientes
           </h2>
-          <p className="text-secondary/80 text-lg">
+          <p className="text-paper-dim text-lg">
             Confianza, resultados y experiencias reales de marcas que crecieron con Ikizen.
           </p>
         </AnimatedSection>
@@ -80,10 +80,10 @@ export function Testimonials() {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 ${
+              className={`w-3 h-3 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-amber ${
                 index === currentIndex
-                  ? "bg-primary scale-110 shadow-lg shadow-primary/30"
-                  : "bg-secondary/40 hover:bg-secondary/60"
+                  ? "bg-amber scale-110"
+                  : "bg-paper-dim/40 hover:bg-paper-dim"
               }`}
               aria-label={`Ver testimonio ${index + 1}`}
             />
@@ -101,7 +101,7 @@ function TestimonialCard({
   testimonial: (typeof testimonials)[0];
 }) {
   return (
-    <div className="p-8 rounded-2xl bg-dark-bg/20 backdrop-blur-md border border-white/20 max-w-3xl mx-auto hover:border-primary/40 transition-all duration-300 shadow-lg shadow-black/10 flex flex-col">
+    <div className="p-8 bg-ink-soft border border-line max-w-3xl mx-auto hover:border-amber transition-colors duration-300 flex flex-col">
       {/* Avatar + Nombre + Cargo */}
       <div className="flex items-center gap-4 mb-5">
         <Image
@@ -109,11 +109,11 @@ function TestimonialCard({
           alt={`Foto de ${testimonial.author}`}
           width={48}
           height={48}
-          className="w-12 h-12 rounded-full object-cover border border-secondary/30"
+          className="w-12 h-12 rounded-full object-cover border border-line"
         />
         <div className="text-left">
-          <div className="font-semibold text-primary">{testimonial.author}</div>
-          <div className="text-secondary/70 text-sm">{testimonial.role}</div>
+          <div className="font-semibold text-amber">{testimonial.author}</div>
+          <div className="text-paper-dim text-sm">{testimonial.role}</div>
         </div>
       </div>
 
@@ -122,7 +122,7 @@ function TestimonialCard({
         {[...Array(5)].map((_, i) => (
           <span
             key={i}
-            className={`text-lg mx-0.5 ${i < testimonial.rating ? 'text-secondary' : 'text-secondary/40'}`}
+            className={`text-lg mx-0.5 ${i < testimonial.rating ? 'text-amber' : 'text-paper-dim'}`}
           >
             ★
           </span>
@@ -130,7 +130,7 @@ function TestimonialCard({
       </div>
 
       {/* Cita */}
-      <blockquote className="text-secondary/90 text-lg leading-relaxed mb-6 flex-grow italic">
+      <blockquote className="text-paper-dim text-lg leading-relaxed mb-6 flex-grow italic">
         &ldquo;{testimonial.quote}&rdquo;
       </blockquote>
     </div>
