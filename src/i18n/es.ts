@@ -8,13 +8,14 @@ const home = routes.home.es;
 export const es: Dictionary = {
   locale: "es",
   meta: {
-    title: "Ikizen Studio | Desarrollo Web & Identidad de Marca",
-    description: "Ikizen Studio diseña y desarrolla webs y marcas con propósito, y las pule paso a paso.",
-    keywords: ["desarrollo web", "identidad de marca", "estudio digital", "diseño web", "branding", "Next.js", "React"],
-    ogTitle: "Ikizen Studio | Razón de ser. Mejora continua.",
-    ogDescription: "Webs y marcas con propósito, mejoradas paso a paso.",
-    ogImageAlt: "Ikizen Studio: desarrollo web e identidad de marca",
-    ogTagline: "Webs y marcas con propósito, mejoradas paso a paso.",
+    title: "Diseño y desarrollo web e identidad de marca | Ikizen Studio",
+    description:
+      "Ikizen Studio: estudio de diseño y desarrollo web e identidad de marca para negocios de todo el mundo. Webs y marcas con propósito, mejoradas paso a paso.",
+    keywords: ["diseño web", "desarrollo web", "identidad de marca", "estudio de diseño web", "branding"],
+    ogTitle: "Ikizen Studio: diseño y desarrollo web e identidad de marca",
+    ogDescription: "Webs y marcas con propósito para negocios de todo el mundo, mejoradas paso a paso.",
+    ogImageAlt: "Ikizen Studio: diseño y desarrollo web e identidad de marca",
+    ogTagline: "Diseño y desarrollo web e identidad de marca, mejorados paso a paso.",
   },
   nav: {
     homeHref: home,
@@ -32,7 +33,7 @@ export const es: Dictionary = {
   },
   hero: {
     titleLines: ["Razón de ser.", "Mejora continua."],
-    support: "Ikizen Studio diseña y desarrolla webs y marcas con propósito, y las pule paso a paso.",
+    descriptor: "Estudio de diseño y desarrollo web e identidad de marca para negocios de todo el mundo.",
     whatsappCta: "o escríbenos por WhatsApp",
     captions: {
       ikigai: "ikigai — razón de ser",
@@ -41,13 +42,13 @@ export const es: Dictionary = {
   },
   services: {
     eyebrow: "Qué hacemos",
-    title: "Dos oficios, un mismo cuidado.",
+    title: "Diseño web, desarrollo web e identidad de marca, con el mismo cuidado.",
     blocks: [
       {
-        title: "Desarrollo web",
-        summary: "Sitios y aplicaciones modernas y responsivas, con código limpio y atención al rendimiento y al SEO.",
+        title: "Diseño y desarrollo web",
+        summary: "Diseñamos y programamos sitios y aplicaciones modernas y responsivas, con código limpio y atención al rendimiento y al SEO.",
         offerings: ["Sitios corporativos", "Aplicaciones web", "Tiendas online", "Rediseño de sitios"],
-        linkLabel: "Ver desarrollo web",
+        linkLabel: "Ver diseño y desarrollo web",
         href: routes.web.es,
       },
       {
@@ -61,7 +62,7 @@ export const es: Dictionary = {
   },
   projects: {
     eyebrow: "Proyectos",
-    title: "Cada proyecto, su razón de ser.",
+    title: "Nuestros proyectos, cada uno con su razón de ser.",
     ribbonLabel: "Proyectos, recorrido horizontal",
     previousLabel: "Proyecto anterior",
     nextLabel: "Proyecto siguiente",
@@ -69,7 +70,7 @@ export const es: Dictionary = {
   },
   process: {
     eyebrow: "Cómo trabajamos",
-    title: "Cinco pasos, y el último no se acaba.",
+    title: "Nuestro proceso: cinco pasos, y el último no se acaba.",
     steps: [
       {
         title: "Descubrimiento",
@@ -94,9 +95,9 @@ export const es: Dictionary = {
     ],
   },
   closing: {
-    eyebrow: "Agenda",
+    eyebrow: "Agenda una llamada",
     title: "Empecemos por tu razón de ser.",
-    support: "Treinta minutos para conocer tu proyecto y ver por dónde empezar.",
+    support: "Treinta minutos para conocer tu proyecto de web o de marca y ver por dónde empezar.",
     whatsappAlternative: "¿Prefieres escribir? Hablemos por WhatsApp",
   },
   booking: {
@@ -111,7 +112,7 @@ export const es: Dictionary = {
     legalTitle: "Legal",
     contactTitle: "Contacto",
     services: [
-      { label: "Desarrollo web", href: routes.web.es },
+      { label: "Diseño y desarrollo web", href: routes.web.es },
       { label: "Identidad de marca", href: routes.branding.es },
     ],
     legal: [
@@ -137,10 +138,11 @@ export const es: Dictionary = {
   pages: {
     web: {
       meta: {
-        title: "Desarrollo web",
+        title: "Diseño y desarrollo web para tu negocio",
         description:
-          "Sitios corporativos, aplicaciones web, tiendas online y rediseños con código limpio y atención al rendimiento y al SEO.",
+          "Diseñamos y desarrollamos sitios corporativos, aplicaciones web y tiendas online con código limpio, atención al SEO y soporte después del lanzamiento.",
         keywords: [
+          "diseño web",
           "desarrollo web",
           "sitios web corporativos",
           "aplicaciones web",
@@ -150,33 +152,79 @@ export const es: Dictionary = {
           "React",
         ],
       },
-      serviceType: "Web Development",
+      serviceType: "Web Design and Development",
       hero: {
-        eyebrow: "Desarrollo web",
-        title: "Una web rápida, clara y tuya.",
+        eyebrow: "Para negocios de todo el mundo",
+        title: "Diseño y desarrollo web: un sitio rápido, claro y tuyo.",
         support:
           "Diseñamos y programamos sitios, aplicaciones y tiendas con código limpio, atención al rendimiento y al SEO, y margen para crecer contigo.",
       },
+      audience: {
+        eyebrow: "Para quién es",
+        title: "Para negocios con una web por hacer o por renovar.",
+        items: [
+          "Negocios sin web que quieren una presencia moderna y confiable.",
+          "Empresas con una web antigua que necesitan tecnología actual sin perder su identidad.",
+          "Negocios que quieren vender online con un recorrido de compra sin tropiezos.",
+          "Equipos que necesitan una aplicación web con funciones avanzadas y fácil de usar.",
+        ],
+      },
       offerings: {
         eyebrow: "Qué hacemos",
-        title: "Lo que construimos.",
+        title: "Sitios, aplicaciones, tiendas y rediseños.",
+        includesLabel: "Incluye",
         items: [
           {
             title: "Sitios corporativos",
             description: "Modernos y responsivos, pensados para generar confianza y traerte contactos.",
+            includes: [
+              "Diseño moderno y responsivo",
+              "Arquitectura clara de las páginas",
+              "Atención al rendimiento y al SEO",
+              "Un camino directo para que te contacten",
+            ],
           },
           {
             title: "Aplicaciones web",
             description: "Funciones avanzadas con buen rendimiento y una experiencia fácil de usar.",
+            includes: [
+              "Wireframes y arquitectura antes de programar",
+              "Funciones avanzadas con buen rendimiento",
+              "Una interfaz fácil de usar",
+              "Código limpio con margen para crecer",
+            ],
           },
           {
             title: "Tiendas online",
             description: "Listas para vender, con pasarelas de pago y un recorrido de compra sin tropiezos.",
+            includes: [
+              "Pasarelas de pago",
+              "Recorrido de compra sin tropiezos",
+              "Diseño responsivo",
+              "Atención al rendimiento y al SEO",
+            ],
           },
           {
             title: "Rediseño de sitios",
             description: "Renovamos tu web antigua con tecnología actual, sin perder tu identidad.",
+            includes: [
+              "Tecnología actual en lugar de la web antigua",
+              "Tu identidad se conserva",
+              "Arquitectura revisada y diseño responsivo",
+              "Atención al rendimiento y al SEO",
+            ],
           },
+        ],
+      },
+      deliverables: {
+        eyebrow: "Qué recibes",
+        title: "Tu web publicada, y soporte después del lanzamiento.",
+        items: [
+          "Wireframes, arquitectura y cronograma antes de programar.",
+          "Un diseño moderno y responsivo para tu negocio.",
+          "Código limpio y moderno, con atención al rendimiento y al SEO.",
+          "Pruebas antes del lanzamiento y seguimiento después.",
+          "Soporte, actualizaciones y mejoras con la web ya publicada.",
         ],
       },
       process: {
@@ -196,9 +244,9 @@ export const es: Dictionary = {
     },
     branding: {
       meta: {
-        title: "Identidad de marca",
+        title: "Identidad de marca: logotipo, naming y manual",
         description:
-          "Logotipos, sistemas de identidad, naming y manuales de marca para que tu marca sea coherente en todos los canales.",
+          "Logotipos, sistemas de identidad, naming y manuales para negocios de todo el mundo: una marca coherente en todos los canales, con soporte tras la entrega.",
         keywords: [
           "identidad de marca",
           "diseño de marca",
@@ -210,31 +258,72 @@ export const es: Dictionary = {
       },
       serviceType: "Brand Identity Design",
       hero: {
-        eyebrow: "Identidad de marca",
-        title: "Tu marca, reconocible en cualquier canal.",
+        eyebrow: "Para negocios de todo el mundo",
+        title: "Identidad de marca reconocible en cualquier canal.",
         support:
           "Diseñamos identidades que reflejan quién eres y generan confianza desde el primer contacto: logotipo, paleta, tipografía y guías de estilo.",
       },
+      audience: {
+        eyebrow: "Para quién es",
+        title: "Para marcas nuevas y marcas por ordenar.",
+        items: [
+          "Negocios nuevos que necesitan nombre, logotipo e identidad desde el primer contacto.",
+          "Marcas que se ven distintas en cada canal y quieren recuperar la coherencia.",
+          "Empresas que trabajan con terceros y necesitan reglas claras para usar su marca.",
+        ],
+      },
       offerings: {
         eyebrow: "Qué hacemos",
-        title: "Lo que creamos para tu marca.",
+        title: "Logotipo, sistema visual, naming y manual de marca.",
+        includesLabel: "Incluye",
         items: [
           {
             title: "Logotipos estratégicos",
             description: "Diseños únicos que comunican tu personalidad y siguen vigentes con el tiempo.",
+            includes: [
+              "Direcciones de estilo, moodboards y bocetos",
+              "Logotipo probado en contextos reales",
+              "Ajustes contigo hasta la versión final",
+            ],
           },
           {
             title: "Sistemas de identidad",
             description: "Paletas, tipografías, iconografía y guías de estilo para mantener la coherencia en todos los canales.",
+            includes: [
+              "Paleta de color",
+              "Tipografías",
+              "Iconografía",
+              "Guías de estilo",
+            ],
           },
           {
             title: "Naming",
             description: "Nombres que reflejan tu propósito y se recuerdan con facilidad.",
+            includes: [
+              "Análisis de tu negocio, tus valores, tu audiencia y tu competencia",
+              "Propuestas de nombre alineadas con tu propósito",
+            ],
           },
           {
             title: "Manuales de marca",
             description: "Documentación clara para que tu marca se mantenga intacta en manos de terceros.",
+            includes: [
+              "Uso del logotipo, la paleta y la tipografía",
+              "Ejemplos de aplicación en contextos reales",
+              "Guía completa de uso",
+            ],
           },
+        ],
+      },
+      deliverables: {
+        eyebrow: "Qué recibes",
+        title: "Todos tus archivos, y soporte después de la entrega.",
+        items: [
+          "Moodboards, bocetos y direcciones de estilo para elegir el camino contigo.",
+          "Logotipo, paleta y tipografía aplicados en contextos reales.",
+          "Ajustes contigo hasta dar con la versión final.",
+          "Todos los archivos y formatos, con una guía completa de uso.",
+          "Soporte y mejoras después de la entrega.",
         ],
       },
       process: {

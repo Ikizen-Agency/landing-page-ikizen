@@ -8,13 +8,14 @@ const home = routes.home.en;
 export const en: Dictionary = {
   locale: "en",
   meta: {
-    title: "Ikizen Studio | Web Development & Brand Identity",
-    description: "Ikizen Studio designs and builds websites and brands with a clear purpose, then keeps refining them.",
-    keywords: ["web development", "brand identity", "digital studio", "web design", "branding", "Next.js", "React"],
-    ogTitle: "Ikizen Studio | Purpose first. Better every pass.",
-    ogDescription: "Websites and brands with a clear purpose, refined step by step.",
-    ogImageAlt: "Ikizen Studio: web development and brand identity",
-    ogTagline: "Websites and brands with a clear purpose, refined step by step.",
+    title: "Web Design, Web Development & Brand Identity | Ikizen Studio",
+    description:
+      "Ikizen Studio: a web design, web development and brand identity studio for businesses worldwide. Sites and brands with purpose, refined step by step.",
+    keywords: ["web design", "web development", "brand identity", "web design studio", "branding"],
+    ogTitle: "Ikizen Studio: web design, web development and brand identity",
+    ogDescription: "Websites and brands with a clear purpose for businesses worldwide, refined step by step.",
+    ogImageAlt: "Ikizen Studio: web design, web development and brand identity",
+    ogTagline: "Web design, web development and brand identity, refined step by step.",
   },
   nav: {
     homeHref: home,
@@ -32,7 +33,7 @@ export const en: Dictionary = {
   },
   hero: {
     titleLines: ["Purpose first.", "Better every pass."],
-    support: "Ikizen Studio designs and builds websites and brands with a clear purpose, then keeps refining them.",
+    descriptor: "A web design, web development and brand identity studio for businesses worldwide.",
     whatsappCta: "or message us on WhatsApp",
     captions: {
       ikigai: "ikigai — reason for being",
@@ -41,13 +42,13 @@ export const en: Dictionary = {
   },
   services: {
     eyebrow: "What we do",
-    title: "Two crafts, the same care.",
+    title: "Web design, web development and brand identity, with the same care.",
     blocks: [
       {
-        title: "Web development",
-        summary: "Modern, responsive sites and apps with clean code and close attention to performance and SEO.",
+        title: "Web design and development",
+        summary: "We design and build modern, responsive sites and apps with clean code and close attention to performance and SEO.",
         offerings: ["Company websites", "Web applications", "Online stores", "Website redesigns"],
-        linkLabel: "See web development",
+        linkLabel: "See web design and development",
         href: routes.web.en,
       },
       {
@@ -61,7 +62,7 @@ export const en: Dictionary = {
   },
   projects: {
     eyebrow: "Projects",
-    title: "Every project, its reason for being.",
+    title: "Our projects, each with its reason for being.",
     ribbonLabel: "Projects, horizontal flow",
     previousLabel: "Previous project",
     nextLabel: "Next project",
@@ -69,7 +70,7 @@ export const en: Dictionary = {
   },
   process: {
     eyebrow: "How we work",
-    title: "Five steps, and the last one never ends.",
+    title: "Our process: five steps, and the last one never ends.",
     steps: [
       {
         title: "Discovery",
@@ -96,7 +97,7 @@ export const en: Dictionary = {
   closing: {
     eyebrow: "Book a call",
     title: "Let's start with your reason for being.",
-    support: "Thirty minutes to hear about your project and work out where to begin.",
+    support: "Thirty minutes to hear about your website or brand project and work out where to begin.",
     whatsappAlternative: "Rather write? Message us on WhatsApp",
   },
   booking: {
@@ -111,7 +112,7 @@ export const en: Dictionary = {
     legalTitle: "Legal",
     contactTitle: "Contact",
     services: [
-      { label: "Web development", href: routes.web.en },
+      { label: "Web design and development", href: routes.web.en },
       { label: "Brand identity", href: routes.branding.en },
     ],
     legal: [
@@ -137,10 +138,11 @@ export const en: Dictionary = {
   pages: {
     web: {
       meta: {
-        title: "Web development",
+        title: "Web Design and Development for Your Business",
         description:
-          "Company websites, web applications, online stores and redesigns, built with clean code and close attention to performance and SEO.",
+          "We design and build company websites, web applications and online stores with clean code, close attention to performance and SEO, and support after launch.",
         keywords: [
+          "web design",
           "web development",
           "company websites",
           "web applications",
@@ -150,33 +152,79 @@ export const en: Dictionary = {
           "React",
         ],
       },
-      serviceType: "Web Development",
+      serviceType: "Web Design and Development",
       hero: {
-        eyebrow: "Web development",
-        title: "A fast, clear website of your own.",
+        eyebrow: "For businesses worldwide",
+        title: "Web design and development: a fast, clear site of your own.",
         support:
           "We design and build sites, apps and stores with clean code, close attention to performance and SEO, and room to grow with you.",
       },
+      audience: {
+        eyebrow: "Who it is for",
+        title: "For businesses with a website to build or renew.",
+        items: [
+          "Businesses with no website yet that want a modern, trustworthy presence.",
+          "Companies with an old site that need current technology without losing their identity.",
+          "Businesses that want to sell online with a smooth path to checkout.",
+          "Teams that need a web application with advanced features that stays easy to use.",
+        ],
+      },
       offerings: {
         eyebrow: "What we do",
-        title: "What we build.",
+        title: "Websites, apps, online stores and redesigns.",
+        includesLabel: "Includes",
         items: [
           {
             title: "Company websites",
             description: "Modern and responsive, designed to earn trust and bring in inquiries.",
+            includes: [
+              "Modern, responsive design",
+              "A clear page architecture",
+              "Close attention to performance and SEO",
+              "A direct way for people to contact you",
+            ],
           },
           {
             title: "Web applications",
             description: "Advanced features with solid performance and an experience people find easy to use.",
+            includes: [
+              "Wireframes and architecture before any code",
+              "Advanced features with solid performance",
+              "An interface that is easy to use",
+              "Clean code with room to grow",
+            ],
           },
           {
             title: "Online stores",
             description: "Ready to sell, with payment gateways and a smooth path to checkout.",
+            includes: [
+              "Payment gateways",
+              "A smooth path to checkout",
+              "Responsive design",
+              "Close attention to performance and SEO",
+            ],
           },
           {
             title: "Website redesigns",
             description: "We rebuild your old site on current technology without losing your identity.",
+            includes: [
+              "Current technology in place of the old site",
+              "Your identity stays intact",
+              "A revised architecture and responsive design",
+              "Close attention to performance and SEO",
+            ],
           },
+        ],
+      },
+      deliverables: {
+        eyebrow: "What you get",
+        title: "Your site live, and support after launch.",
+        items: [
+          "Wireframes, the architecture and the schedule before any code.",
+          "A modern, responsive design for your business.",
+          "Clean, modern code with close attention to performance and SEO.",
+          "Testing before launch and follow-up after it.",
+          "Support, updates and improvements once the site is live.",
         ],
       },
       process: {
@@ -196,9 +244,9 @@ export const en: Dictionary = {
     },
     branding: {
       meta: {
-        title: "Brand identity",
+        title: "Brand Identity: Logos, Naming and Guidelines",
         description:
-          "Logos, identity systems, naming and brand guidelines that keep your brand consistent on every channel.",
+          "Logos, identity systems, naming and brand guidelines for businesses worldwide: a brand that stays consistent on every channel, with support after delivery.",
         keywords: [
           "brand identity",
           "brand design",
@@ -210,31 +258,72 @@ export const en: Dictionary = {
       },
       serviceType: "Brand Identity Design",
       hero: {
-        eyebrow: "Brand identity",
-        title: "Your brand, recognizable on any channel.",
+        eyebrow: "For businesses worldwide",
+        title: "Brand identity, recognizable on any channel.",
         support:
           "We design identities that reflect who you are and build trust from first contact: logo, palette, type and style guides.",
       },
+      audience: {
+        eyebrow: "Who it is for",
+        title: "For new brands and brands in need of order.",
+        items: [
+          "New businesses that need a name, a logo and an identity from first contact.",
+          "Brands that look different on every channel and want that consistency back.",
+          "Companies that work with third parties and need clear rules for using their brand.",
+        ],
+      },
       offerings: {
         eyebrow: "What we do",
-        title: "What we make for your brand.",
+        title: "Logo, identity system, naming and brand guidelines.",
+        includesLabel: "Includes",
         items: [
           {
             title: "Strategic logos",
             description: "Distinctive designs that convey your personality and hold up over time.",
+            includes: [
+              "Style directions, moodboards and sketches",
+              "A logo tried in real contexts",
+              "Adjustments with you up to the final version",
+            ],
           },
           {
             title: "Identity systems",
             description: "Palettes, typefaces, iconography and style guides that keep every channel consistent.",
+            includes: [
+              "Color palette",
+              "Typefaces",
+              "Iconography",
+              "Style guides",
+            ],
           },
           {
             title: "Naming",
             description: "Names that reflect your purpose and are easy to remember.",
+            includes: [
+              "A study of your business, values, audience and competition",
+              "Name proposals aligned with your purpose",
+            ],
           },
           {
             title: "Brand guidelines",
             description: "Clear documentation that keeps your brand intact in other people's hands.",
+            includes: [
+              "How to use the logo, palette and type",
+              "Examples of use in real contexts",
+              "A complete usage guide",
+            ],
           },
+        ],
+      },
+      deliverables: {
+        eyebrow: "What you get",
+        title: "All your files, and support after delivery.",
+        items: [
+          "Moodboards, sketches and style directions to choose the path with you.",
+          "A logo, palette and type applied in real contexts.",
+          "Adjustments with you until we reach the final version.",
+          "All the files and formats, with a complete usage guide.",
+          "Support and improvements after delivery.",
         ],
       },
       process: {

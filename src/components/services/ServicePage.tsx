@@ -8,7 +8,27 @@ import { buttonVariants } from "@/components/ui/button";
 import { getDictionary, routes, SITE_URL, type Locale } from "@/i18n";
 import { trackAttrs } from "@/lib/analytics";
 import { BOOKING_URL } from "@/lib/booking";
-import type { ServicePageCopy } from "@/i18n/types";
+import type { ServiceListCopy, ServicePageCopy } from "@/i18n/types";
+
+function ServiceList({ list }: { list: ServiceListCopy }) {
+  return (
+    <section className="px-gutter pb-section">
+      <div className="mx-auto grid max-w-site gap-10 lg:grid-cols-12 lg:gap-8">
+        <div className="lg:col-span-6">
+          <p className="font-mono text-label uppercase text-amber">{list.eyebrow}</p>
+          <h2 className="mt-4 text-display-md font-bold">{list.title}</h2>
+        </div>
+        <ul className="border-b lg:col-span-6">
+          {list.items.map((item) => (
+            <li key={item} className="border-t py-5 text-lg text-paper-dim">
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
 
 function serviceStructuredData(copy: ServicePageCopy, url: string) {
   return {
@@ -66,6 +86,8 @@ export function ServicePage({ locale, service }: { locale: Locale; service: "web
           </div>
         </section>
 
+        <ServiceList list={copy.audience} />
+
         <section className="px-gutter pb-section">
           <div className="mx-auto max-w-site">
             <p className="font-mono text-label uppercase text-amber">{copy.offerings.eyebrow}</p>
@@ -75,12 +97,22 @@ export function ServicePage({ locale, service }: { locale: Locale; service: "web
               {copy.offerings.items.map((item) => (
                 <li key={item.title} className="grid gap-3 border-t py-8 lg:grid-cols-12 lg:gap-8 lg:py-10">
                   <h3 className="text-display-md font-bold lg:col-span-7">{item.title}</h3>
-                  <p className="text-lg text-paper-dim lg:col-span-5">{item.description}</p>
+                  <div className="lg:col-span-5">
+                    <p className="text-lg text-paper-dim">{item.description}</p>
+                    <p className="mt-6 font-mono text-label uppercase text-amber">{copy.offerings.includesLabel}</p>
+                    <ul className="mt-3 space-y-2 font-mono text-sm text-paper">
+                      {item.includes.map((entry) => (
+                        <li key={entry}>{entry}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </li>
               ))}
             </ul>
           </div>
         </section>
+
+        <ServiceList list={copy.deliverables} />
 
         <Process process={copy.process} />
         <Closing dict={dict} />

@@ -93,6 +93,12 @@ export function buildRootMetadata(dict: Dictionary): Metadata {
       type: "website",
       images: [ogImage(locale)],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.ogTitle,
+      description: meta.ogDescription,
+      images: [ogImage(locale)],
+    },
     manifest: "/site.webmanifest",
     robots: {
       index: true,

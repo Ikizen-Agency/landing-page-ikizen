@@ -33,7 +33,13 @@ export type PageMeta = {
   keywords?: string[];
 };
 
-export type ServiceOffering = { title: string; description: string };
+export type ServiceOffering = { title: string; description: string; includes: string[] };
+
+export type ServiceListCopy = {
+  eyebrow: string;
+  title: string;
+  items: string[];
+};
 
 export type ServicePageCopy = {
   meta: PageMeta;
@@ -44,11 +50,14 @@ export type ServicePageCopy = {
     title: string;
     support: string;
   };
+  audience: ServiceListCopy;
   offerings: {
     eyebrow: string;
     title: string;
+    includesLabel: string;
     items: ServiceOffering[];
   };
+  deliverables: ServiceListCopy;
   process: ProcessCopy;
 };
 
@@ -89,7 +98,8 @@ export type Dictionary = {
   };
   hero: {
     titleLines: [string, string];
-    support: string;
+    /** Says plainly what the studio does, under the concept headline. */
+    descriptor: string;
     whatsappCta: string;
     captions: { ikigai: string; kaizen: string };
   };
