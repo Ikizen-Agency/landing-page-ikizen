@@ -15,6 +15,8 @@ The site lives at `https://ikizen.vercel.app` until a custom domain exists. `SIT
 ### Metadata
 
 - [x] `metadataBase`, title template, description and canonical on every page
+- [x] Home and service pages have unique titles near 60 characters and descriptions near 155, in Spanish and English, aimed at web design, web development and brand identity searches
+- [x] The audience is international first, with Cuba as one served market and no location claim
 - [x] `hreflang` alternates with `x-default` on every page
 - [x] Open Graph and Twitter tags with absolute URLs, one image per language at `/og/es` and `/og/en`
 - [x] `site.webmanifest`, SVG favicon and Apple icon

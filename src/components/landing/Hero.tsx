@@ -38,7 +38,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
             <span className="block">{hero.titleLines[0]}</span> <span className="block">{hero.titleLines[1]}</span>
           </h1>
           <div className="space-y-5">
-            <p className="max-w-xl text-lg text-paper-dim">{hero.support}</p>
+            <p className="max-w-xl text-lg text-paper">{hero.descriptor}</p>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
               <BookingLink dict={dict} location="hero" className={buttonVariants({ size: "lg" })} />
               {BOOKING_URL && (
