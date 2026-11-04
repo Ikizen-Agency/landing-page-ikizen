@@ -56,6 +56,16 @@ Two projects still link to their GitHub repositories. To replace them:
 
 The link label follows the URL: anything outside `github.com` reads "View project". Remove the `TODO` above the list when both are done.
 
+### Show a video on a project
+
+Add `video` to the project in `src/i18n/projects.ts`, with `src`, `poster` and a `label` per locale. It takes priority over `image`, and the panel takes the video's 16:9 shape. Keep the master file and serve a smaller copy, with no audio track:
+
+```bash
+ffmpeg -i master.mp4 -vf "scale=1280:-2:flags=lanczos,format=yuv420p" -c:v libx264 -preset veryslow -b:v 530k -maxrate 1100k -bufsize 2200k -g 90 -an -movflags +faststart web.mp4
+```
+
+Use two passes (`-pass 1`, then `-pass 2`) to land near the target size.
+
 ### Track a new link
 
 Spread `trackAttrs` on the link, in server components too:

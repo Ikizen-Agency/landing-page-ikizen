@@ -7,6 +7,8 @@ type Project = {
   type: Localized;
   purpose: Localized;
   href: string;
+  /** Takes priority over `image`. Local paths, with `label` as the video's accessible name. */
+  video?: { src: string; poster: string; label: Localized };
   /** A local path. Remote hosts must be allowed in `next.config`. Without one, the typographic panel shows. */
   image?: { src: string; alt: Localized };
 };
@@ -26,6 +28,14 @@ const PROJECTS: Project[] = [
       en: "An operations platform for service studios: clients, sales, what is owed and who works on what, all in one place.",
     },
     href: "https://github.com/Ikizen-Agency/ikizen-flow",
+    video: {
+      src: "/assets/portfolio/ikizen-flow-showcase-web.mp4",
+      poster: "/assets/portfolio/ikizen-flow-showcase-poster.webp",
+      label: {
+        es: "Recorrido en video por Ikizen Flow: panel, tareas, facturas y búsqueda.",
+        en: "Video tour of Ikizen Flow: dashboard, tasks, invoices and search.",
+      },
+    },
   },
   {
     name: "Gloria Díaz Portfolio",
@@ -49,12 +59,13 @@ function linkLabel(href: string, locale: Locale) {
 }
 
 export function getProjectStops(locale: Locale): ProjectStop[] {
-  return PROJECTS.map(({ name, type, purpose, href, image }) => ({
+  return PROJECTS.map(({ name, type, purpose, href, video, image }) => ({
     name,
     type: type[locale],
     purpose: purpose[locale],
     href,
     linkLabel: linkLabel(href, locale),
+    video: video && { src: video.src, poster: video.poster, label: video.label[locale] },
     image: image && { src: image.src, alt: image.alt[locale] },
   }));
 }

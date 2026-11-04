@@ -16,6 +16,7 @@ export type ProjectStop = {
   purpose: string;
   href: string;
   linkLabel: string;
+  video?: { src: string; poster: string; label: string };
   image?: { src: string; alt: string };
 };
 

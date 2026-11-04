@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { ProjectVideo } from "@/components/landing/ProjectVideo";
 import { ProjectsRibbon } from "@/components/landing/ProjectsRibbon";
 import type { Dictionary } from "@/i18n";
 import { trackAttrs } from "@/lib/analytics";
@@ -32,11 +33,18 @@ export function Projects({ projects }: { projects: Dictionary["projects"] }) {
           <li key={stop.href} className="ribbon-stop">
             <ThreadNode />
 
-            <div className="relative mt-6 flex aspect-square items-end overflow-hidden border bg-ink-soft p-5 sm:aspect-[2/1] md:p-10">
+            <div
+              className={`relative mt-6 flex items-end overflow-hidden border bg-ink-soft p-5 md:p-10 ${
+                // The video's own shape: its captions run edge to edge, so a crop would cut them.
+                stop.video ? "aspect-video" : "aspect-square sm:aspect-[2/1]"
+              }`}
+            >
               <span aria-hidden="true" className="absolute right-5 top-5 font-mono text-label text-paper-dim md:right-10 md:top-10">
                 {index + 1}/{stops.length}
               </span>
-              {stop.image ? (
+              {stop.video ? (
+                <ProjectVideo {...stop.video} />
+              ) : stop.image ? (
                 <Image
                   src={stop.image.src}
                   alt={stop.image.alt}
@@ -49,7 +57,7 @@ export function Projects({ projects }: { projects: Dictionary["projects"] }) {
               )}
             </div>
 
-            {stop.image && <h3 className="mt-5 text-2xl font-bold">{stop.name}</h3>}
+            {(stop.video || stop.image) && <h3 className="mt-5 text-2xl font-bold">{stop.name}</h3>}
             <p className="mt-5 font-mono text-label uppercase text-amber">{stop.type}</p>
             <p className="mt-3 max-w-xl text-lg text-paper-dim">{stop.purpose}</p>
             <a
