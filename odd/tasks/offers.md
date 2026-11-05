@@ -60,6 +60,8 @@ A package aimed at one client type, with its process, price, payment terms and s
 
 - [x] T9 Shorter home title for search results. Route: inline. ES "Diseño web y de marca que impulsa tu negocio | Ikizen Studio" (60 characters), EN "Web Design & Branding That Grows Your Business | Ikizen Studio" (62), so Google no longer cuts the brand. Commit: `feat(seo): shorten the home title for search results`. Checks: tsc and lint passed. T8 was reviewed with one reliability lens, consent granted, approved and acknowledged with one non-blocking suggestion on `OfferPrice.tsx`.
 
+- [x] T10 Second client walkthrough, point 5. Route: inline. The booking CTA reads "30 min gratis" / "Free 30 min", so the free call shows from the nav and hero; "Agenda gratis 30 min" was tried first and pushed the mobile menu button off screen at 360px (341-377), so the label stays as short as before. Ownership says the source code is included, on the offer page and the home card. Commit: `feat(copy): say the call is free and the source code is included`. Checks: tsc and lint passed; dev server with `NEXT_PUBLIC_CAL_LINK` set: no overflow and the menu button at 307-343 at 360px on `/` and `/en`, as in production; at 320px it ends at 322 and 314, against 336 in production before.
+
 ## Progress
 
 - Branch `feat/offers` created from `main`. RDD is on (global).

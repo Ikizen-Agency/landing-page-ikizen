@@ -87,7 +87,7 @@ export const en: Dictionary = {
     whatsappAlternative: "Rather write? Message us on WhatsApp",
   },
   booking: {
-    cta: "Book 30 min",
+    cta: "Free 30 min",
     fallbackCta: "Book on WhatsApp",
     opensInNewTab: "opens in a new tab",
   },
