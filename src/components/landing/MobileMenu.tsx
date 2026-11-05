@@ -78,7 +78,7 @@ export function MobileMenu({
               aria-label={nav.switcher.ariaLabel}
               {...trackAttrs("language_switch", { from: locale, to: nav.switcher.lang })}
               onClick={close}
-              className="py-2 font-mono text-sm text-paper-dim transition-colors duration-200 hover:text-amber"
+              className="py-3 font-mono text-sm text-paper-dim transition-colors duration-200 hover:text-amber"
             >
               {nav.switcher.label}
             </Link>

@@ -103,6 +103,21 @@
 }
 
 /*
+ * Grows the touch target to 44px without moving anything: the invisible box is centered
+ * on the element and only extends past it on the sides where it is smaller.
+ */
+@utility hit-area {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset-block: min(0px, calc((100% - 2.75rem) / 2));
+    inset-inline: min(0px, calc((100% - 2.75rem) / 2));
+  }
+}
+
+/*
  * Hero signature: IKI(gai) + (kai)ZEN = IKIZEN.
  * The layout is the final word and --progress 0 offsets it back to the two source
  * words, so no-JS and reduced-motion visitors simply get the finished composition.

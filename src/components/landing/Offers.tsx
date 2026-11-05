@@ -45,7 +45,7 @@ function OfferCard({ card, dict, wide }: OffersProps & { card: OfferCardData; wi
             offer={card.slug}
             label={card.cta.label}
             fallbackLabel={card.cta.fallbackLabel}
-            className="inline-flex items-center gap-1.5 text-sm text-paper underline underline-offset-4 transition-colors duration-200 hover:text-amber"
+            className="hit-area inline-flex items-center gap-1.5 text-sm text-paper underline underline-offset-4 transition-colors duration-200 hover:text-amber"
           />
         </div>
       </div>

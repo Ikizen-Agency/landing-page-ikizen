@@ -248,7 +248,7 @@ export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
             <p className="mt-10 font-mono text-label uppercase">{closing.signoff}</p>
             <p className="mt-4 max-w-prose">
               {closing.note}{" "}
-              <Link href={`${routes.home[locale]}#projects`} className="font-semibold underline underline-offset-4">
+              <Link href={`${routes.home[locale]}#projects`} className="hit-area font-semibold underline underline-offset-4">
                 {closing.noteLinkLabel}
               </Link>
               .

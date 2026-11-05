@@ -8,14 +8,17 @@ import { trackAttrs } from "@/lib/analytics";
 
 const linkClass = "transition-colors duration-200 hover:text-amber";
 
+/** Below lg the links are touch targets, so each gets a 44px row; desktop keeps the tight list. */
+const listLinkClass = `inline-block min-w-11 py-3 lg:py-0 ${linkClass}`;
+
 function FooterColumn({ title, links }: { title: string; links: NavLink[] }) {
   return (
     <div>
       <h2 className="font-mono text-label uppercase text-paper-dim">{title}</h2>
-      <ul className="mt-4 space-y-2">
+      <ul className="mt-1 lg:mt-4 lg:space-y-2">
         {links.map((link) => (
           <li key={link.href}>
-            <Link href={link.href} className={linkClass}>
+            <Link href={link.href} className={listLinkClass}>
               {link.label}
             </Link>
           </li>
@@ -34,7 +37,7 @@ export function Footer({ locale = "es" }: { locale?: Locale }) {
       <div className="mx-auto max-w-site">
         <div className="grid grid-cols-2 gap-10 lg:grid-cols-6">
           <div className="col-span-2">
-            <Link href={nav.homeHref} className={`inline-block ${linkClass}`}>
+            <Link href={nav.homeHref} className={`hit-area inline-block ${linkClass}`}>
               <Wordmark />
             </Link>
             <p className="mt-4 text-paper-dim">{footer.tagline}</p>
@@ -46,9 +49,9 @@ export function Footer({ locale = "es" }: { locale?: Locale }) {
 
           <div>
             <h2 className="font-mono text-label uppercase text-paper-dim">{footer.contactTitle}</h2>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-1 lg:mt-4 lg:space-y-2">
               <li>
-                <a href={`mailto:${CONTACT_EMAIL}`} className={linkClass}>
+                <a href={`mailto:${CONTACT_EMAIL}`} className={listLinkClass}>
                   {emailUser}
                   <wbr />@{emailDomain}
                 </a>
@@ -58,18 +61,18 @@ export function Footer({ locale = "es" }: { locale?: Locale }) {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={linkClass}
+                  className={listLinkClass}
                   {...trackAttrs("whatsapp_click", { location: "footer" })}
                 >
                   {footer.whatsappLabel}
                 </a>
               </li>
             </ul>
-            <div className="mt-4 flex gap-4">
-              <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label={footer.facebookLabel} className={linkClass}>
+            <div className="flex max-lg:-mx-3 lg:mt-4 lg:gap-4">
+              <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label={footer.facebookLabel} className={`max-lg:p-3 ${linkClass}`}>
                 <Facebook aria-hidden="true" size={20} />
               </a>
-              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label={footer.linkedinLabel} className={linkClass}>
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label={footer.linkedinLabel} className={`max-lg:p-3 ${linkClass}`}>
                 <Linkedin aria-hidden="true" size={20} />
               </a>
             </div>

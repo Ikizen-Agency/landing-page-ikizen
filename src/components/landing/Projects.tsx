@@ -65,7 +65,7 @@ export function Projects({ projects }: { projects: Dictionary["projects"] }) {
               target="_blank"
               rel="noopener noreferrer"
               {...trackAttrs("project_click", { project: stop.name })}
-              className="mt-4 inline-flex items-center gap-2 py-2 text-sm font-medium text-amber transition-colors duration-200 hover:text-amber-pale"
+              className="mt-3 inline-flex items-center gap-2 py-3 text-sm font-medium text-amber transition-colors duration-200 hover:text-amber-pale"
             >
               {stop.linkLabel}
               <span className="sr-only">: {stop.name}</span>

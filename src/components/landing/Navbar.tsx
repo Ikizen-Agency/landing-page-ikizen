@@ -27,7 +27,7 @@ export default function Navbar({
   return (
     <nav aria-label={nav.primaryLabel} className="fixed top-0 z-50 w-full border-b bg-ink px-gutter">
       <div className="mx-auto flex h-16 max-w-site items-center justify-between">
-        <Link href={nav.homeHref} className="text-paper transition-colors duration-200 hover:text-amber">
+        <Link href={nav.homeHref} className="flex min-h-11 items-center text-paper transition-colors duration-200 hover:text-amber">
           <Wordmark compact />
         </Link>
 
@@ -38,7 +38,7 @@ export default function Navbar({
                 key={link.href}
                 href={link.href}
                 aria-current={link.href === currentHref ? "page" : undefined}
-                className="text-sm font-medium text-paper transition-colors duration-200 hover:text-amber"
+                className="hit-area text-sm font-medium text-paper transition-colors duration-200 hover:text-amber"
               >
                 {link.label}
               </Link>
@@ -49,7 +49,7 @@ export default function Navbar({
               lang={nav.switcher.lang}
               aria-label={nav.switcher.ariaLabel}
               {...trackAttrs("language_switch", { from: locale, to: nav.switcher.lang })}
-              className="font-mono text-label text-paper-dim transition-colors duration-200 hover:text-amber"
+              className="hit-area font-mono text-label text-paper-dim transition-colors duration-200 hover:text-amber"
             >
               {nav.switcher.label}
             </Link>

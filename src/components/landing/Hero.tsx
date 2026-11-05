@@ -47,7 +47,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   {...trackAttrs("whatsapp_click", { location: "hero" })}
-                  className="text-sm text-paper underline underline-offset-4 transition-colors duration-200 hover:text-amber"
+                  className="hit-area text-sm text-paper underline underline-offset-4 transition-colors duration-200 hover:text-amber"
                 >
                   {hero.whatsappCta}
                 </a>

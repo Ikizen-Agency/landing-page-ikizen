@@ -26,7 +26,7 @@ export function Closing({ dict }: { dict: Dictionary }) {
             target="_blank"
             rel="noopener noreferrer"
             {...trackAttrs("whatsapp_click", { location: "closing" })}
-            className="mt-6 inline-block font-medium underline underline-offset-4"
+            className="hit-area mt-6 inline-block font-medium underline underline-offset-4"
           >
             {closing.whatsappAlternative}
           </a>
