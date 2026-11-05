@@ -54,9 +54,9 @@ A package aimed at one client type, with its process, price, payment terms and s
 ## Progress
 
 - Branch `feat/offers` created from `main`. RDD is on (global).
-- Review: T1–T4 reviewed as one medium-risk slice (base `main` a84ed06, one reliability lens), consent granted, approved and acknowledged. The last reviewed boundary is 11146e4. Non-blocking advisories: price selection, region parsing and the middleware cookie have no automated tests; an invalid currency code would throw in `formatPrice`; `?region=CU` lets anyone preview the Cuba price.
+- Review: T1–T4 reviewed as one medium-risk slice (base `main` a84ed06, one reliability lens), consent granted, approved and acknowledged. The last reviewed boundary is 11146e4. Non-blocking advisories: price selection, region parsing and the middleware cookie have no automated tests; an invalid currency code would throw in `formatPrice`; `?region=CU` let anyone preview the Cuba price; removed at the owner's request in `fix(offers): drop the region query override`.
 - Owner to confirm: CTA wording "Agenda tu diagnóstico sin costo" / "Book your free diagnosis" and the section labels above each offer section, which are not in the PDF.
 
 ## Next step
 
-For the owner: confirm the CTA and section labels, decide whether `?region=` should stay public, and check the Cuba price from a Cuban connection without a VPN.
+For the owner: confirm the CTA and section labels, check the Cuba price from a Cuban connection without a VPN.

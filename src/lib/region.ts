@@ -11,13 +11,12 @@ export function normalizeRegion(value: string | null | undefined) {
   return region && REGION_PATTERN.test(region) ? region : null;
 }
 
-/** Browser only. `?region=CU` wins over the cookie, to preview a regional price. */
+/** Browser only. Reads the region cookie; there is deliberately no URL override. */
 export function readRegion() {
-  const query = new URLSearchParams(window.location.search).get(REGION_COOKIE);
   const prefix = `${REGION_COOKIE}=`;
   const cookie = document.cookie
     .split("; ")
     .find((entry) => entry.startsWith(prefix))
     ?.slice(prefix.length);
-  return normalizeRegion(query) ?? normalizeRegion(cookie);
+  return normalizeRegion(cookie);
 }

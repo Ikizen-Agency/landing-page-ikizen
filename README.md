@@ -71,7 +71,7 @@ The old `/services/*` URLs redirect to the offers on the home page, set in `next
 
 `src/middleware.ts` reads the `x-vercel-ip-country` header Vercel adds to each page request and stores it in a `region` cookie, for 30 days. The pages stay static and always ship the default price; `OfferPrice` swaps in the regional one in the browser when the offer defines it for that country. Without JavaScript, visitors see the default price.
 
-Detection is by IP only: a visitor behind a VPN gets the price of the VPN's country. The header only exists on Vercel, so locally preview a regional price with `?region=CU` or a `region=CU` cookie.
+Detection is by IP only: a visitor behind a VPN gets the price of the VPN's country. The header only exists on Vercel, so locally preview a regional price by setting a `region=CU` cookie in the browser's dev tools.
 
 ### Change a project link
 
