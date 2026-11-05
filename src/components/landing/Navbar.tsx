@@ -28,7 +28,7 @@ export default function Navbar({
     <nav aria-label={nav.primaryLabel} className="fixed top-0 z-50 w-full border-b bg-ink px-gutter">
       <div className="mx-auto flex h-16 max-w-site items-center justify-between">
         <Link href={nav.homeHref} className="text-paper transition-colors duration-200 hover:text-amber">
-          <Wordmark />
+          <Wordmark compact />
         </Link>
 
         <div className="flex items-center gap-3 md:gap-8">
