@@ -87,6 +87,7 @@ export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
                 <BookingLink
                   dict={dict}
                   location="offer_page"
+              offer={offer.slug}
                   label={offer.cta.label}
                   fallbackLabel={offer.cta.fallbackLabel}
                   className={buttonVariants({ size: "lg", className: "mt-8 h-auto min-h-10 whitespace-normal py-2 text-left" })}
@@ -214,6 +215,7 @@ export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
             <BookingLink
               dict={dict}
               location="offer_page"
+              offer={offer.slug}
               label={offer.cta.label}
               fallbackLabel={offer.cta.fallbackLabel}
               className="mt-12 flex items-center justify-between gap-4 text-balance bg-ink px-5 py-8 font-display text-display-md font-bold text-paper transition-colors duration-200 hover:text-amber sm:gap-6 sm:px-10 sm:py-12 lg:mt-20 [&_svg]:transition-transform [&_svg]:duration-200 hover:[&_svg]:-translate-y-1 hover:[&_svg]:translate-x-1 motion-reduce:[&_svg]:transition-none"

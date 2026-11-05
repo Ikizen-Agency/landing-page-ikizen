@@ -1,11 +1,12 @@
 import type { Locale } from "@/i18n";
 
 /** Where a CTA sits on the page, so its clicks compare across sections. */
-export type TrackLocation = "nav" | "hero" | "offer_page" | "closing" | "footer";
+export type TrackLocation = "nav" | "hero" | "offer_card" | "offer_page" | "closing" | "footer";
 
 type EventParams = {
-  book_cta_click: { location: TrackLocation };
-  whatsapp_click: { location: TrackLocation };
+  /** `offer` is the slug, set on the CTAs that belong to one offer. */
+  book_cta_click: { location: TrackLocation; offer?: string };
+  whatsapp_click: { location: TrackLocation; offer?: string };
   project_click: { project: string };
   language_switch: { from: Locale; to: Locale };
 };
@@ -27,7 +28,7 @@ export function track<Event extends AnalyticsEvent>(event: Event, params: EventP
 export function trackAttrs<Event extends AnalyticsEvent>(event: Event, params: EventParams[Event]) {
   const attributes: Record<`data-track${string}`, string> = { "data-track": event };
   for (const [key, value] of Object.entries(params)) {
-    attributes[`data-track-${key}`] = value;
+    if (value !== undefined) attributes[`data-track-${key}`] = value;
   }
   return attributes;
 }

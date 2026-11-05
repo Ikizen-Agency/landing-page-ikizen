@@ -1,5 +1,5 @@
 import { whatsappUrl } from "./contact";
-import { getOfferLinks } from "./offers";
+import { getOfferCards, getOfferLinks } from "./offers";
 import { getProjectStops } from "./projects";
 import { routes } from "./routes";
 import type { Dictionary } from "./types";
@@ -24,7 +24,7 @@ export const en: Dictionary = {
     skipToContent: "Skip to content",
     links: [
       { label: "Home", href: home },
-      { label: "Services", href: "/en#services" },
+      { label: "Offers", href: "/en#offers" },
       { label: "Projects", href: "/en#projects" },
       { label: "Process", href: "/en#process" },
     ],
@@ -40,22 +40,6 @@ export const en: Dictionary = {
       ikigai: "ikigai — reason for being",
       kaizen: "kaizen — continuous improvement",
     },
-  },
-  services: {
-    eyebrow: "What we do",
-    title: "Web design, web development and brand identity, with the same care.",
-    blocks: [
-      {
-        title: "Web design and development",
-        summary: "We design and build modern, responsive sites and apps with clean code and close attention to performance and SEO.",
-        offerings: ["Company websites", "Web applications", "Online stores", "Website redesigns"],
-      },
-      {
-        title: "Brand identity",
-        summary: "Logos, palettes, type and style guides that keep your brand consistent on every channel.",
-        offerings: ["Strategic logos", "Identity systems", "Naming", "Brand guidelines"],
-      },
-    ],
   },
   projects: {
     eyebrow: "Projects",
@@ -130,6 +114,10 @@ export const en: Dictionary = {
     lastUpdatedDate: "November 1, 2026",
   },
   offers: {
+    eyebrow: "Offers",
+    title: "A package for each kind of business.",
+    fullOfferLabel: "See the full offer",
+    cards: getOfferCards("en"),
     fromLabel: "From",
   },
   pages: {

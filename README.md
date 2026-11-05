@@ -49,7 +49,7 @@ Both are read at build time, so changing one requires a new build.
 
 ### Add an offer
 
-Add an entry to `OFFERS` in `src/i18n/offers.ts`. It then shows up on its own, with no other edits: its page at `/offers/<slug>` and `/en/offers/<slug>`, its footer link and its sitemap entry.
+Add an entry to `OFFERS` in `src/i18n/offers.ts`. It then shows up on its own, with no other edits: its card on the home page, its page at `/offers/<slug>` and `/en/offers/<slug>`, its footer link and its sitemap entry.
 
 | Field | Holds |
 |-------|-------|
@@ -89,7 +89,7 @@ Spread `trackAttrs` on the link, in server components too:
 <a href={whatsappUrl} {...trackAttrs("whatsapp_click", { location: "hero" })}>
 ```
 
-New events and locations are declared in `src/lib/analytics.ts`. Booking CTAs use `BookingLink`, which tracks itself.
+New events and locations are declared in `src/lib/analytics.ts`. Booking CTAs use `BookingLink`, which tracks itself; pass `offer` with the slug on a CTA that belongs to one offer.
 
 The site records `book_cta_click`, not completed bookings: those happen on the hosted Cal.com page, which cannot report back. Measuring them would need Cal.com to redirect to the site after booking, or a webhook.
 

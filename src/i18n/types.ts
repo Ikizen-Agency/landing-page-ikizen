@@ -2,12 +2,6 @@ export type Locale = "es" | "en";
 
 export type NavLink = { label: string; href: string };
 
-export type ServiceBlock = {
-  title: string;
-  summary: string;
-  offerings: string[];
-};
-
 export type ProjectStop = {
   name: string;
   type: string;
@@ -70,6 +64,13 @@ export type OfferCopy = {
   closing: { eyebrow: string; title: string; text: string; signoff: string; note: string };
 };
 
+/** What the home shows of an offer: enough to choose it, with its page for the rest. */
+export type OfferCard = Pick<OfferDetail, "slug" | "name" | "clientType" | "price" | "cta"> & {
+  title: [string, string];
+  lead: string;
+  href: string;
+};
+
 export type OfferDetail = OfferCopy & {
   slug: string;
   name: string;
@@ -121,11 +122,6 @@ export type Dictionary = {
     whatsappCta: string;
     captions: { ikigai: string; kaizen: string };
   };
-  services: {
-    eyebrow: string;
-    title: string;
-    blocks: ServiceBlock[];
-  };
   projects: {
     eyebrow: string;
     title: string;
@@ -171,7 +167,11 @@ export type Dictionary = {
     lastUpdatedDate: string;
   };
   offers: {
+    eyebrow: string;
+    title: string;
     fromLabel: string;
+    fullOfferLabel: string;
+    cards: OfferCard[];
   };
   pages: {
     terms: LegalPageCopy;

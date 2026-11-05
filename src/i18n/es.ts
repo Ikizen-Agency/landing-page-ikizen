@@ -1,5 +1,5 @@
 import { whatsappUrl } from "./contact";
-import { getOfferLinks } from "./offers";
+import { getOfferCards, getOfferLinks } from "./offers";
 import { getProjectStops } from "./projects";
 import { routes } from "./routes";
 import type { Dictionary } from "./types";
@@ -24,7 +24,7 @@ export const es: Dictionary = {
     skipToContent: "Saltar al contenido",
     links: [
       { label: "Inicio", href: home },
-      { label: "Servicios", href: "/#services" },
+      { label: "Ofertas", href: "/#offers" },
       { label: "Proyectos", href: "/#projects" },
       { label: "Proceso", href: "/#process" },
     ],
@@ -40,22 +40,6 @@ export const es: Dictionary = {
       ikigai: "ikigai — razón de ser",
       kaizen: "kaizen — mejora continua",
     },
-  },
-  services: {
-    eyebrow: "Qué hacemos",
-    title: "Diseño web, desarrollo web e identidad de marca, con el mismo cuidado.",
-    blocks: [
-      {
-        title: "Diseño y desarrollo web",
-        summary: "Diseñamos y programamos sitios y aplicaciones modernas y responsivas, con código limpio y atención al rendimiento y al SEO.",
-        offerings: ["Sitios corporativos", "Aplicaciones web", "Tiendas online", "Rediseño de sitios"],
-      },
-      {
-        title: "Identidad de marca",
-        summary: "Logotipos, paletas, tipografía y guías de estilo para que tu marca sea coherente en todos los canales.",
-        offerings: ["Logotipos estratégicos", "Sistemas de identidad", "Naming", "Manuales de marca"],
-      },
-    ],
   },
   projects: {
     eyebrow: "Proyectos",
@@ -130,6 +114,10 @@ export const es: Dictionary = {
     lastUpdatedDate: "1 de noviembre de 2026",
   },
   offers: {
+    eyebrow: "Ofertas",
+    title: "Un paquete para cada tipo de negocio.",
+    fullOfferLabel: "Ver oferta completa",
+    cards: getOfferCards("es"),
     fromLabel: "Desde",
   },
   pages: {

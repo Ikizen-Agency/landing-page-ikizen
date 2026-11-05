@@ -1,5 +1,5 @@
 import { offerPaths } from "./routes";
-import type { Locale, NavLink, OfferCopy, OfferDetail, OfferPricing } from "./types";
+import type { Locale, NavLink, OfferCard, OfferCopy, OfferDetail, OfferPricing } from "./types";
 
 type Offer = {
   /** The page lives at `/offers/<slug>` and `/en/offers/<slug>`. */
@@ -240,4 +240,11 @@ export function getOffer(slug: string, locale: Locale): OfferDetail | undefined 
 
 export function getOfferLinks(locale: Locale): NavLink[] {
   return OFFERS.map(({ slug, name }) => ({ label: name, href: offerPaths(slug)[locale] }));
+}
+
+export function getOfferCards(locale: Locale): OfferCard[] {
+  return OFFERS.map(({ slug, name, price, copy }) => {
+    const { clientType, hero, cta } = copy[locale];
+    return { slug, name, clientType, price, cta, title: hero.title, lead: hero.lead, href: offerPaths(slug)[locale] };
+  });
 }
