@@ -76,9 +76,9 @@ export const es: Dictionary = {
     ],
   },
   closing: {
-    eyebrow: "Agenda una llamada",
+    eyebrow: "Diagnóstico sin costo",
     title: "Empecemos por tu razón de ser.",
-    support: "Treinta minutos para conocer tu proyecto de web o de marca y ver por dónde empezar.",
+    support: "Treinta minutos para entender cómo trabaja tu negocio, elegir la oferta que encaja y ver por dónde empezar.",
     whatsappAlternative: "¿Prefieres escribir? Hablemos por WhatsApp",
   },
   booking: {

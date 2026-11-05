@@ -53,6 +53,8 @@ A package aimed at one client type, with its process, price, payment terms and s
 
 - [x] T6 Owner feedback: shorter CTAs and everything the offer includes on the home card. Route: inline (small edits). The closing CTAs on the home and the offer page were full-width bars (190px and 155px tall, 82px and 51px type); both are now a regular ink button. The offer CTA reads "Diagnóstico gratis" / "Free diagnosis", and the home card lists the seven inclusions from the PDF: free diagnosis meeting, preliminary design, custom development, testing, rollout, 3 months of support and the 30/70 payment. Commit: `feat(offers): list what each offer includes and calm the booking CTAs`. Checks: tsc and lint passed; on the dev server at 1440px and 360px, `/` and `/offers/ikizen-flow` had no horizontal overflow and no console errors, closing CTA 290x60, screenshots reviewed.
 
+- [x] T7 Home closing copy follows the offers. Route: inline. The eyebrow reads "Diagnóstico sin costo" / "Free diagnosis" and the support line drops the old web and brand services. Commit: `feat(copy): align the home closing with the offers`. Checks: tsc and lint passed; production shows the new copy after deploy.
+
 ## Progress
 
 - Branch `feat/offers` created from `main`. RDD is on (global).

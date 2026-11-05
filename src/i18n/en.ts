@@ -76,9 +76,9 @@ export const en: Dictionary = {
     ],
   },
   closing: {
-    eyebrow: "Book a call",
+    eyebrow: "Free diagnosis",
     title: "Let's start with your reason for being.",
-    support: "Thirty minutes to hear about your website or brand project and work out where to begin.",
+    support: "Thirty minutes to understand how your business works, pick the offer that fits and work out where to begin.",
     whatsappAlternative: "Rather write? Message us on WhatsApp",
   },
   booking: {
