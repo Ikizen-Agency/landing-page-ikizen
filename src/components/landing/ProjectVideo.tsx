@@ -18,6 +18,23 @@ function prefersReducedMotion() {
   return window.matchMedia(REDUCED_MOTION).matches;
 }
 
+/** The Network Information API is Chromium only and missing from the DOM types. */
+type Connection = EventTarget & { saveData?: boolean };
+
+function connection() {
+  return (navigator as Navigator & { connection?: Connection }).connection;
+}
+
+function subscribeToSaveData(onChange: () => void) {
+  const current = connection();
+  current?.addEventListener("change", onChange);
+  return () => current?.removeEventListener("change", onChange);
+}
+
+function wantsSaveData() {
+  return connection()?.saveData === true;
+}
+
 /**
  * The poster is a lazy server-rendered image, so it works without scripts and costs nothing
  * until it nears the screen. The video stays transparent over it until a frame really plays,
@@ -26,11 +43,15 @@ function prefersReducedMotion() {
  *
  * With reduced motion nothing starts on its own: native controls are the way in, and the
  * `poster` attribute is what they sit on, since `preload="none"` paints no frame.
+ * Save-Data takes the same path, but the source waits for the visitor to press play, so
+ * the file is only downloaded on request.
  */
 export function ProjectVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const reducedMotion = useSyncExternalStore(subscribeToReducedMotion, prefersReducedMotion, () => false);
+  const saveData = useSyncExternalStore(subscribeToSaveData, wantsSaveData, () => false);
+  const onDemand = reducedMotion || saveData;
 
   useEffect(() => {
     const video = videoRef.current;
@@ -40,7 +61,7 @@ export function ProjectVideo({ src, poster, label }: { src: string; poster: stri
       if (!video.hasAttribute("src")) video.src = src;
     };
 
-    if (reducedMotion) attachSource();
+    if (reducedMotion && !saveData) attachSource();
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -49,7 +70,7 @@ export function ProjectVideo({ src, poster, label }: { src: string; poster: stri
           return;
         }
 
-        if (reducedMotion) return;
+        if (reducedMotion || saveData) return;
 
         attachSource();
         // Rejects on refused autoplay, or when a pause interrupts it. The poster covers both.
@@ -64,7 +85,16 @@ export function ProjectVideo({ src, poster, label }: { src: string; poster: stri
       observer.disconnect();
       video.pause();
     };
-  }, [src, reducedMotion]);
+  }, [src, reducedMotion, saveData]);
+
+  /** Without a source the first press only reaches `play`; attaching one resets it, so it plays again. */
+  const playOnDemand = () => {
+    const video = videoRef.current;
+    if (!video || video.hasAttribute("src")) return;
+
+    video.src = src;
+    video.play().catch(() => {});
+  };
 
   return (
     <>
@@ -76,11 +106,12 @@ export function ProjectVideo({ src, poster, label }: { src: string; poster: stri
         loop
         playsInline
         preload="none"
-        poster={reducedMotion ? poster : undefined}
-        controls={reducedMotion}
+        poster={onDemand ? poster : undefined}
+        controls={onDemand}
+        onPlay={saveData ? playOnDemand : undefined}
         onPlaying={() => setPlaying(true)}
         onError={() => setPlaying(false)}
-        className={`absolute inset-0 size-full object-cover ${playing || reducedMotion ? "" : "opacity-0"}`}
+        className={`absolute inset-0 size-full object-cover ${playing || onDemand ? "" : "opacity-0"}`}
       />
     </>
   );
