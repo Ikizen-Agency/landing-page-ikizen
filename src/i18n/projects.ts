@@ -38,13 +38,21 @@ const PROJECTS: Project[] = [
     },
   },
   {
-    name: "Gloria Díaz Portfolio",
-    type: { es: "Portafolio personal", en: "Personal portfolio" },
+    name: "Brand Morph",
+    type: { es: "Producto propio", en: "In-house product" },
     purpose: {
-      es: "Un sitio propio para una periodista: sus artículos y sus servicios reunidos en un solo lugar.",
-      en: "A personal site for a journalist: articles and services gathered in one place.",
+      es: "Un laboratorio interactivo de diseño: una arquitectura de tokens que cambia un producto entre tres marcas de muestra, en vivo y listas para exportar a código.",
+      en: "An interactive design lab: a token architecture that morphs one product across three sample brands, live and ready to export to code.",
     },
-    href: "https://github.com/Ikizen-Agency/gloria-diaz-portfolio",
+    href: "https://github.com/Ikizen-Agency/brand-morph",
+    video: {
+      src: "/assets/portfolio/brand-morph-showcase-web.mp4",
+      poster: "/assets/portfolio/brand-morph-showcase-poster.webp",
+      label: {
+        es: "Recorrido en video por Brand Morph: un producto que cambia entre tres marcas en vivo.",
+        en: "Video tour of Brand Morph: one product that morphs across three brands live.",
+      },
+    },
   },
 ];
 
