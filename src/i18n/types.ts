@@ -12,7 +12,8 @@ export type ProjectStop = {
   image?: { src: string; alt: string };
 };
 
-export type ProcessStep = { title: string; description: string };
+/** `phase` is the English label every process shares, so the home and the offers read as one method. */
+export type ProcessStep = { phase: string; title: string; description: string };
 
 export type ProcessCopy = {
   eyebrow: string;

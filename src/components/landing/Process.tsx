@@ -13,7 +13,10 @@ export function Process({ process }: { process: Dictionary["process"] }) {
               <span aria-hidden="true" className="row-span-2 font-display text-display-lg font-bold text-amber md:row-span-1">
                 {index + 1}
               </span>
-              <h3 className="text-2xl font-bold">{step.title}</h3>
+              <div>
+                <p className="font-mono text-label uppercase text-amber">{step.phase}</p>
+                <h3 className="mt-2 text-2xl font-bold">{step.title}</h3>
+              </div>
               <p className="mt-2 text-paper-dim md:mt-0">{step.description}</p>
             </li>
           ))}

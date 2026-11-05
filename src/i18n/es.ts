@@ -9,14 +9,14 @@ const home = routes.home.es;
 export const es: Dictionary = {
   locale: "es",
   meta: {
-    title: "Diseño y desarrollo web e identidad de marca | Ikizen Studio",
+    title: "Impulsa tu presencia digital: diseño y desarrollo web e identidad de marca | Ikizen Studio",
     description:
-      "Ikizen Studio: estudio de diseño y desarrollo web e identidad de marca para negocios de todo el mundo. Webs y marcas con propósito, mejoradas paso a paso.",
+      "Ikizen Studio impulsa la presencia digital de negocios de todo el mundo con diseño y desarrollo web e identidad de marca: webs, software a la medida y marcas con propósito, mejorados paso a paso.",
     keywords: ["diseño web", "desarrollo web", "identidad de marca", "estudio de diseño web", "branding"],
-    ogTitle: "Ikizen Studio: diseño y desarrollo web e identidad de marca",
-    ogDescription: "Webs y marcas con propósito para negocios de todo el mundo, mejoradas paso a paso.",
-    ogImageAlt: "Ikizen Studio: diseño y desarrollo web e identidad de marca",
-    ogTagline: "Diseño y desarrollo web e identidad de marca, mejorados paso a paso.",
+    ogTitle: "Ikizen Studio: tu presencia digital con diseño y desarrollo web e identidad de marca",
+    ogDescription: "Impulsamos la presencia digital de negocios de todo el mundo con webs, software a la medida y marcas con propósito, mejorados paso a paso.",
+    ogImageAlt: "Ikizen Studio: tu presencia digital con diseño y desarrollo web e identidad de marca",
+    ogTagline: "Diseño y desarrollo web e identidad de marca para impulsar tu presencia digital.",
   },
   nav: {
     homeHref: home,
@@ -34,7 +34,7 @@ export const es: Dictionary = {
   },
   hero: {
     titleLines: ["Razón de ser.", "Mejora continua."],
-    descriptor: "Estudio de diseño y desarrollo web e identidad de marca para negocios de todo el mundo.",
+    descriptor: "Impulsamos la presencia digital de negocios de todo el mundo con diseño y desarrollo web e identidad de marca.",
     whatsappCta: "o escríbenos por WhatsApp",
     captions: {
       ikigai: "ikigai — razón de ser",
@@ -54,24 +54,29 @@ export const es: Dictionary = {
     title: "Nuestro proceso: cinco pasos, y el último no se acaba.",
     steps: [
       {
-        title: "Descubrimiento",
-        description: "Entendemos tu negocio, tus objetivos, tu audiencia y tu competencia.",
+        phase: "Discover",
+        title: "Entendemos",
+        description: "Conocemos tu negocio, tus objetivos, tu audiencia y tu competencia antes de proponer nada.",
       },
       {
-        title: "Diseño y planificación",
-        description: "Definimos arquitectura, direcciones visuales y cronograma.",
+        phase: "Design",
+        title: "Diseñamos",
+        description: "Definimos la estrategia, la dirección visual, el alcance y el calendario, y te mostramos una propuesta antes de construir.",
       },
       {
-        title: "Construcción",
-        description: "Desarrollamos el sitio con código limpio, o la identidad con sus aplicaciones en contextos reales.",
+        phase: "Build",
+        title: "Construimos",
+        description: "Desarrollamos lo acordado, sea una web, una herramienta a la medida o una identidad de marca, y lo validamos contigo.",
       },
       {
-        title: "Ajustes y entrega",
-        description: "Revisamos cada detalle contigo, probamos todo y lanzamos o entregamos los archivos con su guía de uso.",
+        phase: "Launch",
+        title: "Lanzamos",
+        description: "Revisamos cada detalle, lo ponemos en marcha y te entregamos todo lo necesario para usarlo.",
       },
       {
-        title: "Mejora continua",
-        description: "Tras el lanzamiento te acompañamos con actualizaciones y mejoras. Ese es nuestro kaizen.",
+        phase: "Kaizen",
+        title: "Mejoramos",
+        description: "Después de la entrega seguimos a tu lado con ajustes y mejoras. Ese es nuestro kaizen.",
       },
     ],
   },
