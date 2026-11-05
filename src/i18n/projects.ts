@@ -16,8 +16,7 @@ type Project = {
 /**
  * Single source for the projects flow. Copy states what each project is, never results.
  *
- * TODO: both links are temporary repository URLs. Replace them with the live URLs once
- * they are known; the link label follows the URL on its own.
+ * The link label follows `href`: GitHub reads "View on GitHub", anything else "View project".
  */
 const PROJECTS: Project[] = [
   {
@@ -27,7 +26,7 @@ const PROJECTS: Project[] = [
       es: "Una plataforma de operaciones para estudios de servicios: clientes, ventas, lo que se debe y quién trabaja en qué, en un solo lugar.",
       en: "An operations platform for service studios: clients, sales, what is owed and who works on what, all in one place.",
     },
-    href: "https://github.com/Ikizen-Agency/ikizen-flow",
+    href: "https://ikizen-flow.vercel.app/login",
     video: {
       src: "/assets/portfolio/ikizen-flow-showcase-web.mp4",
       poster: "/assets/portfolio/ikizen-flow-showcase-poster.webp",
@@ -44,7 +43,7 @@ const PROJECTS: Project[] = [
       es: "Un laboratorio interactivo de diseño: una arquitectura de tokens que cambia un producto entre tres marcas de muestra, en vivo y listas para exportar a código.",
       en: "An interactive design lab: a token architecture that morphs one product across three sample brands, live and ready to export to code.",
     },
-    href: "https://github.com/Ikizen-Agency/brand-morph",
+    href: "https://brand-morph-chi.vercel.app/components",
     video: {
       src: "/assets/portfolio/brand-morph-showcase-web.mp4",
       poster: "/assets/portfolio/brand-morph-showcase-poster.webp",

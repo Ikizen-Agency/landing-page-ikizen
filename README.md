@@ -47,14 +47,9 @@ Both are read at build time, so changing one requires a new build.
 
 ## Common changes
 
-### Replace the temporary project links
+### Change a project link
 
-Two projects still link to their GitHub repositories. To replace them:
-
-1. Open `src/i18n/projects.ts`.
-2. Change `href` on each project to the live URL.
-
-The link label follows the URL: anything outside `github.com` reads "View project". Remove the `TODO` above the list when both are done.
+Set `href` on the project in `src/i18n/projects.ts`. The link label follows the URL: `github.com` reads "View on GitHub", anything else "View project".
 
 ### Show a video on a project
 
