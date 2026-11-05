@@ -57,13 +57,17 @@ Add an entry to `OFFERS` in `src/i18n/offers.ts`. It then shows up on its own, w
 | `name` | The offer name, the same in both languages |
 | `serviceType` | A stable English name for the structured data |
 | `price` | The "from" price: `amount`, `currency` and optional `regions` |
+| `supportRate` | The hourly support rate once the included support ends, with the same shape as `price` |
 | `copy.es`, `copy.en` | Every section of the page, in reading order, typed by `OfferCopy` |
 
 Prices render as `$1,500 USD` in both languages. `regions` overrides the price per country, keyed by ISO 3166-1 alpha-2 code:
 
 ```ts
 price: { amount: 1500, currency: "USD", regions: { CU: { amount: 700, currency: "USD" } } },
+supportRate: { amount: 25, currency: "USD", regions: { CU: { amount: 1, currency: "USD" } } },
 ```
+
+The support rate renders as `$25 USD / hour` on the offer page and follows the visitor's region the same way.
 
 The old `/services/*` URLs redirect to the offers on the home page, set in `next.config.ts`.
 

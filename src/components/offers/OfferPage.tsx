@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { buildMetadata } from "@/app/_root/RootDocument";
 import { BookingLink } from "@/components/booking/BookingLink";
@@ -9,6 +10,7 @@ import Navbar from "@/components/landing/Navbar";
 import { buttonVariants } from "@/components/ui/button";
 import { getDictionary, SITE_URL, type Locale } from "@/i18n";
 import { getOffer, getOfferSlugs } from "@/i18n/offers";
+import { routes } from "@/i18n/routes";
 import type { OfferDetail } from "@/i18n/types";
 
 /** Shared by both locales' `[slug]` routes, so an offer added to `offers.ts` gets both pages. */
@@ -61,7 +63,7 @@ export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
 
   const dict = getDictionary(locale);
   const { hero, benefits, includes, process, investment, fit, closing } = offer;
-  const { support } = investment;
+  const { terms, support } = investment;
 
   return (
     <>
@@ -174,6 +176,18 @@ export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
             </div>
 
             <div className="mt-20 grid gap-8 border-t pt-10 lg:mt-28 lg:grid-cols-12">
+              <h3 className="text-display-md font-bold lg:col-span-5">{terms.title}</h3>
+              <dl className="border-b lg:col-span-6 lg:col-start-7">
+                {terms.items.map((term) => (
+                  <div key={term.label} className="grid gap-2 border-t py-5 sm:grid-cols-[12rem_1fr] sm:gap-x-4">
+                    <dt className="font-mono text-label uppercase text-amber">{term.label}</dt>
+                    <dd className="text-lg">{term.text}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+
+            <div className="mt-20 grid gap-8 border-t pt-10 lg:mt-28 lg:grid-cols-12">
               <h3 className="text-display-md font-bold lg:col-span-5">{support.title}</h3>
               <div className="lg:col-span-6 lg:col-start-7">
                 <p className="text-lg">{support.intro}</p>
@@ -186,6 +200,16 @@ export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
                   ))}
                 </ul>
                 <p className="mt-8 max-w-prose text-sm text-paper-dim">{support.note}</p>
+
+                <div className="mt-10 border-t pt-6">
+                  <p className="font-mono text-label uppercase text-amber">{support.rateLabel}</p>
+                  <OfferPrice
+                    price={offer.supportRate}
+                    suffix={support.rateUnit}
+                    className="mt-2 block font-display text-display-md font-bold text-paper"
+                  />
+                  <p className="mt-4 max-w-prose text-paper-dim">{support.rateNote}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -222,7 +246,13 @@ export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
             />
 
             <p className="mt-10 font-mono text-label uppercase">{closing.signoff}</p>
-            <p className="mt-4 max-w-prose">{closing.note}</p>
+            <p className="mt-4 max-w-prose">
+              {closing.note}{" "}
+              <Link href={`${routes.home[locale]}#projects`} className="font-semibold underline underline-offset-4">
+                {closing.noteLinkLabel}
+              </Link>
+              .
+            </p>
           </div>
         </section>
       </main>

@@ -8,6 +8,8 @@ type Offer = {
   /** Stable English name for the Service structured data. */
   serviceType: string;
   price: OfferPricing;
+  /** Hourly support rate once the included support ends, priced by region like `price`. */
+  supportRate: OfferPricing;
   copy: Record<Locale, OfferCopy>;
 };
 
@@ -21,6 +23,7 @@ const OFFERS: Offer[] = [
     name: "Ikizen Flow",
     serviceType: "Custom business software",
     price: { amount: 1500, currency: "USD", regions: { CU: { amount: 700, currency: "USD" } } },
+    supportRate: { amount: 25, currency: "USD", regions: { CU: { amount: 1, currency: "USD" } } },
     copy: {
       es: {
         meta: {
@@ -39,9 +42,10 @@ const OFFERS: Offer[] = [
         summary: [
           "Reunión de diagnóstico sin costo (20–30 min)",
           "Diseño preliminar para explorar antes de desarrollar",
-          "Desarrollo a la medida de tu proceso",
-          "Pruebas y validación junto a ti",
+          "Desarrollo a la medida, probado y validado contigo",
           "Implementación y puesta en marcha",
+          "Entrega en 4 a 8 semanas, según la complejidad",
+          "El resultado final es tuyo",
           "3 meses de acompañamiento tras la entrega",
           "Pago 30% al iniciar y 70% al entregar",
         ],
@@ -105,14 +109,23 @@ const OFFERS: Offer[] = [
             { share: "70%", text: "Al entregar la solución y validar el cumplimiento de los criterios acordados." },
           ],
           scopeNote: "El alcance, calendario, precio y criterios de aceptación quedan definidos antes de comenzar.",
+          terms: {
+            title: "Condiciones",
+            items: [
+              { label: "Plazo", text: "De 4 a 8 semanas, según la complejidad de la solución." },
+              { label: "Idioma", text: "Trabajamos contigo en español o en inglés." },
+              { label: "Propiedad", text: "El resultado final es tuyo." },
+              { label: "Alojamiento y dominio", text: "No están incluidos en el precio." },
+            ],
+          },
           support: {
             title: "Acompañamiento incluido",
             intro: "Durante los primeros 3 meses después de la entrega, cuentas con:",
-            items: [
-              "Corrección de errores relacionados con el alcance acordado.",
-              "Apoyo básico para resolver dudas sobre el uso de la herramienta.",
-            ],
-            note: "Las nuevas funcionalidades, cambios de alcance y servicios de evolución se cotizan por separado.",
+            items: ["Respuesta a tus dudas sobre el proyecto.", "Corrección de errores dentro del alcance acordado."],
+            note: "Las nuevas funcionalidades, los cambios grandes y los cambios de alcance se cotizan por separado.",
+            rateLabel: "Después de los 3 meses",
+            rateUnit: "/ hora",
+            rateNote: "El acompañamiento se factura por hora, con un mínimo de 1 hora.",
           },
         },
         fit: {
@@ -128,7 +141,8 @@ const OFFERS: Offer[] = [
           title: "Cuéntanos qué proceso te gustaría mejorar.",
           text: "En una reunión de 20–30 minutos exploraremos cómo funciona actualmente, qué dificultades presenta y qué posibilidades existen para digitalizarlo.",
           signoff: "Ikizen Flow — From manual work to meaningful tools.",
-          note: "¿Quieres conocer nuestro trabajo? Solicita acceso a nuestras demos de portfolio durante el diagnóstico.",
+          note: "¿Quieres conocer nuestro trabajo? Nuestras demos son públicas:",
+          noteLinkLabel: "míralas en Proyectos",
         },
       },
       en: {
@@ -148,9 +162,10 @@ const OFFERS: Offer[] = [
         summary: [
           "Free diagnosis meeting (20–30 min)",
           "Preliminary design to explore before building",
-          "Development tailored to your process",
-          "Testing and validation with you",
+          "Custom development, tested and validated with you",
           "Rollout and launch",
+          "Delivery in 4 to 8 weeks, depending on complexity",
+          "The final result is yours",
           "3 months of support after delivery",
           "Pay 30% to start and 70% on delivery",
         ],
@@ -214,14 +229,23 @@ const OFFERS: Offer[] = [
             { share: "70%", text: "On delivery, once the solution is confirmed to meet the agreed criteria." },
           ],
           scopeNote: "Scope, schedule, price and acceptance criteria are all agreed before work begins.",
+          terms: {
+            title: "Terms",
+            items: [
+              { label: "Timeline", text: "4 to 8 weeks, depending on the complexity of the solution." },
+              { label: "Language", text: "We work with you in Spanish or English." },
+              { label: "Ownership", text: "The final result belongs to you." },
+              { label: "Hosting and domain", text: "Not included in the price." },
+            ],
+          },
           support: {
             title: "Support included",
             intro: "For the first 3 months after delivery, you get:",
-            items: [
-              "Fixes for errors within the agreed scope.",
-              "Basic help with questions about using the tool.",
-            ],
-            note: "New features, scope changes and ongoing evolution work are quoted separately.",
+            items: ["Answers to your questions about the project.", "Bug fixes within the agreed scope."],
+            note: "New features, major changes and scope changes are quoted separately.",
+            rateLabel: "After the 3 months",
+            rateUnit: "/ hour",
+            rateNote: "Support is billed by the hour, with a 1-hour minimum.",
           },
         },
         fit: {
@@ -237,7 +261,8 @@ const OFFERS: Offer[] = [
           title: "Tell us which process you would like to improve.",
           text: "In a 20–30 minute meeting we will look at how it works today, what difficulties it brings and what options exist to digitize it.",
           signoff: "Ikizen Flow — From manual work to meaningful tools.",
-          note: "Want to see our work? Ask for access to our portfolio demos during the diagnosis.",
+          note: "Want to see our work? Our demos are public:",
+          noteLinkLabel: "see them in Projects",
         },
       },
     },

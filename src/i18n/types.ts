@@ -27,7 +27,7 @@ export type PageMeta = {
   keywords?: string[];
 };
 
-/** An amount in a given currency. Offer prices are "from" prices. */
+/** An amount in a given currency. Offer prices are "from" prices; support rates are per hour. */
 export type Money = { amount: number; currency: string };
 
 /** `regions` overrides the default per ISO 3166-1 alpha-2 country code, e.g. `CU`. */
@@ -61,10 +61,23 @@ export type OfferCopy = {
     paymentTitle: string;
     payment: { share: string; text: string }[];
     scopeNote: string;
-    support: { title: string; intro: string; items: string[]; note: string };
+    /** Timeline, language, ownership and what the price leaves out, one labeled line each. */
+    terms: { title: string; items: { label: string; text: string }[] };
+    support: {
+      title: string;
+      intro: string;
+      items: string[];
+      note: string;
+      /** Introduces the hourly rate once the included months end. */
+      rateLabel: string;
+      /** Follows the rate, e.g. "/ hour". */
+      rateUnit: string;
+      rateNote: string;
+    };
   };
   fit: { eyebrow: string; title: string; paragraphs: string[] };
-  closing: { eyebrow: string; title: string; text: string; signoff: string; note: string };
+  /** `note` leads into a link to the home projects section, labeled `noteLinkLabel`. */
+  closing: { eyebrow: string; title: string; text: string; signoff: string; note: string; noteLinkLabel: string };
 };
 
 /** What the home shows of an offer: enough to choose it, with its page for the rest. */
@@ -80,6 +93,8 @@ export type OfferDetail = OfferCopy & {
   /** Stable English name for the Service structured data. */
   serviceType: string;
   price: OfferPricing;
+  /** Hourly support rate once the included support ends. */
+  supportRate: OfferPricing;
   paths: Record<Locale, string>;
 };
 

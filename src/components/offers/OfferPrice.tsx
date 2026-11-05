@@ -8,10 +8,12 @@ import { readRegion } from "@/lib/region";
 const subscribe = () => () => {};
 
 /**
- * The offer's "from" price. The static HTML carries the default, so it reads right without
- * JavaScript; after hydration the visitor's regional price replaces it in the same element.
+ * A region-priced amount: the offer's "from" price, or its hourly support rate with a `suffix`.
+ * The static HTML carries the default, so it reads right without JavaScript; after hydration
+ * the visitor's regional amount replaces it in the same element.
  */
-export function OfferPrice({ price, className }: { price: OfferPricing; className?: string }) {
+export function OfferPrice({ price, suffix, className }: { price: OfferPricing; suffix?: string; className?: string }) {
   const region = useSyncExternalStore(subscribe, readRegion, () => null);
-  return <span className={className}>{formatPrice(priceForRegion(price, region))}</span>;
+  const amount = formatPrice(priceForRegion(price, region));
+  return <span className={className}>{suffix ? `${amount} ${suffix}` : amount}</span>;
 }
