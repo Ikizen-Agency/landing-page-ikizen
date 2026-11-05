@@ -36,6 +36,7 @@ A package aimed at one client type, with its process, price, payment terms and s
 
 - Owner decision: a card per offer on the home plus a full page per offer.
 - Assumption, stated to the owner: the Cuba price is in USD ("from $700 USD").
+- Owner decisions (T8): the studio boosts the client's digital presence through web design and development, and brand identity; custom business software such as Ikizen Flow counts as web development; social media is future work and stays off the site. The home process is the company-wide one and every offer shares its phase names (Discover · Design · Build · Launch), with Kaizen as the home-only fifth step. Portfolio demos are public. Ikizen Flow takes 4 to 8 weeks, works in Spanish or English, the result belongs to the client, and hosting and domain are not included. The 3 included support months cover project questions and bug fixes; new features, large changes and scope changes are quoted. After that, support is billed hourly with a 1-hour minimum: $25 USD/hour internationally and $1 USD/hour in Cuba, priced by region like the offer. Payment methods are undecided, so none is named.
 - Delivery strategy: `exception-ok`. The site deploys from `main` without pull requests; the forecast exceeds 400 authored lines because data, page, home section and middleware depend on each other.
 
 ## Checks
@@ -55,6 +56,8 @@ A package aimed at one client type, with its process, price, payment terms and s
 
 - [x] T7 Home closing copy follows the offers. Route: inline. The eyebrow reads "Diagnóstico sin costo" / "Free diagnosis" and the support line drops the old web and brand services. Commit: `feat(copy): align the home closing with the offers`. Checks: tsc and lint passed; production shows the new copy after deploy.
 
+- [x] T8 Owner feedback: positioning, one shared process and the remaining offer terms. Route: delegated (2+ non-trivial files). Commits: c3c1c12 `feat(copy): position the studio on digital presence and share the process phases` (hero descriptor, home meta and OG copy, home steps rewritten company-wide with a `phase` label per step); 24be6c7 `feat(offers): add timeline, ownership and support terms to the offer` (`supportRate` on the offer, rendered by `OfferPrice` with a per-hour suffix; a Terms block and the hourly rate in the investment section; the home card summary at eight lines with timeline and ownership; the demos note links to the projects section; README documents `supportRate`). The offer page's process already used the shared phases and was left unchanged. Checks: tsc and lint passed after each commit; on the dev server at 1440px and 360px, `/`, `/en` and both offer pages had no horizontal overflow and no console errors; the support rate read `$25 USD / hora` and `$25 USD / hour` by default (also in the static HTML) and `$1 USD` with a `region=CU` cookie, where the offer price read `$700 USD`; the demos note links to `/#projects` and `/en#projects`; screenshots of the home offers and process and the offer investment and closing reviewed. Not run: `pnpm build`, left to the deploy check.
+
 ## Progress
 
 - Branch `feat/offers` created from `main`. RDD is on (global).
@@ -63,4 +66,4 @@ A package aimed at one client type, with its process, price, payment terms and s
 
 ## Next step
 
-For the owner: confirm the CTA and section labels, check the Cuba price from a Cuban connection without a VPN.
+For the owner: review the T8 wording (positioning, process steps, terms and support block), confirm the CTA and section labels, decide the payment methods, and check the Cuba prices from a Cuban connection without a VPN.
