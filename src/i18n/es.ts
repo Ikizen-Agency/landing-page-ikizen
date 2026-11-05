@@ -9,7 +9,7 @@ const home = routes.home.es;
 export const es: Dictionary = {
   locale: "es",
   meta: {
-    title: "Impulsa tu presencia digital: diseño y desarrollo web e identidad de marca | Ikizen Studio",
+    title: "Diseño web y de marca que impulsa tu negocio | Ikizen Studio",
     description:
       "Ikizen Studio impulsa la presencia digital de negocios de todo el mundo con diseño y desarrollo web e identidad de marca: webs, software a la medida y marcas con propósito, mejorados paso a paso.",
     keywords: ["diseño web", "desarrollo web", "identidad de marca", "estudio de diseño web", "branding"],

@@ -9,7 +9,7 @@ const home = routes.home.en;
 export const en: Dictionary = {
   locale: "en",
   meta: {
-    title: "Grow Your Digital Presence: Web Design, Web Development & Brand Identity | Ikizen Studio",
+    title: "Web Design & Branding That Grows Your Business | Ikizen Studio",
     description:
       "Ikizen Studio grows the digital presence of businesses worldwide through web design, web development and brand identity: websites, custom software and brands with purpose, refined step by step.",
     keywords: ["web design", "web development", "brand identity", "web design studio", "branding"],
