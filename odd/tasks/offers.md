@@ -48,7 +48,7 @@ A package aimed at one client type, with its process, price, payment terms and s
 - [x] T1 Project links to production URLs. Route: inline (one data file). Commit: `feat(portfolio): link projects to their production apps`. Checks: tsc and lint passed.
 - [x] T2 Offer data model, offer pages, routes, sitemap, metadata and redirects from the service pages. Route: delegated (2+ non-trivial files). Commit: `feat(offers): add offer pages from a single data source and retire the service pages`. Checks: tsc and lint passed; build prerendered `/offers/ikizen-flow` and `/en/offers/ikizen-flow` (SSG). About 675 added and 655 removed lines: most of the removal is the two service pages' copy, most of the addition is the bilingual offer copy, which cannot be split without leaving an offer page half written. The footer column already lists offers here, because removing the service routes would otherwise leave it broken; the home Services blocks lose their links until T3 replaces them.
 - [x] T3 Home offer cards replace the Services section; nav, footer and structured data follow the offers. Route: delegated (2+ non-trivial files). Commit: `feat(offers): show offer cards on the home page in place of the services`. Checks: tsc and lint passed. The section anchor is `#offers`, with an empty `#services` target kept so old links still land on it; nav and mobile menu read "Ofertas"/"Offers". Offer CTAs track `offer_card` and `offer_page` locations with the offer slug. Structured data needed no change: only the removed service pages described services.
-- [ ] T4 Regional pricing: middleware, region cookie and client price. Route: delegated (2+ non-trivial files).
+- [x] T4 Regional pricing: middleware, region cookie and client price. Route: delegated (2+ non-trivial files). Commit: `feat(offers): show the visitor's regional offer price`. Checks: tsc and lint passed; build lists the middleware and keeps both offer pages SSG; `pnpm start` smoke: `/`, `/en`, both offer pages 200, `/offers/nope` 404, `/services/web` and `/en/services/branding` 308 to `/#offers` and `/en#offers`, home HTML has "Ikizen Flow" and `$1,500 USD`; `x-vercel-ip-country: cu` returns `set-cookie: region=CU; Path=/; Max-Age=2592000; SameSite=lax`, no cookie when it already matches or on `robots.txt` and `/og/es`. Playwright (Chromium) at 1440px and 360px on `/` and both offer pages: no horizontal overflow, no console errors, `$1,500 USD` by default and `$700 USD` with a `region=CU` cookie or `?region=cu`.
 - [ ] T5 Deploy to production and smoke check.
 
 ## Progress
@@ -57,4 +57,4 @@ A package aimed at one client type, with its process, price, payment terms and s
 
 ## Next step
 
-T2.
+T5: deploy to production and run the smoke check there, where the Vercel country header exists.
