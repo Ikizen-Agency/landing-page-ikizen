@@ -1,4 +1,5 @@
 import { whatsappUrl } from "./contact";
+import { getOfferLinks } from "./offers";
 import { getProjectStops } from "./projects";
 import { routes } from "./routes";
 import type { Dictionary } from "./types";
@@ -48,15 +49,11 @@ export const en: Dictionary = {
         title: "Web design and development",
         summary: "We design and build modern, responsive sites and apps with clean code and close attention to performance and SEO.",
         offerings: ["Company websites", "Web applications", "Online stores", "Website redesigns"],
-        linkLabel: "See web design and development",
-        href: routes.web.en,
       },
       {
         title: "Brand identity",
         summary: "Logos, palettes, type and style guides that keep your brand consistent on every channel.",
         offerings: ["Strategic logos", "Identity systems", "Naming", "Brand guidelines"],
-        linkLabel: "See brand identity",
-        href: routes.branding.en,
       },
     ],
   },
@@ -108,13 +105,10 @@ export const en: Dictionary = {
   footer: {
     tagline: "Purpose first. Better every pass.",
     navTitle: "Navigation",
-    servicesTitle: "Services",
+    offersTitle: "Offers",
     legalTitle: "Legal",
     contactTitle: "Contact",
-    services: [
-      { label: "Web design and development", href: routes.web.en },
-      { label: "Brand identity", href: routes.branding.en },
-    ],
+    offers: getOfferLinks("en"),
     legal: [
       { label: "Privacy policy", href: routes.privacy.en },
       { label: "Terms of use", href: routes.terms.en },
@@ -135,213 +129,10 @@ export const en: Dictionary = {
     lastUpdatedLabel: "Last updated",
     lastUpdatedDate: "November 1, 2026",
   },
+  offers: {
+    fromLabel: "From",
+  },
   pages: {
-    web: {
-      meta: {
-        title: "Web Design and Development for Your Business",
-        description:
-          "We design and build company websites, web applications and online stores with clean code, close attention to performance and SEO, and support after launch.",
-        keywords: [
-          "web design",
-          "web development",
-          "company websites",
-          "web applications",
-          "online stores",
-          "website redesign",
-          "Next.js",
-          "React",
-        ],
-      },
-      serviceType: "Web Design and Development",
-      hero: {
-        eyebrow: "For businesses worldwide",
-        title: "Web design and development: a fast, clear site of your own.",
-        support:
-          "We design and build sites, apps and stores with clean code, close attention to performance and SEO, and room to grow with you.",
-      },
-      audience: {
-        eyebrow: "Who it is for",
-        title: "For businesses with a website to build or renew.",
-        items: [
-          "Businesses with no website yet that want a modern, trustworthy presence.",
-          "Companies with an old site that need current technology without losing their identity.",
-          "Businesses that want to sell online with a smooth path to checkout.",
-          "Teams that need a web application with advanced features that stays easy to use.",
-        ],
-      },
-      offerings: {
-        eyebrow: "What we do",
-        title: "Websites, apps, online stores and redesigns.",
-        includesLabel: "Includes",
-        items: [
-          {
-            title: "Company websites",
-            description: "Modern and responsive, designed to earn trust and bring in inquiries.",
-            includes: [
-              "Modern, responsive design",
-              "A clear page architecture",
-              "Close attention to performance and SEO",
-              "A direct way for people to contact you",
-            ],
-          },
-          {
-            title: "Web applications",
-            description: "Advanced features with solid performance and an experience people find easy to use.",
-            includes: [
-              "Wireframes and architecture before any code",
-              "Advanced features with solid performance",
-              "An interface that is easy to use",
-              "Clean code with room to grow",
-            ],
-          },
-          {
-            title: "Online stores",
-            description: "Ready to sell, with payment gateways and a smooth path to checkout.",
-            includes: [
-              "Payment gateways",
-              "A smooth path to checkout",
-              "Responsive design",
-              "Close attention to performance and SEO",
-            ],
-          },
-          {
-            title: "Website redesigns",
-            description: "We rebuild your old site on current technology without losing your identity.",
-            includes: [
-              "Current technology in place of the old site",
-              "Your identity stays intact",
-              "A revised architecture and responsive design",
-              "Close attention to performance and SEO",
-            ],
-          },
-        ],
-      },
-      deliverables: {
-        eyebrow: "What you get",
-        title: "Your site live, and support after launch.",
-        items: [
-          "Wireframes, the architecture and the schedule before any code.",
-          "A modern, responsive design for your business.",
-          "Clean, modern code with close attention to performance and SEO.",
-          "Testing before launch and follow-up after it.",
-          "Support, updates and improvements once the site is live.",
-        ],
-      },
-      process: {
-        eyebrow: "How we work",
-        title: "From first consultation to support.",
-        steps: [
-          { title: "First consultation", description: "We get to know your goals, your audience and your challenges." },
-          { title: "Design and planning", description: "We prepare wireframes, the architecture and the schedule." },
-          { title: "Development", description: "We build your site in clean, modern code." },
-          { title: "Testing and launch", description: "We review everything, launch, and keep watching how it runs." },
-          {
-            title: "Support and improvements",
-            description: "After launch we stay on with updates and improvements.",
-          },
-        ],
-      },
-    },
-    branding: {
-      meta: {
-        title: "Brand Identity: Logos, Naming and Guidelines",
-        description:
-          "Logos, identity systems, naming and brand guidelines for businesses worldwide: a brand that stays consistent on every channel, with support after delivery.",
-        keywords: [
-          "brand identity",
-          "brand design",
-          "professional logo",
-          "visual identity",
-          "naming",
-          "brand guidelines",
-        ],
-      },
-      serviceType: "Brand Identity Design",
-      hero: {
-        eyebrow: "For businesses worldwide",
-        title: "Brand identity, recognizable on any channel.",
-        support:
-          "We design identities that reflect who you are and build trust from first contact: logo, palette, type and style guides.",
-      },
-      audience: {
-        eyebrow: "Who it is for",
-        title: "For new brands and brands in need of order.",
-        items: [
-          "New businesses that need a name, a logo and an identity from first contact.",
-          "Brands that look different on every channel and want that consistency back.",
-          "Companies that work with third parties and need clear rules for using their brand.",
-        ],
-      },
-      offerings: {
-        eyebrow: "What we do",
-        title: "Logo, identity system, naming and brand guidelines.",
-        includesLabel: "Includes",
-        items: [
-          {
-            title: "Strategic logos",
-            description: "Distinctive designs that convey your personality and hold up over time.",
-            includes: [
-              "Style directions, moodboards and sketches",
-              "A logo tried in real contexts",
-              "Adjustments with you up to the final version",
-            ],
-          },
-          {
-            title: "Identity systems",
-            description: "Palettes, typefaces, iconography and style guides that keep every channel consistent.",
-            includes: [
-              "Color palette",
-              "Typefaces",
-              "Iconography",
-              "Style guides",
-            ],
-          },
-          {
-            title: "Naming",
-            description: "Names that reflect your purpose and are easy to remember.",
-            includes: [
-              "A study of your business, values, audience and competition",
-              "Name proposals aligned with your purpose",
-            ],
-          },
-          {
-            title: "Brand guidelines",
-            description: "Clear documentation that keeps your brand intact in other people's hands.",
-            includes: [
-              "How to use the logo, palette and type",
-              "Examples of use in real contexts",
-              "A complete usage guide",
-            ],
-          },
-        ],
-      },
-      deliverables: {
-        eyebrow: "What you get",
-        title: "All your files, and support after delivery.",
-        items: [
-          "Moodboards, sketches and style directions to choose the path with you.",
-          "A logo, palette and type applied in real contexts.",
-          "Adjustments with you until we reach the final version.",
-          "All the files and formats, with a complete usage guide.",
-          "Support and improvements after delivery.",
-        ],
-      },
-      process: {
-        eyebrow: "How we work",
-        title: "From discovery to support.",
-        steps: [
-          { title: "Discovery", description: "We study your business, values, audience and competition." },
-          { title: "Visual concept", description: "We explore style directions, moodboards and sketches." },
-          { title: "Design", description: "We develop the logo, palette, type and applications in real contexts." },
-          { title: "Iteration and feedback", description: "We adjust every detail with you until we reach the final version." },
-          {
-            title: "Delivery and support",
-            description:
-              "We hand over all the files, the formats and a complete usage guide. After that we stay on with support and improvements.",
-          },
-        ],
-      },
-    },
     terms: {
       meta: {
         title: "Terms of use",

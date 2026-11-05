@@ -6,8 +6,6 @@ export type ServiceBlock = {
   title: string;
   summary: string;
   offerings: string[];
-  linkLabel: string;
-  href: string;
 };
 
 export type ProjectStop = {
@@ -34,32 +32,51 @@ export type PageMeta = {
   keywords?: string[];
 };
 
-export type ServiceOffering = { title: string; description: string; includes: string[] };
+/** An amount in a given currency. Offer prices are "from" prices. */
+export type Money = { amount: number; currency: string };
 
-export type ServiceListCopy = {
-  eyebrow: string;
-  title: string;
-  items: string[];
+/** `regions` overrides the default per ISO 3166-1 alpha-2 country code, e.g. `CU`. */
+export type OfferPricing = Money & { regions?: Partial<Record<string, Money>> };
+
+export type OfferItem = { title: string; text: string };
+
+/** The full, localized copy of one offer page, in the order the page reads. */
+export type OfferCopy = {
+  meta: PageMeta;
+  /** Who the offer is for, as a short label. */
+  clientType: string;
+  tagline: string;
+  hero: {
+    /** The first line shows in paper, the second in amber. */
+    title: [string, string];
+    lead: string;
+    label: string;
+  };
+  cta: { label: string; fallbackLabel: string };
+  benefits: { eyebrow: string; title: string; items: OfferItem[] };
+  includes: { eyebrow: string; title: string; items: OfferItem[] };
+  process: { eyebrow: string; title: string; steps: (OfferItem & { phase: string })[] };
+  investment: {
+    eyebrow: string;
+    title: string;
+    priceLabel: string;
+    priceNote: string;
+    paymentTitle: string;
+    payment: { share: string; text: string }[];
+    scopeNote: string;
+    support: { title: string; intro: string; items: string[]; note: string };
+  };
+  fit: { eyebrow: string; title: string; paragraphs: string[] };
+  closing: { eyebrow: string; title: string; text: string; signoff: string; note: string };
 };
 
-export type ServicePageCopy = {
-  meta: PageMeta;
+export type OfferDetail = OfferCopy & {
+  slug: string;
+  name: string;
   /** Stable English name for the Service structured data. */
   serviceType: string;
-  hero: {
-    eyebrow: string;
-    title: string;
-    support: string;
-  };
-  audience: ServiceListCopy;
-  offerings: {
-    eyebrow: string;
-    title: string;
-    includesLabel: string;
-    items: ServiceOffering[];
-  };
-  deliverables: ServiceListCopy;
-  process: ProcessCopy;
+  price: OfferPricing;
+  paths: Record<Locale, string>;
 };
 
 export type LegalSection = {
@@ -132,10 +149,10 @@ export type Dictionary = {
   footer: {
     tagline: string;
     navTitle: string;
-    servicesTitle: string;
+    offersTitle: string;
     legalTitle: string;
     contactTitle: string;
-    services: NavLink[];
+    offers: NavLink[];
     legal: NavLink[];
     whatsappLabel: string;
     facebookLabel: string;
@@ -153,9 +170,10 @@ export type Dictionary = {
     lastUpdatedLabel: string;
     lastUpdatedDate: string;
   };
+  offers: {
+    fromLabel: string;
+  };
   pages: {
-    web: ServicePageCopy;
-    branding: ServicePageCopy;
     terms: LegalPageCopy;
     privacy: LegalPageCopy;
   };

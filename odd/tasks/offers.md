@@ -46,7 +46,7 @@ A package aimed at one client type, with its process, price, payment terms and s
 ## Tasks
 
 - [x] T1 Project links to production URLs. Route: inline (one data file). Commit: `feat(portfolio): link projects to their production apps`. Checks: tsc and lint passed.
-- [ ] T2 Offer data model, offer pages, routes, sitemap, metadata and redirects from the service pages. Route: delegated (2+ non-trivial files).
+- [x] T2 Offer data model, offer pages, routes, sitemap, metadata and redirects from the service pages. Route: delegated (2+ non-trivial files). Commit: `feat(offers): add offer pages from a single data source and retire the service pages`. Checks: tsc and lint passed; build prerendered `/offers/ikizen-flow` and `/en/offers/ikizen-flow` (SSG). About 675 added and 655 removed lines: most of the removal is the two service pages' copy, most of the addition is the bilingual offer copy, which cannot be split without leaving an offer page half written. The footer column already lists offers here, because removing the service routes would otherwise leave it broken; the home Services blocks lose their links until T3 replaces them.
 - [ ] T3 Home offer cards replace the Services section; nav, footer and structured data follow the offers. Route: delegated (2+ non-trivial files).
 - [ ] T4 Regional pricing: middleware, region cookie and client price. Route: delegated (2+ non-trivial files).
 - [ ] T5 Deploy to production and smoke check.

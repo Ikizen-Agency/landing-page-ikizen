@@ -1,7 +1,7 @@
 import type { Locale } from "@/i18n";
 
 /** Where a CTA sits on the page, so its clicks compare across sections. */
-export type TrackLocation = "nav" | "hero" | "service_hero" | "closing" | "footer";
+export type TrackLocation = "nav" | "hero" | "offer_page" | "closing" | "footer";
 
 type EventParams = {
   book_cta_click: { location: TrackLocation };

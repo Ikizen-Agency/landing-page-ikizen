@@ -6,6 +6,7 @@ import { TrackClicks } from "@/components/analytics/TrackClicks";
 import { ogImageSize } from "@/components/brand/renderOgImage";
 import { JsonLd, organizationStructuredData, websiteStructuredData } from "@/components/StructuredData";
 import { getDictionary, routes, SITE_URL, type Dictionary, type Locale, type RouteKey } from "@/i18n";
+import type { PageMeta } from "@/i18n/types";
 
 const display = Bricolage_Grotesque({
   subsets: ["latin", "latin-ext"],
@@ -36,17 +37,20 @@ function ogImage(locale: Locale) {
   return { url: `/og/${locale}`, ...ogImageSize, type: "image/png", alt: getDictionary(locale).meta.ogImageAlt };
 }
 
-export function pageAlternates(route: RouteKey, locale: Locale): Metadata["alternates"] {
-  const { es, en } = routes[route];
+function alternatesFor(paths: Record<Locale, string>, locale: Locale): Metadata["alternates"] {
   return {
-    canonical: routes[route][locale],
-    languages: { es, en, "x-default": es },
+    canonical: paths[locale],
+    languages: { es: paths.es, en: paths.en, "x-default": paths.es },
   };
 }
 
+export function pageAlternates(route: RouteKey, locale: Locale): Metadata["alternates"] {
+  return alternatesFor(routes[route], locale);
+}
+
 /** A page-level `openGraph` replaces the layout's, so it restates site name and image. */
-export function buildPageMetadata(route: Exclude<RouteKey, "home">, locale: Locale): Metadata {
-  const { title, description, keywords } = getDictionary(locale).pages[route].meta;
+export function buildMetadata(meta: PageMeta, paths: Record<Locale, string>, locale: Locale): Metadata {
+  const { title, description, keywords } = meta;
   const socialTitle = `${title} | Ikizen Studio`;
   const images = [ogImage(locale)];
 
@@ -54,11 +58,11 @@ export function buildPageMetadata(route: Exclude<RouteKey, "home">, locale: Loca
     title,
     description,
     keywords,
-    alternates: pageAlternates(route, locale),
+    alternates: alternatesFor(paths, locale),
     openGraph: {
       title: socialTitle,
       description,
-      url: routes[route][locale],
+      url: paths[locale],
       siteName: "Ikizen Studio",
       type: "website",
       images,
@@ -70,6 +74,10 @@ export function buildPageMetadata(route: Exclude<RouteKey, "home">, locale: Loca
       images,
     },
   };
+}
+
+export function buildPageMetadata(route: Exclude<RouteKey, "home">, locale: Locale): Metadata {
+  return buildMetadata(getDictionary(locale).pages[route].meta, routes[route], locale);
 }
 
 export function buildRootMetadata(dict: Dictionary): Metadata {

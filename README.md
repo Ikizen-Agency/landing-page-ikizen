@@ -39,13 +39,33 @@ Both are read at build time, so changing one requires a new build.
 | `src/app/(es)`, `src/app/en` | Pages and root layout of each language |
 | `src/app/_root` | The HTML shell and metadata both languages share |
 | `src/app/og` | Social sharing images |
-| `src/components` | Sections, service and legal pages, booking, brand |
-| `src/i18n` | All copy, contact details and the map of page pairs |
+| `src/components` | Sections, offer and legal pages, booking, brand |
+| `src/i18n` | All copy, the offers, contact details and the map of page pairs |
 | `src/lib/analytics.ts` | Conversion events |
 | `src/lib/booking.ts` | The hosted booking URL |
 | `odd/tasks` | Feature documents |
 
 ## Common changes
+
+### Add an offer
+
+Add an entry to `OFFERS` in `src/i18n/offers.ts`. It then shows up on its own, with no other edits: its page at `/offers/<slug>` and `/en/offers/<slug>`, its footer link and its sitemap entry.
+
+| Field | Holds |
+|-------|-------|
+| `slug` | The URL segment, shared by both languages |
+| `name` | The offer name, the same in both languages |
+| `serviceType` | A stable English name for the structured data |
+| `price` | The "from" price: `amount`, `currency` and optional `regions` |
+| `copy.es`, `copy.en` | Every section of the page, in reading order, typed by `OfferCopy` |
+
+Prices render as `$1,500 USD` in both languages. `regions` overrides the price per country, keyed by ISO 3166-1 alpha-2 code:
+
+```ts
+price: { amount: 1500, currency: "USD", regions: { CU: { amount: 700, currency: "USD" } } },
+```
+
+The old `/services/*` URLs redirect to the offers on the home page, set in `next.config.ts`.
 
 ### Change a project link
 

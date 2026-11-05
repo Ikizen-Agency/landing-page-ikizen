@@ -41,7 +41,7 @@ export function Footer({ locale = "es" }: { locale?: Locale }) {
           </div>
 
           <FooterColumn title={footer.navTitle} links={nav.links} />
-          <FooterColumn title={footer.servicesTitle} links={footer.services} />
+          <FooterColumn title={footer.offersTitle} links={footer.offers} />
           <FooterColumn title={footer.legalTitle} links={footer.legal} />
 
           <div>

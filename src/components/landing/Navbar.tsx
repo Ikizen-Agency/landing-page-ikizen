@@ -6,12 +6,23 @@ import { buttonVariants } from "@/components/ui/button";
 import { getDictionary, routes, type Locale, type RouteKey } from "@/i18n";
 import { trackAttrs } from "@/lib/analytics";
 
-/** `route` is the current page, so the switcher can link to its counterpart. */
-export default function Navbar({ locale = "es", route = "home" }: { locale?: Locale; route?: RouteKey }) {
+/**
+ * `route` is the current page, so the switcher can link to its counterpart. Pages outside the
+ * route map, such as offers, pass their pair as `paths` instead.
+ */
+export default function Navbar({
+  locale = "es",
+  route = "home",
+  paths = routes[route],
+}: {
+  locale?: Locale;
+  route?: RouteKey;
+  paths?: Record<Locale, string>;
+}) {
   const dict = getDictionary(locale);
   const { nav, footer } = dict;
-  const switcherHref = routes[route][nav.switcher.lang];
-  const currentHref = routes[route][locale];
+  const switcherHref = paths[nav.switcher.lang];
+  const currentHref = paths[locale];
 
   return (
     <nav aria-label={nav.primaryLabel} className="fixed top-0 z-50 w-full border-b bg-ink px-gutter">

@@ -7,21 +7,23 @@ type BookingLinkProps = {
   dict: Pick<Dictionary, "booking" | "whatsappUrl">;
   location: TrackLocation;
   className: string;
+  /** Replaces the booking label, for a CTA tied to one offer. */
+  label?: string;
   /** Replaces the WhatsApp label where the full one does not fit. */
   fallbackLabel?: string;
 };
 
 /** Every booking CTA: the hosted Cal.com page, or WhatsApp until `BOOKING_URL` is set. */
-export function BookingLink({ dict, location, className, fallbackLabel }: BookingLinkProps) {
+export function BookingLink({ dict, location, className, label, fallbackLabel }: BookingLinkProps) {
   const { booking, whatsappUrl } = dict;
-  const label = BOOKING_URL ? booking.cta : (fallbackLabel ?? booking.fallbackCta);
+  const text = BOOKING_URL ? (label ?? booking.cta) : (fallbackLabel ?? booking.fallbackCta);
   const tracking = BOOKING_URL
     ? trackAttrs("book_cta_click", { location })
     : trackAttrs("whatsapp_click", { location });
 
   return (
     <a href={BOOKING_URL ?? whatsappUrl} target="_blank" rel="noopener noreferrer" {...tracking} className={className}>
-      {label}
+      {text}
       <span className="sr-only"> ({booking.opensInNewTab})</span>
       <ArrowUpRight aria-hidden="true" className="size-[1.15em] shrink-0" />
     </a>

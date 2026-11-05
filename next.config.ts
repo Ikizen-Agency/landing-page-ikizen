@@ -75,6 +75,17 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: true,
       },
+      // The service pages became offers
+      {
+        source: "/services/:path*",
+        destination: "/#offers",
+        permanent: true,
+      },
+      {
+        source: "/en/services/:path*",
+        destination: "/en#offers",
+        permanent: true,
+      },
     ];
   },
 };
