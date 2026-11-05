@@ -57,6 +57,10 @@ function SectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
 
 const twoDigits = (index: number) => String(index + 1).padStart(2, "0");
 
+/** Phones get a tighter rhythm, so the long page reads in fewer screens; sm and up keep the site's. */
+const SECTION_PADDING = "py-16 sm:py-section";
+const AFTER_HEADER = "mt-10 sm:mt-16 lg:mt-24";
+
 export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
   const offer = getOffer(slug, locale);
   if (!offer) notFound();
@@ -70,7 +74,7 @@ export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
       <JsonLd data={offerStructuredData(offer, `${SITE_URL}${offer.paths[locale]}`)} />
       <Navbar locale={locale} paths={offer.paths} />
       <main id="main" tabIndex={-1} className="focus:outline-none">
-        <section className="px-gutter pb-section pt-32 lg:pt-44">
+        <section className="px-gutter pb-16 pt-28 sm:pb-section sm:pt-32 lg:pt-44">
           <div className="mx-auto max-w-site">
             <p className="font-mono text-label uppercase text-amber">{offer.name}</p>
             <h1 className="mt-4 max-w-5xl text-balance text-display-lg font-bold">
@@ -78,7 +82,7 @@ export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
               <span className="mt-2 block text-amber">{hero.title[1]}</span>
             </h1>
 
-            <div className="mt-12 grid gap-12 lg:mt-20 lg:grid-cols-12 lg:gap-8">
+            <div className="mt-10 grid gap-10 sm:mt-12 sm:gap-12 lg:mt-20 lg:grid-cols-12 lg:gap-8">
               <div className="lg:col-span-7">
                 <p className="max-w-prose text-lg text-paper-dim lg:text-xl">{hero.lead}</p>
                 <p className="mt-8 font-mono text-label uppercase text-paper">{hero.label}</p>
@@ -99,12 +103,12 @@ export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
           </div>
         </section>
 
-        <section className="border-t px-gutter py-section">
+        <section className={`border-t px-gutter ${SECTION_PADDING}`}>
           <div className="mx-auto max-w-site">
             <SectionHeader eyebrow={benefits.eyebrow} title={benefits.title} />
-            <ul className="mt-16 border-b lg:mt-24">
+            <ul className={`border-b ${AFTER_HEADER}`}>
               {benefits.items.map((item) => (
-                <li key={item.title} className="grid gap-3 border-t py-8 lg:grid-cols-12 lg:gap-8">
+                <li key={item.title} className="grid gap-3 border-t py-6 sm:py-8 lg:grid-cols-12 lg:gap-8">
                   <h3 className="text-2xl font-bold lg:col-span-5">{item.title}</h3>
                   <p className="max-w-prose text-lg text-paper-dim lg:col-span-7">{item.text}</p>
                 </li>
@@ -113,14 +117,14 @@ export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
           </div>
         </section>
 
-        <section className="bg-ink-soft px-gutter py-section">
+        <section className={`bg-ink-soft px-gutter ${SECTION_PADDING}`}>
           <div className="mx-auto max-w-site">
             <SectionHeader eyebrow={includes.eyebrow} title={includes.title} />
-            <ol className="mt-16 lg:mt-24">
+            <ol className={AFTER_HEADER}>
               {includes.items.map((item, index) => (
                 <li
                   key={item.title}
-                  className="grid grid-cols-[4.5rem_1fr] gap-x-4 border-t py-8 md:grid-cols-[9rem_1fr_1fr] md:gap-x-8"
+                  className="grid grid-cols-[4.5rem_1fr] gap-x-4 border-t py-5 sm:py-8 md:grid-cols-[9rem_1fr_1fr] md:gap-x-8"
                 >
                   <span aria-hidden="true" className="row-span-2 font-display text-display-lg font-bold text-amber md:row-span-1">
                     {twoDigits(index)}
@@ -133,10 +137,10 @@ export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
           </div>
         </section>
 
-        <section className="px-gutter py-section">
+        <section className={`px-gutter ${SECTION_PADDING}`}>
           <div className="mx-auto max-w-site">
             <SectionHeader eyebrow={process.eyebrow} title={process.title} />
-            <ol className="mt-16 grid gap-10 sm:grid-cols-2 lg:mt-24 lg:grid-cols-4 lg:gap-8">
+            <ol className={`grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-8 ${AFTER_HEADER}`}>
               {process.steps.map((step, index) => (
                 <li key={step.phase} className="border-t pt-6">
                   <p className="font-mono text-label uppercase text-amber">
@@ -150,72 +154,75 @@ export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
           </div>
         </section>
 
-        <section className="bg-ink-soft px-gutter py-section">
+        <section className={`bg-ink-soft px-gutter ${SECTION_PADDING}`}>
           <div className="mx-auto max-w-site">
             <SectionHeader eyebrow={investment.eyebrow} title={investment.title} />
 
-            <div className="mt-16 grid gap-12 lg:mt-24 lg:grid-cols-12 lg:gap-8">
+            <div className={`grid gap-8 sm:gap-12 lg:grid-cols-12 lg:gap-8 ${AFTER_HEADER}`}>
               <div className="border-2 border-gold bg-ink p-6 sm:p-10 lg:col-span-5">
                 <p className="font-mono text-label uppercase text-amber">{investment.priceLabel}</p>
                 <OfferPrice price={offer.price} className="mt-4 block font-display text-display-lg font-bold text-paper" />
-                <p className="mt-6 max-w-prose text-paper-dim">{investment.priceNote}</p>
+                <p className="mt-4 max-w-prose text-paper-dim sm:mt-6">{investment.priceNote}</p>
               </div>
 
               <div className="lg:col-span-6 lg:col-start-7">
                 <h3 className="text-2xl font-bold">{investment.paymentTitle}</h3>
-                <ul className="mt-6 border-b">
+                <ul className="mt-4 border-b sm:mt-6">
                   {investment.payment.map((term) => (
-                    <li key={term.share} className="grid grid-cols-[5.5rem_1fr] items-baseline gap-x-4 border-t py-5 sm:grid-cols-[7rem_1fr]">
+                    <li key={term.share} className="grid grid-cols-[5.5rem_1fr] items-baseline gap-x-4 border-t py-3 sm:grid-cols-[7rem_1fr] sm:py-5">
                       <span className="font-display text-display-md font-bold text-amber">{term.share}</span>
-                      <span className="text-lg">{term.text}</span>
+                      <span className="sm:text-lg">{term.text}</span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-6 max-w-prose text-paper-dim">{investment.scopeNote}</p>
+                <p className="mt-4 max-w-prose text-paper-dim sm:mt-6">{investment.scopeNote}</p>
               </div>
             </div>
 
-            <div className="mt-20 grid gap-8 border-t pt-10 lg:mt-28 lg:grid-cols-12">
+            <div className="mt-8 grid gap-4 border-t pt-6 sm:mt-20 sm:gap-8 sm:pt-10 lg:mt-28 lg:grid-cols-12">
               <h3 className="text-display-md font-bold lg:col-span-5">{terms.title}</h3>
               <dl className="border-b lg:col-span-6 lg:col-start-7">
                 {terms.items.map((term) => (
-                  <div key={term.label} className="grid gap-2 border-t py-5 sm:grid-cols-[12rem_1fr] sm:gap-x-4">
+                  <div
+                    key={term.label}
+                    className="grid gap-1 border-t py-3 min-[22.5rem]:grid-cols-[6rem_1fr] max-sm:min-[22.5rem]:items-baseline min-[22.5rem]:gap-x-3 sm:grid-cols-[12rem_1fr] sm:gap-x-4 sm:py-5"
+                  >
                     <dt className="font-mono text-label uppercase text-amber">{term.label}</dt>
-                    <dd className="text-lg">{term.text}</dd>
+                    <dd className="sm:text-lg">{term.text}</dd>
                   </div>
                 ))}
               </dl>
             </div>
 
-            <div className="mt-20 grid gap-8 border-t pt-10 lg:mt-28 lg:grid-cols-12">
+            <div className="mt-8 grid gap-4 border-t pt-6 sm:mt-20 sm:gap-8 sm:pt-10 lg:mt-28 lg:grid-cols-12">
               <h3 className="text-display-md font-bold lg:col-span-5">{support.title}</h3>
               <div className="lg:col-span-6 lg:col-start-7">
-                <p className="text-lg">{support.intro}</p>
-                <ul className="mt-6 space-y-4">
+                <p className="sm:text-lg">{support.intro}</p>
+                <ul className="mt-4 space-y-3 sm:mt-6 sm:space-y-4">
                   {support.items.map((item) => (
-                    <li key={item} className="flex max-w-prose gap-3 text-lg text-paper-dim">
-                      <span aria-hidden="true" className="mt-3 size-2 shrink-0 bg-amber" />
+                    <li key={item} className="flex max-w-prose gap-3 text-paper-dim sm:text-lg">
+                      <span aria-hidden="true" className="mt-2 size-2 shrink-0 bg-amber sm:mt-3" />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <p className="mt-8 max-w-prose text-sm text-paper-dim">{support.note}</p>
+                <p className="mt-6 max-w-prose text-sm text-paper-dim sm:mt-8">{support.note}</p>
 
-                <div className="mt-10 border-t pt-6">
+                <div className="mt-8 border-t pt-5 sm:mt-10 sm:pt-6">
                   <p className="font-mono text-label uppercase text-amber">{support.rateLabel}</p>
                   <OfferPrice
                     price={offer.supportRate}
                     suffix={support.rateUnit}
                     className="mt-2 block font-display text-display-md font-bold text-paper"
                   />
-                  <p className="mt-4 max-w-prose text-paper-dim">{support.rateNote}</p>
+                  <p className="mt-3 max-w-prose text-paper-dim sm:mt-4">{support.rateNote}</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="px-gutter py-section">
+        <section className={`px-gutter ${SECTION_PADDING}`}>
           <div className="mx-auto grid max-w-site gap-10 lg:grid-cols-12 lg:gap-8">
             <div className="lg:col-span-5">
               <SectionHeader eyebrow={fit.eyebrow} title={fit.title} />
@@ -230,7 +237,7 @@ export function OfferPage({ locale, slug }: { locale: Locale; slug: string }) {
           </div>
         </section>
 
-        <section className="bg-amber px-gutter py-section text-ink">
+        <section className={`bg-amber px-gutter text-ink ${SECTION_PADDING}`}>
           <div className="mx-auto max-w-site">
             <p className="font-mono text-label uppercase">{closing.eyebrow}</p>
             <h2 className="mt-4 max-w-5xl text-balance text-display-lg font-bold text-ink">{closing.title}</h2>
