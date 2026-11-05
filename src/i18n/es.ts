@@ -118,6 +118,7 @@ export const es: Dictionary = {
     title: "Un paquete para cada tipo de negocio.",
     fullOfferLabel: "Ver oferta completa",
     cards: getOfferCards("es"),
+    includesLabel: "Incluye",
     fromLabel: "Desde",
   },
   pages: {

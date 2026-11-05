@@ -46,6 +46,8 @@ export type OfferCopy = {
     lead: string;
     label: string;
   };
+  /** Everything the offer includes, one short line each, for the home card. */
+  summary: string[];
   cta: { label: string; fallbackLabel: string };
   benefits: { eyebrow: string; title: string; items: OfferItem[] };
   includes: { eyebrow: string; title: string; items: OfferItem[] };
@@ -65,7 +67,7 @@ export type OfferCopy = {
 };
 
 /** What the home shows of an offer: enough to choose it, with its page for the rest. */
-export type OfferCard = Pick<OfferDetail, "slug" | "name" | "clientType" | "price" | "cta"> & {
+export type OfferCard = Pick<OfferDetail, "slug" | "name" | "clientType" | "price" | "cta" | "summary"> & {
   title: [string, string];
   lead: string;
   href: string;
@@ -170,6 +172,7 @@ export type Dictionary = {
     eyebrow: string;
     title: string;
     fromLabel: string;
+    includesLabel: string;
     fullOfferLabel: string;
     cards: OfferCard[];
   };

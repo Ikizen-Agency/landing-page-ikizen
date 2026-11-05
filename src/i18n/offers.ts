@@ -36,7 +36,16 @@ const OFFERS: Offer[] = [
           lead: "Transformamos procesos manuales y herramientas desconectadas en soluciones digitales diseñadas alrededor de la forma en que funciona tu negocio.",
           label: "Software diseñado al ritmo de tu negocio",
         },
-        cta: { label: "Agenda tu diagnóstico sin costo", fallbackLabel: "Pide tu diagnóstico por WhatsApp" },
+        summary: [
+          "Reunión de diagnóstico sin costo (20–30 min)",
+          "Diseño preliminar para explorar antes de desarrollar",
+          "Desarrollo a la medida de tu proceso",
+          "Pruebas y validación junto a ti",
+          "Implementación y puesta en marcha",
+          "3 meses de acompañamiento tras la entrega",
+          "Pago 30% al iniciar y 70% al entregar",
+        ],
+        cta: { label: "Diagnóstico gratis", fallbackLabel: "Diagnóstico por WhatsApp" },
         benefits: {
           eyebrow: "Beneficios",
           title: "¿Qué puede cambiar en tu negocio?",
@@ -136,7 +145,16 @@ const OFFERS: Offer[] = [
           lead: "We turn manual processes and disconnected tools into digital solutions designed around the way your business works.",
           label: "Software designed around the pace of your business",
         },
-        cta: { label: "Book your free diagnosis", fallbackLabel: "Request your diagnosis on WhatsApp" },
+        summary: [
+          "Free diagnosis meeting (20–30 min)",
+          "Preliminary design to explore before building",
+          "Development tailored to your process",
+          "Testing and validation with you",
+          "Rollout and launch",
+          "3 months of support after delivery",
+          "Pay 30% to start and 70% on delivery",
+        ],
+        cta: { label: "Free diagnosis", fallbackLabel: "Diagnosis on WhatsApp" },
         benefits: {
           eyebrow: "Benefits",
           title: "What can change in your business?",
@@ -244,7 +262,7 @@ export function getOfferLinks(locale: Locale): NavLink[] {
 
 export function getOfferCards(locale: Locale): OfferCard[] {
   return OFFERS.map(({ slug, name, price, copy }) => {
-    const { clientType, hero, cta } = copy[locale];
-    return { slug, name, clientType, price, cta, title: hero.title, lead: hero.lead, href: offerPaths(slug)[locale] };
+    const { clientType, hero, cta, summary } = copy[locale];
+    return { slug, name, clientType, price, cta, summary, title: hero.title, lead: hero.lead, href: offerPaths(slug)[locale] };
   });
 }

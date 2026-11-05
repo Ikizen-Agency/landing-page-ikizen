@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { BookingLink } from "@/components/booking/BookingLink";
 import { OfferPrice } from "@/components/offers/OfferPrice";
 import { buttonVariants } from "@/components/ui/button";
@@ -19,6 +19,16 @@ function OfferCard({ card, dict, wide }: OffersProps & { card: OfferCardData; wi
           {card.title[0]} <span className="text-amber">{card.title[1]}</span>
         </p>
         <p className="mt-4 max-w-prose text-lg text-paper-dim">{card.lead}</p>
+
+        <p className="mt-10 font-mono text-label uppercase text-amber">{dict.offers.includesLabel}</p>
+        <ul className="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+          {card.summary.map((item) => (
+            <li key={item} className="flex gap-3 text-paper">
+              <Check aria-hidden="true" className="mt-1 size-4 shrink-0 text-amber" />
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div className={wide ? "border-t pt-6 lg:col-span-4 lg:col-start-9" : "mt-auto border-t pt-6"}>

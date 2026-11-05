@@ -16,7 +16,7 @@ export function Closing({ dict }: { dict: Dictionary }) {
         <BookingLink
           dict={dict}
           location="closing"
-          className="mt-12 flex items-center justify-between gap-4 text-balance bg-ink px-5 py-8 font-display text-display-md font-bold text-paper transition-colors duration-200 hover:text-amber sm:gap-6 sm:px-10 sm:py-12 sm:text-display-lg lg:mt-20 [&_svg]:transition-transform [&_svg]:duration-200 hover:[&_svg]:-translate-y-1 hover:[&_svg]:translate-x-1 motion-reduce:[&_svg]:transition-none"
+          className="mt-10 inline-flex items-center gap-3 bg-ink px-7 py-4 text-lg font-semibold text-paper transition-colors duration-200 hover:text-amber lg:mt-12 [&_svg]:transition-transform [&_svg]:duration-200 hover:[&_svg]:-translate-y-0.5 hover:[&_svg]:translate-x-0.5 motion-reduce:[&_svg]:transition-none"
         />
 
         {/* Without a booking page the CTA above is already the WhatsApp route. */}
