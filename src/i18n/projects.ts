@@ -16,7 +16,8 @@ type Project = {
 /**
  * Single source for the projects flow. Copy states what each project is, never results.
  *
- * The link label follows `href`: GitHub reads "View on GitHub", anything else "View project".
+ * The link label follows `href`: a GitHub release reads "Download for Android", the rest of GitHub
+ * "View on GitHub", anything else "View project".
  */
 const PROJECTS: Project[] = [
   {
@@ -53,16 +54,28 @@ const PROJECTS: Project[] = [
       },
     },
   },
+  {
+    name: "MoneyForge",
+    type: { es: "Código abierto", en: "Open source" },
+    purpose: {
+      es: "Una app de finanzas personales para Android que guarda todo en el teléfono: cuentas, presupuestos, planes y respaldos cifrados, sin cuentas ni rastreo.",
+      en: "A personal finance app for Android that keeps everything on the phone: accounts, budgets, plans and encrypted backups, with no sign-up and no tracking.",
+    },
+    // Always the newest release: GitHub serves `latest/download` for a stable asset name.
+    href: "https://github.com/JohnyYen/moneyforge/releases/latest/download/moneyforge-full.apk",
+  },
 ];
 
 const LINK_LABELS = {
+  download: { es: "Descargar para Android", en: "Download for Android" },
   github: { es: "Ver en GitHub", en: "View on GitHub" },
   live: { es: "Ver proyecto", en: "View project" },
 } satisfies Record<string, Localized>;
 
 function linkLabel(href: string, locale: Locale) {
-  const host = new URL(href).hostname;
-  return LINK_LABELS[host === "github.com" ? "github" : "live"][locale];
+  const { hostname, pathname } = new URL(href);
+  if (hostname !== "github.com") return LINK_LABELS.live[locale];
+  return LINK_LABELS[pathname.includes("/releases") ? "download" : "github"][locale];
 }
 
 export function getProjectStops(locale: Locale): ProjectStop[] {
