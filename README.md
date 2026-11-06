@@ -79,7 +79,7 @@ Detection is by IP only: a visitor behind a VPN gets the price of the VPN's coun
 
 ### Change a project link
 
-Set `href` on the project in `src/i18n/projects.ts`. The link label follows the URL: `github.com` reads "View on GitHub", anything else "View project".
+Set `href` on the project in `src/i18n/projects.ts`. The link label follows the URL: a link to an `.apk` file reads "Download for Android", any other `github.com` link "View on GitHub", anything else "View project".
 
 ### Show a video on a project
 

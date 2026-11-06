@@ -66,6 +66,8 @@ A package aimed at one client type, with its process, price, payment terms and s
 
 - [x] T12 MoneyForge in the projects flow, written by the owner. Route: inline (commit and deploy only). It links to the latest GitHub release APK, and GitHub release links read "Download for Android". Commit: `feat(portfolio): add MoneyForge with its Android download`. Checks: tsc and lint passed; the release `v0.1.0` exists and `releases/latest/download/moneyforge-full.apk` answers 200 with the APK (about 98 MB). Review: current-changes candidate, consent granted, approved and acknowledged with non-blocking advisories: the `/releases` substring would label any GitHub release link as an Android download, and `linkLabel` has no test.
 
+- [x] T13 Link label decided by what the link delivers. Route: inline. Any `.apk` URL on any host reads "Download for Android", any other GitHub URL "View on GitHub", anything else "View project", which closes the T12 advisory about the `/releases` substring. Commit: `fix(portfolio): label only APK links as Android downloads`. Checks: test-first with an ad hoc script outside the repo, since there is no test runner: RED with 5 of 8 cases failing on the old rule (a releases page, a tag, a `.zip` asset, a repository named `releases-notes`, a non-GitHub `.apk`), then GREEN with 8 of 8; tsc and lint passed.
+
 ## Progress
 
 - Branch `feat/offers` created from `main`. RDD is on (global).

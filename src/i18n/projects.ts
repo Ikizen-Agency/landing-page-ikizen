@@ -16,8 +16,8 @@ type Project = {
 /**
  * Single source for the projects flow. Copy states what each project is, never results.
  *
- * The link label follows `href`: a GitHub release reads "Download for Android", the rest of GitHub
- * "View on GitHub", anything else "View project".
+ * The link label follows `href`: an `.apk` file on any host reads "Download for Android", any other
+ * GitHub URL "View on GitHub", anything else "View project".
  */
 const PROJECTS: Project[] = [
   {
@@ -72,10 +72,11 @@ const LINK_LABELS = {
   live: { es: "Ver proyecto", en: "View project" },
 } satisfies Record<string, Localized>;
 
-function linkLabel(href: string, locale: Locale) {
+/** Decided by what the link delivers, so a release page or a non-Android asset never reads as an APK. */
+export function linkLabel(href: string, locale: Locale) {
   const { hostname, pathname } = new URL(href);
-  if (hostname !== "github.com") return LINK_LABELS.live[locale];
-  return LINK_LABELS[pathname.includes("/releases") ? "download" : "github"][locale];
+  if (pathname.toLowerCase().endsWith(".apk")) return LINK_LABELS.download[locale];
+  return LINK_LABELS[hostname === "github.com" ? "github" : "live"][locale];
 }
 
 export function getProjectStops(locale: Locale): ProjectStop[] {
