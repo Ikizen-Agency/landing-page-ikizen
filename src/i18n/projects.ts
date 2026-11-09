@@ -49,8 +49,8 @@ const PROJECTS: Project[] = [
       src: "/assets/portfolio/brand-morph-showcase-web.mp4",
       poster: "/assets/portfolio/brand-morph-showcase-poster.webp",
       label: {
-        es: "Recorrido en video por Brand Morph: un producto que cambia entre tres marcas en vivo.",
-        en: "Video tour of Brand Morph: one product that morphs across three brands live.",
+        es: "Recorrido en video por Brand Morph: un producto que cambia entre tres marcas en vivo, sus tokens y la exportación a código.",
+        en: "Video tour of Brand Morph: one product that morphs across three brands live, its tokens and the export to code.",
       },
     },
   },
@@ -63,6 +63,14 @@ const PROJECTS: Project[] = [
     },
     // Always the newest release: GitHub serves `latest/download` for a stable asset name.
     href: "https://github.com/JohnyYen/moneyforge/releases/latest/download/moneyforge-full.apk",
+    video: {
+      src: "/assets/portfolio/moneyforge-showcase-web.mp4",
+      poster: "/assets/portfolio/moneyforge-showcase-poster.webp",
+      label: {
+        es: "Recorrido en video por MoneyForge: cuentas en varias monedas, reparto de ingresos, reglas de mensajes, planificación y activos.",
+        en: "Video tour of MoneyForge: multi-currency accounts, income split, message rules, planning and assets.",
+      },
+    },
   },
 ];
 
